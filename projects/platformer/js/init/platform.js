@@ -39,11 +39,12 @@
         // example:
         createPlatform(440, 360, 0.80);             //top right
         createPlatform(195, 460, 0.2);              //coin platform
-        createPlatform(760, 200, 0.1, 23)           //right wall
-        createPlatform(600, 600, 0.4)               //bottom right
-        createPlatform(280, 510, 0.4)               //bottom middle
-        createPlatform(175, 370, 0.05, 3.8)         //coin wall
-        createPlatform(0, 370, 0.44)
+        createPlatform(760, 200, 0.1, 23);          //right wall
+        createPlatform(600, 600, 0.4);              //bottom right
+        createPlatform(280, 510, 0.4);              //bottom middle
+        createPlatform(175, 370, 0.05, 3.8);        //coin wall
+        createPlatform(100, 628, 0.08, 3);          //front obstical
+        createPlatform(0, 370, 0.44);               //final platform
         
         
         
