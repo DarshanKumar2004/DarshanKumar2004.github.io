@@ -64,11 +64,13 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			var positionX = 0;
+			var randNum = Math.random() * 400;
+			var positionX = randNum;
 			var points = 0;
 			var speedX = 8;
-			var positionY = 0;
+			var positionY = randNum;
 			var speedY = 8;
+			
 			
 			
 			/* 
@@ -105,8 +107,9 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				positionX = 0;
-				positionY = 0;
+				positionX = randNum;
+				positionY = randNum;
+				
 				
 				points = points + 1;
 				
