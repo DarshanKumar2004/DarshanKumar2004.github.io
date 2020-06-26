@@ -116,8 +116,8 @@ var level01 = function (window) {
             }
         
             createTiger(1600, groundY - 20);
-            createTiger(1880, groundY - 20);
-            createTiger(2200, groundY - 20);
+            createTiger(1880, groundY - 10);
+            createTiger(2200, groundY - 40);
             
             
             //-----------------------------------
