@@ -24,7 +24,7 @@ var level01 = function (window) {
         };
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
-        game.setDebugMode(true);
+        game.setDebugMode(false);
 
         // BEGIN EDITING YOUR CODE HERE
         
@@ -77,9 +77,14 @@ var level01 = function (window) {
             
             function createTiger(x, y) {
                 
+                var Tiger = (x + y);
                 
                 
-            var Tiger = (x + y);
+                
+                
+                
+                
+            
             
             var hitZoneSize = 25;
             var damageFromObstacle = 40;
@@ -98,6 +103,15 @@ var level01 = function (window) {
         
             obstacleImageTiger.x = -50;
             obstacleImageTiger.y = -40;
+            
+            
+            
+            
+            tigerZone.onProjectileCollision = function() {
+                game.changeIntegrity(20);
+                game.increaseScore(100);
+                tigerZone.fadeOut();
+            };
             
             }
         
@@ -139,16 +153,16 @@ var level01 = function (window) {
             enemy.onPlayerCollision = function() {
                 
                 game.increaseScore(- 10);
-                game.changeIntegrity(- 10)
+                game.changeIntegrity(- 10);
                 enemy.fadeOut();
                 
             };
             
             enemy.onProjectileCollision = function() {
-                game.changeIntegrity(50)
+                game.changeIntegrity(50);
                 game.increaseScore(100);
                 enemy.fadeOut();
-            }
+            };
             
             
             
@@ -187,7 +201,7 @@ var level01 = function (window) {
             
             enemy.onProjectileCollision = function() {
                 game.changeIntegrity(50)
-                game.increaseScore(100);
+                game.increaseScore(200);
                 enemy.fadeOut();
             }
             }
