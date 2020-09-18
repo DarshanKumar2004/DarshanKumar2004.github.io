@@ -1,0 +1,11 @@
+/*
+jQuery is a CND because it only works when we put the dollar sighn.
+
+the program wont work because it wont know what the jQuery is.
+
+The pros of refracting your CSS, HTMl and JS code is that it is more organized so that when you need
+to comeback to it and know where the problem is it will be easyer to locate.
+
+the pros of refracting your JS functions is that if there are large amounts of code you 
+can break it up into sections so that it is easyer to read and find
+*/
