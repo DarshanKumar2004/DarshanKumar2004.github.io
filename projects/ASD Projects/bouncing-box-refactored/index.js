@@ -26,7 +26,8 @@
 			turn it around! 
 			*/
 			function update() {
-				updateHelper();
+                boxMove();
+                bounceOffWall();
 			}
 
 			/* 
@@ -35,7 +36,9 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-                handleBoxClickHelper();
+                pointsUp();
+                increaseSpeed();
+                resetPosition();
             }
                 
 
@@ -43,11 +46,13 @@
 			////////////////////  HELPER FUNCTIONS  //////////////////////////
 			//////////////////////////////////////////////////////////////////
 
-			function handleBoxClickHelper() {
+			function pointsUp() {
                 //increase points
 				points += 1;
 				$('#box').text(points);
-				
+            }
+
+            function increaseSpeed() {
                 //increase speed
 				if (speedX >= 0) {
 					speedX += 3;
@@ -55,16 +60,20 @@
 				else if (speedX < 0) {
 					speedX -= 3;
 				}
-				
+            }
+
+            function resetPosition() {
                 //reset position of the box
 				positionX = 0;
             }
 
-            function updateHelper() {
+            function boxMove() {
                 //makes box move
                 positionX += speedX;
-				$('#box').css("left", positionX);
+				$('#box').css("left", positionX);                
+            }
 
+            function bounceOffWall() {
                 //makes box move  backwards if it hits the wall
 				if (positionX > BOARD_WIDTH) {
 					speedX = -speedX;

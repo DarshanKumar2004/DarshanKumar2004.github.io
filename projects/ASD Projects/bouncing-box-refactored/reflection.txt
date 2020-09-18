@@ -1,5 +1,5 @@
 /*
-jQuery is a CND because it only works when we put the dollar sighn.
+jQuery is a direct download.
 
 the program wont work because it wont know what the jQuery is.
 
