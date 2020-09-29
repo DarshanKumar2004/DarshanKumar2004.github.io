@@ -24,8 +24,8 @@ function runProgram(){
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
-  $(document).on('eventType', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
-  $(document).on('eventType', handleKeyUp);
+  $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
+  $(document).on('keyup', handleKeyUp);
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -90,7 +90,6 @@ function runProgram(){
       $("#box").css("left", positionX);
       $("#box").css("top", positionY);
   }
-  
   
   function endGame() {
     // stop the interval timer
