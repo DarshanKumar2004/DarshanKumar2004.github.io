@@ -44,36 +44,37 @@ function runProgram(){
   Called in response to events.
   */
   function handleKeyDown(event) {
-    if (event.wich === KEY.DOWN) {
+    if (event.which === KEY.DOWN) {
         speedY = 5;
         console.log("key down pressed");
     }
-    else if (event.wich === KEY.RIGHT) {
+    else if (event.which === KEY.RIGHT) {
         speedX = 5;
         console.log("key right pressed");
     }
-    else if (event.wich === KEY.LEFT) {
+    else if (event.which === KEY.LEFT) {
         speedX = -5;
         console.log("key left pressed");
     }
-    else if (event.wich === KEY.UP) {
+    else if (event.which === KEY.UP) {
         speedY = -5;
         console.log("key up pressed");
     }
   }
 
   function handleKeyUp(event) {
-    if (event.wich === KEY.DOWN) {
+    if (event.which === KEY.DOWN) {
         speedY = 0;
     }
-    else if (event.wich === KEY.RIGHT) {
+    else if (event.which === KEY.RIGHT) {
         speedX = 0;
     }
-    else if (event.wich === KEY.LEFT) {
+    else if (event.which === KEY.LEFT) {
         speedX = 0;
     }
-    else if (event.wich === KEY.UP) {
+    else if (event.which === KEY.UP) {
         speedY = 0;
+    }
   }
 
   ////////////////////////////////////////////////////////////////////////////////
