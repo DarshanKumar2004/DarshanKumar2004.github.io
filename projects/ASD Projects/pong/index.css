@@ -51,3 +51,21 @@ body {
   left: 273px;
     
 }
+
+#playerAScore {
+    background-color: greenyellow;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    left: 20px;
+    top: 5px;
+}
+
+#playerBScore {
+    background-color: greenyellow;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    left: 211px;
+    top: 5px;
+}
