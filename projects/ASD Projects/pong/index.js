@@ -133,24 +133,28 @@ function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
 
   function points() {
-    if (ballPositionX === 0) {
-        pAPoints += 1;
+    if (ballPositionX <= 0) {
+        pBPoints += 1;
+        //code bellow makes ball bounce off of left and right wall
+        ballSpeedX *= -1;
         console.log("player A has " + pAPoints + " points");
         console.log("boarder hit");
     }
-    else if (ballPositionX === 530) {
-        pBPoints += 1;
+    else if (ballPositionX >= 530) {
+        pAPoints += 1;
+        //code bellow makes ball bounce off of left and right wall
+        ballSpeedX *= -1;
         console.log("player B has " + pBPoints + " points");
         console.log("boarder hit");
     }
   }
 
   function boarder() {
-    if (ballPositionY === 0) {
+    if (ballPositionY <= 0) {
         ballSpeedY *= -1;
         console.log("boarder hit");
     }
-    else if (ballPositionY === 280) {
+    else if (ballPositionY >= 280) {
         ballSpeedY *= -1;
         console.log("boarder hit");
     } 
@@ -177,11 +181,9 @@ function runProgram(){
     var ballAngle = Math.floor(Math.random() * 4);
     console.log("the angle is " + ballAngle);
     if (ballAngle >= 3) {
-        //ball angle is negative 1-45
         ballSpeedY -= ballAngle;
     }
     else if (ballAngle < 3) {
-        //ball angle is positive 1-45
         ballSpeedY += ballAngle;
     }
   }
@@ -209,6 +211,7 @@ function runProgram(){
     $("#ball").css("left", ballPositionX);
     $("#ball").css("top", ballPositionY);
 
+    //gives ball shadows
     if (ballPositionX === 530 / 2){
         $("#ball").css("box-shadow", "0px 10px 3px rgb(87, 87, 87)")
     }
@@ -220,6 +223,7 @@ function runProgram(){
     }
   }
 
+  //after this the game ends dont code past this
 
   function endGame() {
     // stop the interval timer
