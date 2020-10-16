@@ -56,8 +56,11 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
+    //paddle boarders
+    leftPaddleBorder();
+    rightPaddleBorder();
     //boarders
-    boarder();
+    border();
     points();
     //redraw
     redrawLeftPaddle();
@@ -67,6 +70,8 @@ function runProgram(){
     repositionLeftPaddle();
     repositionRightPaddle();
     repositionBall();
+    //check for winner
+    winner();
   }
   
   /* 
@@ -106,7 +111,7 @@ function runProgram(){
         console.log("key Y pressed");
     }
     else if (event.which === KEY.SPACE) {
-        ballRNG(2);
+        ballRNG();
         ballAngleRNG();
         console.log("key space pressed");
     }
@@ -134,22 +139,36 @@ function runProgram(){
 
   function points() {
     if (ballPositionX <= 0) {
-        pBPoints += 1;
+        pAPoints += 1;
+        //resets ball to center
+        ballPositionX = 265;
+        ballPositionY = 130;
+        ballSpeedX = 0;
+        ballSpeedY = 0;
+        //displays score
+        $('#playerAScore').text(pAPoints);
         //code bellow makes ball bounce off of left and right wall
-        ballSpeedX *= -1;
+        //ballSpeedX *= -1;
         console.log("player A has " + pAPoints + " points");
         console.log("boarder hit");
     }
     else if (ballPositionX >= 530) {
-        pAPoints += 1;
+        pBPoints += 1;
+        //resets ball to center
+        ballPositionX = 265;
+        ballPositionY = 130;
+        ballSpeedX = 0;
+        ballSpeedY = 0;
+        //displays score
+        $('#playerBScore').text(pBPoints);
         //code bellow makes ball bounce off of left and right wall
-        ballSpeedX *= -1;
+        //ballSpeedX *= -1;
         console.log("player B has " + pBPoints + " points");
         console.log("boarder hit");
     }
   }
 
-  function boarder() {
+  function border() {
     if (ballPositionY <= 0) {
         ballSpeedY *= -1;
         console.log("boarder hit");
@@ -160,11 +179,31 @@ function runProgram(){
     } 
   }
 
-  
+  function leftPaddleBorder() {
+    if (pAPositionY <= 0) {
+        pAPositionY = 1;
+        //console.log("left paddle hit the top border");
+    }
+    else if (pAPositionY >= 220) {
+        pAPositionY = 219;
+        //console.log("left paddle hit the bottom border");
+    }
+  }
+
+  function rightPaddleBorder() {
+    if (pBPositionY <= 0) {
+        pBPositionY = 1;
+        //console.log("right paddle hit top border");
+    }
+    else if (pBPositionY >= 220) {
+        pBPositionY = 219;
+        //console.log("right paddle hit bottom border");
+    }
+  }
 
   //ball side picker
-  function ballRNG(sides) {
-    var RNG = Math.ceil(Math.random() * sides);
+  function ballRNG() {
+    var RNG = Math.ceil(Math.random() * 2);
     if (RNG === 1) {
         //ball goes left
         ballSpeedX -= 3;
@@ -178,12 +217,12 @@ function runProgram(){
   }
 
   function ballAngleRNG() {
-    var ballAngle = Math.floor(Math.random() * 4);
+    var ballAngle = Math.floor(Math.random() * 6);
     console.log("the angle is " + ballAngle);
-    if (ballAngle >= 3) {
+    if (ballAngle >= 4) {
         ballSpeedY -= ballAngle;
     }
-    else if (ballAngle < 3) {
+    else if (ballAngle <= 3) {
         ballSpeedY += ballAngle;
     }
   }
@@ -221,6 +260,29 @@ function runProgram(){
     else {
         $("#ball").css("box-shadow", "5px 10px 3px rgb(87, 87, 87)");
     }
+  }
+
+  function winner() {
+      if (pAPoints === 11) {
+        //A wins left team
+        pAPoints = 0;
+        pBPoints = 0;
+        ballPositionX = 265;
+        ballPositionY = 130;
+        ballSpeedX = 0;
+        ballSpeedY = 0;
+        console.log('winner is player A/left team');
+      }
+      else if (pBPoints === 11) {
+        //B wins right team
+        pAPoints = 0;
+        pBPoints = 0;
+        ballPositionX = 265;
+        ballPositionY = 130;
+        ballSpeedX = 0;
+        ballSpeedY = 0;
+        console.log('winner is player B/right team');
+      }
   }
 
   //after this the game ends dont code past this
