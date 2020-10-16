@@ -1,6 +1,6 @@
 
 body {
-  background-color: rgb(0, 100, 75);
+  background-color: darkgrey;
 }
 
 #board {
@@ -52,20 +52,46 @@ body {
     
 }
 
-#playerAScore {
-    background-color: greenyellow;
-    height: 10px;
-    width: 10px;
+#playerBScore {
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 20px;
+    width: 20px;
     position: absolute;
-    left: 20px;
+    left: 245px;
     top: 5px;
 }
 
-#playerBScore {
-    background-color: greenyellow;
-    height: 10px;
-    width: 10px;
+#playerAScore {
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 20px;
+    width: 20px;
     position: absolute;
-    left: 211px;
+    left: 285px;
     top: 5px;
+}
+
+#winnerIs {
+    background-color: darkgrey;
+    color: white;
+    text-align: center;
+    font-size: 35px;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    left: 225px;
+    top: -120px;
+}
+
+#instructions {
+    background-color: darkgrey;
+    color: white;
+    text-align: center;
+    height: 100px;
+    width: 550px;
+    position: absolute;
+    top: 305px;
 }

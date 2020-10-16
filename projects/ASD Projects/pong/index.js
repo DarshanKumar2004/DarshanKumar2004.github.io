@@ -56,6 +56,8 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
+    //check for winner
+    winner();
     //paddle boarders
     leftPaddleBorder();
     rightPaddleBorder();
@@ -70,8 +72,8 @@ function runProgram(){
     repositionLeftPaddle();
     repositionRightPaddle();
     repositionBall();
-    //check for winner
-    winner();
+    //instructions
+    gameInstructions()
   }
   
   /* 
@@ -113,6 +115,7 @@ function runProgram(){
     else if (event.which === KEY.SPACE) {
         ballRNG();
         ballAngleRNG();
+        $('#winnerIs').text("");
         console.log("key space pressed");
     }
   }
@@ -272,6 +275,9 @@ function runProgram(){
         ballSpeedX = 0;
         ballSpeedY = 0;
         console.log('winner is player A/left team');
+        $('#playerAScore').text(pAPoints);
+        $('#playerBScore').text(pBPoints);
+        $('#winnerIs').text("Player B WON!!!");
       }
       else if (pBPoints === 11) {
         //B wins right team
@@ -282,7 +288,14 @@ function runProgram(){
         ballSpeedX = 0;
         ballSpeedY = 0;
         console.log('winner is player B/right team');
+        $('#playerAScore').text(pAPoints);
+        $('#playerBScore').text(pBPoints);
+        $('#winnerIs').text("Player A WON!!!");
       }
+  }
+
+  function gameInstructions() {
+    $('#instructions').text("Player A is the Left side and Player B is the right side. Player A's controlles are W and S. Player B's controles are the Up and Down Arrows. Additional controlles are T, Y, G and H. These where here for developer testing purposes. T and Y move the ball up and down. G and H move the ball left and right. To START the game press the  Space bar. The first to 11 points wins. Good Luck!");
   }
 
   //after this the game ends dont code past this
