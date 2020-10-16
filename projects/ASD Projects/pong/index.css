@@ -13,16 +13,6 @@ body {
   left: 231px;
 }
 
-#ball {
-  background-color: rgb(255, 255, 255);
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
-  position: absolute;
-  top: 130px;
-  left: 265px;
-}
-
 #leftPaddle {
     background-color:rgb(190, 190, 190);
     box-shadow: -5px 10px 3px rgb(87, 87, 87);
@@ -41,6 +31,16 @@ body {
     position: absolute;
     top: 100px;
     left:510px;
+}
+
+#ball {
+  background-color: rgb(255, 255, 255);
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  position: absolute;
+  top: 130px;
+  left: 265px;
 }
 
 #midLine {

@@ -9,7 +9,7 @@ function runProgram(){
 
   // Constant Variables
   var FRAMES_PER_SECOND_INTERVAL = 1000 / 60;
-  var BOARD_WIDTH = 530;
+  var BOARD_WIDTH = $('#board').width();
   var BOARD_HEIGHT = $('#board').height();
   const KEY = {
     "DOWN":40,
@@ -19,7 +19,8 @@ function runProgram(){
     "G":71,
     "H":72,
     "T":84,
-    "Y":89
+    "Y":89,
+    "SPACE":32
   }
   
   // Game Item Objects
@@ -28,11 +29,13 @@ function runProgram(){
   var pASpeedX = 0;
   var pAPositionY = 100;
   var pASpeedY = 0;
+  var pAPoints = 0;
   //right paddle
   var pBPositionX = 0;
   var pBSpeedX = 0;
   var pBPositionY = 100;
-  var pBSpeedX = 0;
+  var pBSpeedY = 0;
+  var pBPoints = 0;
   //ball
   var ballPositionX = 265;
   var ballSpeedX = 0;
@@ -53,6 +56,9 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
+    //boarders
+    boarder();
+    points();
     //redraw
     redrawLeftPaddle();
     redrawRightPaddle();
@@ -93,11 +99,16 @@ function runProgram(){
     }
     else if (event.which === KEY.T) {
         ballPositionY -= 5;
-        console.log("key Y pressed");
+        console.log("key T pressed");
     }
     else if (event.which === KEY.Y) {
         ballPositionY += 5;
         console.log("key Y pressed");
+    }
+    else if (event.which === KEY.SPACE) {
+        ballRNG(2);
+        ballAngleRNG();
+        console.log("key space pressed");
     }
   }
 
@@ -114,12 +125,78 @@ function runProgram(){
     else if (event.which === KEY.S) {
         pASpeedY = 0;
     }
-    
+
   }
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
+
+  function points() {
+    if (ballPositionX === 0) {
+        pAPoints += 1;
+        console.log("player A has " + pAPoints + " points");
+        console.log("boarder hit");
+    }
+    else if (ballPositionX === 530) {
+        pBPoints += 1;
+        console.log("player B has " + pBPoints + " points");
+        console.log("boarder hit");
+    }
+  }
+
+  function boarder() {
+    if (ballPositionY === 0) {
+        ballSpeedY *= -1;
+        console.log("boarder hit");
+    }
+    else if (ballPositionY === 280) {
+        ballSpeedY *= -1;
+        console.log("boarder hit");
+    } 
+  }
+
+  
+
+  //ball side picker
+  function ballRNG(sides) {
+    var RNG = Math.ceil(Math.random() * sides);
+    if (RNG === 1) {
+        //ball goes left
+        ballSpeedX -= 3;
+        console.log("1 left ball");
+    }
+    else if (RNG === 2) {
+        //ball goes right
+        ballSpeedX += 3;
+        console.log("2 right ball");
+    }
+  }
+
+  function ballAngleRNG() {
+    var ballAngle = Math.floor(Math.random() * 4);
+    console.log("the angle is " + ballAngle);
+    if (ballAngle >= 3) {
+        //ball angle is negative 1-45
+        ballSpeedY -= ballAngle;
+    }
+    else if (ballAngle < 3) {
+        //ball angle is positive 1-45
+        ballSpeedY += ballAngle;
+    }
+  }
+
+  //reposition items
+  function repositionLeftPaddle(){
+    pAPositionY += pASpeedY;
+  }
+  function repositionRightPaddle(){
+    pBPositionY += pBSpeedY;
+  }
+  function repositionBall(){
+      ballPositionX += ballSpeedX;
+      ballPositionY += ballSpeedY;
+  }
 
   //redraw items
   function redrawLeftPaddle(){
@@ -132,28 +209,18 @@ function runProgram(){
     $("#ball").css("left", ballPositionX);
     $("#ball").css("top", ballPositionY);
 
-    if (ballPositionX === BOARD_WIDTH / 2){
+    if (ballPositionX === 530 / 2){
         $("#ball").css("box-shadow", "0px 10px 3px rgb(87, 87, 87)")
     }
-    else if (ballPositionX < BOARD_WIDTH / 2){
+    else if (ballPositionX < 530 / 2){
         $("#ball").css("box-shadow", "-5px 10px 3px rgb(87, 87, 87)");
     }
     else {
         $("#ball").css("box-shadow", "5px 10px 3px rgb(87, 87, 87)");
     }
   }
-  //reposition items
-  function repositionLeftPaddle(){
-    pAPositionY += pASpeedY;
-  }
-  function repositionRightPaddle(){
-    pBPositionY += pBSpeedY;
-  }
-  function repositionBall(){
-      ballPositionX += ballSpeedX;
-      ballPositionY += ballSpeedY;
-  }
-  
+
+
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
