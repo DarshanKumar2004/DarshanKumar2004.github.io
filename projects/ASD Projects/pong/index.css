@@ -6,7 +6,7 @@ body {
 #board {
   width: 550px;
   height: 300px;
-  border: 1px solid rgb(255, 255, 255);
+  border: 3px double rgb(255, 255, 255);
   background-color: black;
   position: relative;
   top: 192px;
