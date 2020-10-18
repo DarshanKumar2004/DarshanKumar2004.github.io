@@ -225,6 +225,9 @@ function runProgram(){
     if (ballAngle >= 4) {
         ballSpeedY -= ballAngle;
     }
+    else if (ballAngle === 0) {
+        ballSpeedY -= 4;
+    }
     else if (ballAngle <= 3) {
         ballSpeedY += ballAngle;
     }
