@@ -52,9 +52,6 @@ function runProgram(){
     //paddle boarders
     leftPaddleBorder();
     rightPaddleBorder();
-    //boarders
-    border();
-    points();
     //redraw
     redrawLeftPaddle();
     redrawRightPaddle();
@@ -63,6 +60,9 @@ function runProgram(){
     repositionLeftPaddle();
     repositionRightPaddle();
     repositionBall();
+    //boarders
+    border();
+    points();
     //instructions
     gameInstructions()
   }
@@ -139,6 +139,7 @@ function runProgram(){
     //collision detection
     if (((paddleL.rightX > ballC.leftX) && (paddleL.leftX < ballC.rightX) && (paddleL.topY < ballC.bottomY) && (paddleL.bottomY > ballC.topY)) || ((paddleR.rightX > ballC.leftX) && (paddleR.leftX < ballC.rightX) && (paddleR.topY < ballC.bottomY) && (paddleR.bottomY > ballC.topY))) {
         ball.speedX *= -1;
+        ball.speedX += 1;
         console.log("collision detected");
     }
   }
