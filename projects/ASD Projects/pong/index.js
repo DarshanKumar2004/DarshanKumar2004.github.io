@@ -25,31 +25,11 @@ function runProgram(){
   
   // Game Item Objects
   //left paddle
-  var paddleLeft = {};
-  var pAPositionX = 20;
-  var pASpeedX = 0;
-  var pAPositionY = 100;
-  var pASpeedY = 0;
-  var pAWidth = 20;
-  var pAHeight = 80;
-  var pAPoints = 0;
+  var paddleLeft = itemCreation("#leftPaddle");
   //right paddle
-  var paddleRight = {};
-  var pBPositionX = 510;
-  var pBSpeedX = 0;
-  var pBPositionY = 100;
-  var pBSpeedY = 0;
-  var pBWidth = 20;
-  var pBHeight = 80;
-  var pBPoints = 0;
+  var paddleRight = itemCreation("#rightPaddle");
   //ball
-  var ballSize = {};
-  var ballPositionX = 265;
-  var ballSpeedX = 0;
-  var ballPositionY = 130;
-  var ballWidth = 20;
-  var ballHeight = 20;
-  var ballSpeedY = 0;
+  var ball = itemCreation("#ball");
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -92,36 +72,20 @@ function runProgram(){
   */
   function handleKeyDown(event) {
     if (event.which === KEY.DOWN) {
-        pBSpeedY = 5;
+        paddleRight.speedY = 5;
         console.log("key down pressed");
     }
     else if (event.which === KEY.UP) {
-        pBSpeedY = -5;
+        paddleRight.speedY = -5;
         console.log("key up pressed");
     }
     else if (event.which === KEY.W) {
-        pASpeedY = -5;
+        paddleLeft.speedY = -5;
         console.log("key W pressed");
     }
     else if (event.which === KEY.S) {
-        pASpeedY = 5;
+        paddleLeft.speedY = 5;
         console.log("key S pressed");
-    }
-    else if (event.which === KEY.G) {
-        ballPositionX -= 5;
-        console.log("key G pressed");
-    }
-    else if (event.which === KEY.H) {
-        ballPositionX += 5;
-        console.log("key H pressed");
-    }
-    else if (event.which === KEY.T) {
-        ballPositionY -= 5;
-        console.log("key T pressed");
-    }
-    else if (event.which === KEY.Y) {
-        ballPositionY += 5;
-        console.log("key Y pressed");
     }
     else if (event.which === KEY.SPACE) {
         ballRNG();
@@ -133,16 +97,16 @@ function runProgram(){
 
   function handleKeyUp(event) {
     if (event.which === KEY.DOWN) {
-        pBSpeedY = 0;
+        paddleRight.speedY = 0;
     }
     else if (event.which === KEY.UP) {
-        pBSpeedY = 0;
+        paddleRight.speedY = 0;
     }
     else if (event.which === KEY.W) {
-        pASpeedY = 0;
+        paddleLeft.speedY = 0;
     }
     else if (event.which === KEY.S) {
-        pASpeedY = 0;
+        paddleLeft.speedY = 0;
     }
 
   }
@@ -152,89 +116,93 @@ function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
 
   //colisions
-  function doCollide(paddleLeft, paddleRight, ballSize) {
+    function doCollide(paddleL, paddleR, ballC) {
     //left paddle
-    paddleLeft.leftX = pAPositionX;
-    paddleLeft.rightX = pAPositionX + pAWidth;
-    paddleLeft.topY =  pAPositionY;
-    paddleLeft.bottomY = pAPositionY + pAHeight;
+    paddleL = {};
+    paddleL.leftX = paddleLeft.x;
+    paddleL.rightX = paddleLeft.x + paddleLeft.width;
+    paddleL.topY =  paddleLeft.y;
+    paddleL.bottomY = paddleLeft.y + paddleLeft.top;
     //right paddle
-    paddleRight.leftX = pBPositionX
-    paddleRight.rightX = pBPositionX + pBWidth;
-    paddleRight.topY =  pBPositionY;
-    paddleRight.bottomY = pBPositionY + pBHeight;
+    paddleR = {};
+    paddleR.leftX = paddleRight.x;
+    paddleR.rightX = paddleRight.x + paddleRight.width;
+    paddleR.topY =  paddleRight.y;
+    paddleR.bottomY = paddleRight.y + paddleRight.top;
     //ball
-    ballSize.leftX = ballPositionX;
-    ballSize.rightX = ballPositionX + ballWidth;
-    ballSize.topY = ballPositionY;
-    ballSize.bottomY = ballPositionY + ballHeight;
+    ballC = {};
+    ballC.leftX = ball.x;
+    ballC.rightX = ball.x + ball.width;
+    ballC.topY = ball.y;
+    ballC.bottomY = ball.y + ball.top;
 
     //collision detection
-    if (((paddleLeft.rightX > ballSize.leftX) && (paddleLeft.leftX < ballSize.rightX) && (paddleLeft.topY < ballSize.bottomY) && (paddleLeft.bottomY > ballSize.topY)) || ((paddleRight.rightX > ballSize.leftX) && (paddleRight.leftX < ballSize.rightX) && (paddleRight.topY < ballSize.bottomY) && (paddleRight.bottomY > ballSize.topY))) {
+    if (((paddleL.rightX > ballC.leftX) && (paddleL.leftX < ballC.rightX) && (paddleL.topY < ballC.bottomY) && (paddleL.bottomY > ballC.topY)) || ((paddleR.rightX > ballC.leftX) && (paddleR.leftX < ballC.rightX) && (paddleR.topY < ballC.bottomY) && (paddleR.bottomY > ballC.topY))) {
+        ball.speedX *= -1;
         console.log("collision detected");
     }
   }
-
+  
   function points() {
-    if (ballPositionX <= 0) {
-        pAPoints += 1;
+    if (ball.x <= 0) {
+        paddleLeft.points += 1;
         //resets ball to center
-        ballPositionX = 265;
-        ballPositionY = 130;
-        ballSpeedX = 0;
-        ballSpeedY = 0;
+        ball.x = 265;
+        ball.y = 130;
+        ball.speedX = 0;
+        ball.speedY = 0;
         //displays score
-        $('#playerAScore').text(pAPoints);
+        $('#playerAScore').text(paddleLeft.points);
         //code bellow makes ball bounce off of left and right wall
         //ballSpeedX *= -1;
-        console.log("player A has " + pAPoints + " points");
+        console.log("player A has " + paddleLeft.points + " points");
         console.log("boarder hit");
     }
-    else if (ballPositionX >= 530) {
-        pBPoints += 1;
+    else if (ball.x >= 530) {
+        paddleRight.points += 1;
         //resets ball to center
-        ballPositionX = 265;
-        ballPositionY = 130;
-        ballSpeedX = 0;
-        ballSpeedY = 0;
+        ball.x = 265;
+        ball.y = 130;
+        ball.speedX = 0;
+        ball.speedY = 0;
         //displays score
-        $('#playerBScore').text(pBPoints);
+        $('#playerBScore').text(paddleRight.points);
         //code bellow makes ball bounce off of left and right wall
         //ballSpeedX *= -1;
-        console.log("player B has " + pBPoints + " points");
+        console.log("player B has " + paddleRight.points + " points");
         console.log("boarder hit");
     }
   }
 
   function border() {
-    if (ballPositionY <= 0) {
-        ballSpeedY *= -1;
+    if (ball.y <= 0) {
+        ball.speedY *= -1;
         console.log("boarder hit");
     }
-    else if (ballPositionY >= 280) {
-        ballSpeedY *= -1;
+    else if (ball.y >= 280) {
+        ball.speedY *= -1;
         console.log("boarder hit");
     } 
   }
 
   function leftPaddleBorder() {
-    if (pAPositionY <= 0) {
-        pAPositionY = 1;
+    if (paddleLeft.y <= 0) {
+        paddleLeft.y = 1;
         //console.log("left paddle hit the top border");
     }
-    else if (pAPositionY >= 220) {
-        pAPositionY = 219;
+    else if (paddleLeft.y >= 220) {
+        paddleLeft.y = 219;
         //console.log("left paddle hit the bottom border");
     }
   }
 
   function rightPaddleBorder() {
-    if (pBPositionY <= 0) {
-        pBPositionY = 1;
+    if (paddleRight.y <= 0) {
+        paddleRight.y = 1;
         //console.log("right paddle hit top border");
     }
-    else if (pBPositionY >= 220) {
-        pBPositionY = 219;
+    else if (paddleRight.y >= 220) {
+        paddleRight.y = 219;
         //console.log("right paddle hit bottom border");
     }
   }
@@ -244,13 +212,13 @@ function runProgram(){
     var RNG = Math.ceil(Math.random() * 2);
     if (RNG === 1) {
         //ball goes left
-        ballSpeedX -= 3;
-        console.log("1 left ball");
+        ball.speedX -= 3;
+        console.log("left ball");
     }
     else if (RNG === 2) {
         //ball goes right
-        ballSpeedX += 3;
-        console.log("2 right ball");
+        ball.speedX += 3;
+        console.log("right ball");
     }
   }
 
@@ -258,44 +226,44 @@ function runProgram(){
     var ballAngle = Math.floor(Math.random() * 6);
     console.log("the angle is " + ballAngle);
     if (ballAngle >= 4) {
-        ballSpeedY -= ballAngle;
+        ball.speedY -= ballAngle;
     }
     else if (ballAngle === 0) {
-        ballSpeedY -= 4;
+        ball.speedY -= 4;
     }
     else if (ballAngle <= 3) {
-        ballSpeedY += ballAngle;
+        ball.speedY += ballAngle;
     }
   }
 
   //reposition items
   function repositionLeftPaddle(){
-    pAPositionY += pASpeedY;
+    paddleLeft.y += paddleLeft.speedY;
   }
   function repositionRightPaddle(){
-    pBPositionY += pBSpeedY;
+    paddleRight.y += paddleRight.speedY;
   }
   function repositionBall(){
-      ballPositionX += ballSpeedX;
-      ballPositionY += ballSpeedY;
+      ball.x += ball.speedX;
+      ball.y += ball.speedY;
   }
 
   //redraw items
   function redrawLeftPaddle(){
-    $("#leftPaddle").css("top", pAPositionY);
+    $("#leftPaddle").css("top", paddleLeft.y);
   }
   function redrawRightPaddle(){
-    $("#rightPaddle").css("top", pBPositionY);
+    $("#rightPaddle").css("top", paddleRight.y);
   }
   function redrawBall(){
-    $("#ball").css("left", ballPositionX);
-    $("#ball").css("top", ballPositionY);
+    $("#ball").css("left", ball.x);
+    $("#ball").css("top", ball.y);
 
     //gives ball shadows
-    if (ballPositionX === 530 / 2){
+    if (ball.x === 530 / 2){
         $("#ball").css("box-shadow", "0px 10px 3px rgb(87, 87, 87)")
     }
-    else if (ballPositionX < 530 / 2){
+    else if (ball.x < 530 / 2){
         $("#ball").css("box-shadow", "-5px 10px 3px rgb(87, 87, 87)");
     }
     else {
@@ -304,36 +272,50 @@ function runProgram(){
   }
 
   function winner() {
-      if (pAPoints === 11) {
+      if (paddleLeft.points === 11) {
         //A wins left team
-        pAPoints = 0;
-        pBPoints = 0;
-        ballPositionX = 265;
-        ballPositionY = 130;
-        ballSpeedX = 0;
-        ballSpeedY = 0;
+        paddleLeft.points = 0;
+        paddleRight.points = 0;
+        ball.x = 265;
+        ball.y = 130;
+        ball.speedX = 0;
+        ball.speedY = 0;
         console.log('winner is player A/left team');
-        $('#playerAScore').text(pAPoints);
-        $('#playerBScore').text(pBPoints);
-        $('#winnerIs').text("Player B WON!!!");
-      }
-      else if (pBPoints === 11) {
-        //B wins right team
-        pAPoints = 0;
-        pBPoints = 0;
-        ballPositionX = 265;
-        ballPositionY = 130;
-        ballSpeedX = 0;
-        ballSpeedY = 0;
-        console.log('winner is player B/right team');
-        $('#playerAScore').text(pAPoints);
-        $('#playerBScore').text(pBPoints);
+        $('#playerAScore').text(paddleLeft.points);
+        $('#playerBScore').text(paddleRight.points);
         $('#winnerIs').text("Player A WON!!!");
+      }
+      else if (paddleRight.points === 11) {
+        //B wins right team
+        paddleRight.points = 0;
+        paddleLeft.points = 0;
+        ball.x = 265;
+        ball.y = 130;
+        ball.speedX = 0;
+        ball.speedY = 0;
+        console.log('winner is player B/right team');
+        $('#playerAScore').text(paddleLeft.points);
+        $('#playerBScore').text(paddleRight.points);
+        $('#winnerIs').text("Player B WON!!!");
       }
     }
 
+    function itemCreation(id){
+    var gameItem = {}
+    gameItem.id = id;
+    gameItem.x = Number($(id).css('left').replace(/[^-\d\.]/g, ''));
+    gameItem.y = Number($(id).css('top').replace(/[^-\d\.]/g, ''));
+    gameItem.width = $(id).width();
+    gameItem.top = $(id).height();
+    gameItem.speedX = 0;
+    gameItem.speedY = 0;
+    gameItem.points = 0;
+    
+    return gameItem;
+  }
+
   function gameInstructions() {
-    $('#instructions').text("Player A is the Left side and Player B is the right side. Player A's controlles are W and S. Player B's controles are the Up and Down Arrows. Additional controlles are T, Y, G and H. These where here for developer testing purposes. T and Y move the ball up and down. G and H move the ball left and right. To START the game press the  Space bar. The first to 11 points wins. Good Luck!");
+    $('#instructions').text("Player A is the Left side and Player B is the right side. Player A's controlles are W and S. Player B's controles are the Up and Down Arrows. To START the game press the  Space bar. The first to 11 points wins. Good Luck!");
   }
 
   //after this the game ends dont code past this
