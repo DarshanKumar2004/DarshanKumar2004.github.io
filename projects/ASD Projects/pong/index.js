@@ -25,21 +25,30 @@ function runProgram(){
   
   // Game Item Objects
   //left paddle
-  var pAPositionX = 0;
+  var paddleLeft = {};
+  var pAPositionX = 20;
   var pASpeedX = 0;
   var pAPositionY = 100;
   var pASpeedY = 0;
+  var pAWidth = 20;
+  var pAHeight = 80;
   var pAPoints = 0;
   //right paddle
-  var pBPositionX = 0;
+  var paddleRight = {};
+  var pBPositionX = 510;
   var pBSpeedX = 0;
   var pBPositionY = 100;
   var pBSpeedY = 0;
+  var pBWidth = 20;
+  var pBHeight = 80;
   var pBPoints = 0;
   //ball
+  var ballSize = {};
   var ballPositionX = 265;
   var ballSpeedX = 0;
   var ballPositionY = 130;
+  var ballWidth = 20;
+  var ballHeight = 20;
   var ballSpeedY = 0;
 
   // one-time setup
@@ -56,6 +65,8 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
+    //check for collisions
+    doCollide();
     //check for winner
     winner();
     //paddle boarders
@@ -139,6 +150,30 @@ function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
+
+  //colisions
+  function doCollide(paddleLeft, paddleRight, ballSize) {
+    //left paddle
+    paddleLeft.leftX = pAPositionX;
+    paddleLeft.rightX = pAPositionX + pAWidth;
+    paddleLeft.topY =  pAPositionY;
+    paddleLeft.bottomY = pAPositionY + pAHeight;
+    //right paddle
+    paddleRight.leftX = pBPositionX
+    paddleRight.rightX = pBPositionX + pBWidth;
+    paddleRight.topY =  pBPositionY;
+    paddleRight.bottomY = pBPositionY + pBHeight;
+    //ball
+    ballSize.leftX = ballPositionX;
+    ballSize.rightX = ballPositionX + ballWidth;
+    ballSize.topY = ballPositionY;
+    ballSize.bottomY = ballPositionY + ballHeight;
+
+    //collision detection
+    if (((paddleLeft.rightX > ballSize.leftX) && (paddleLeft.leftX < ballSize.rightX) && (paddleLeft.topY < ballSize.bottomY) && (paddleLeft.bottomY > ballSize.topY)) || ((paddleRight.rightX > ballSize.leftX) && (paddleRight.leftX < ballSize.rightX) && (paddleRight.topY < ballSize.bottomY) && (paddleRight.bottomY > ballSize.topY))) {
+        console.log("collision detected");
+    }
+  }
 
   function points() {
     if (ballPositionX <= 0) {
@@ -295,7 +330,7 @@ function runProgram(){
         $('#playerBScore').text(pBPoints);
         $('#winnerIs').text("Player A WON!!!");
       }
-  }
+    }
 
   function gameInstructions() {
     $('#instructions').text("Player A is the Left side and Player B is the right side. Player A's controlles are W and S. Player B's controles are the Up and Down Arrows. Additional controlles are T, Y, G and H. These where here for developer testing purposes. T and Y move the ball up and down. G and H move the ball left and right. To START the game press the  Space bar. The first to 11 points wins. Good Luck!");
