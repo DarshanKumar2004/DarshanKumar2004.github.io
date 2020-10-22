@@ -139,8 +139,13 @@ function runProgram(){
     //collision detection
     if (((paddleL.rightX > ballC.leftX) && (paddleL.leftX < ballC.rightX) && (paddleL.topY < ballC.bottomY) && (paddleL.bottomY > ballC.topY)) || ((paddleR.rightX > ballC.leftX) && (paddleR.leftX < ballC.rightX) && (paddleR.topY < ballC.bottomY) && (paddleR.bottomY > ballC.topY))) {
         ball.speedX *= -1;
-        ball.speedX += 1;
         console.log("collision detected");
+    }
+    if ((paddleL.rightX > ballC.leftX) && (paddleL.leftX < ballC.rightX) && (paddleL.topY < ballC.bottomY) && (paddleL.bottomY > ballC.topY)) {
+        ball.speedX += 0.5;
+    }
+    if (((paddleR.rightX > ballC.leftX) && (paddleR.leftX < ballC.rightX) && (paddleR.topY < ballC.bottomY) && (paddleR.bottomY > ballC.topY))) {
+        ball.speed -= 0.5;
     }
   }
   
