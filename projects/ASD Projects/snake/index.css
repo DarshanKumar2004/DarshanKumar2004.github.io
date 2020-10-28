@@ -1,0 +1,44 @@
+
+body {
+  background-color: rgb(0, 165, 165);
+}
+
+#board {
+  width: 440px;
+  height: 440px;
+  border: 1px solid white;
+  background-color: black;
+  position: relative;
+  top: 170px;
+  left: 410px;
+}
+
+#head {
+  background-color: green;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+/*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
+/*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
+}
+
+#apple {
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+
+#body {
+    background-color: lightgreen;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+
+#tail {
+    background-color: lightgreen;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
