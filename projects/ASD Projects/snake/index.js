@@ -17,13 +17,11 @@ function runProgram(){
   }
   
   // Game Item Objects
-  var headX = 0;
-  var headY = 0;
-  var headSpeedX = 0;
-  var headSpeedY = 0;
-  var appleX;
-  var appleY;
-  var score = 0
+  var head = itemCreation('#head');
+  var apple = itemCreation('#apple');
+  var body = itemCreation('#body');
+  var tail = itemCreation('#tail');
+  var points = 0;
 
 
   // one-time setup
@@ -44,9 +42,11 @@ function runProgram(){
   redrawApple();
 
   function newFrame() {
+    doCollide();
     repositionHead();
     redrawHead();
     border();
+    scoreDisplay();
   }
   
   /* 
@@ -54,23 +54,23 @@ function runProgram(){
   */
   function handleKeyDown(event) {
     if (event.which === KEY.DOWN) {
-        headSpeedY = 0.7;
-        headSpeedX = 0;
+        head.speedY = 0.7;
+        head.speedX = 0;
         console.log("key down pressed");
     }
     else if (event.which === KEY.RIGHT) {
-        headSpeedX = 0.7;
-        headSpeedY = 0;
+        head.speedX = 0.7;
+        head.speedY = 0;
         console.log("key right pressed");
     }
     else if (event.which === KEY.LEFT) {
-        headSpeedX = -0.7;
-        headSpeedY = 0
+        head.speedX = -0.7;
+        head.speedY = 0
         console.log("key left pressed");
     }
     else if (event.which === KEY.UP) {
-        headSpeedY = -0.7;
-        headSpeedX = 0;
+        head.speedY = -0.7;
+        head.speedX = 0;
         console.log("key up pressed");
     }
   }
@@ -80,61 +80,119 @@ function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
 
   function repositionHead() {
-      headX += headSpeedX;
-      headY += headSpeedY
+      head.x += head.speedX;
+      head.y += head.speedY
   }
 
   function redrawHead() {
-      $("#head").css("left", headX);
-      $("#head").css("top", headY);
+      $("#head").css("left", head.x);
+      $("#head").css("top", head.y);
   }
 
   function border() {
-      if (headY < -1) {
-        prompt('GAME OVER! Your score was ' + score);
-        headX = 0;
-        headY = 0;
-        headSpeedX = 0;
-        headSpeedY = 0;
+      if (head.y < -1) {
+        prompt('GAME OVER! Your score was ' + points);
+        head.x = 100;
+        head.y = 100;
+        head.speedX = 0;
+        head.speedY = 0;
         score = 0;
+        repositionApple();
+        redrawApple();
       }
-      else if (headY > 421) {
-        prompt('GAME OVER! Your score was ' + score);
-        headX = 0;
-        headY = 0;
-        headSpeedX = 0;
-        headSpeedY = 0;
+      else if (head.y > 421) {
+        prompt('GAME OVER! Your score was ' + points);
+        head.x = 100;
+        head.y = 100;
+        head.speedX = 0;
+        head.speedY = 0;
         score = 0;
+        repositionApple();
+        redrawApple();
       }
-      else if (headX < -1) {
-        prompt('GAME OVER! Your score was ' + score);
-        headX = 0;
-        headY = 0;
-        headSpeedX = 0;
-        headSpeedY = 0;
+      else if (head.x < -1) {
+        prompt('GAME OVER! Your score was ' + points);
+        head.x = 100;
+        head.y = 100;
+        head.speedX = 0;
+        head.speedY = 0;
         score = 0;
+        repositionApple();
+        redrawApple();
       }
-      else if (headX > 421) {
-        prompt('GAME OVER! Your score was ' + score);
-        headX = 0;
-        headY = 0;
-        headSpeedX = 0;
-        headSpeedY = 0;
+      else if (head.x > 421) {
+        prompt('GAME OVER! Your score was ' + points);
+        head.x = 100;
+        head.y = 100;
+        head.speedX = 0;
+        head.speedY = 0;
         score = 0;
+        repositionApple();
+        redrawApple();
       }
   }
 
   function repositionApple() {
-    var locationX = Math.random(22) * 440;
-    var locationY = Math.random(22) * 440;
-    console.log(location);
-    appleX = locationX;
-    appleY = locationY;
+    var locationX = Math.ceil(Math.random(420) * 420);
+    var locationY = Math.ceil(Math.random(420) * 420);
+    console.log(locationX + ' X apple');
+    console.log(locationY + ' Y apple');
+    apple.x = locationX;
+    apple.x = locationY;
     }
 
   function redrawApple() {
-      $("#apple").css("left", appleX);
-      $("#apple").css("top", appleY);
+      $("#apple").css("left", apple.x);
+      $("#apple").css("top", apple.x);
+  }
+
+  function scoreDisplay() {
+      $('#score').text("Score: " + points);
+  }
+
+  function itemCreation(id){
+    var gameItem = {}
+    gameItem.id = id;
+    gameItem.x = Number($(id).css('left').replace(/[^-\d\.]/g, ''));
+    gameItem.y = Number($(id).css('top').replace(/[^-\d\.]/g, ''));
+    gameItem.width = $(id).width();
+    gameItem.top = $(id).height();
+    gameItem.speedX = 0;
+    gameItem.speedY = 0;
+    
+    return gameItem;
+  }
+
+  function doCollide() {
+    headC = {};
+    headC.leftX = head.x;
+    headC.rightX = head.x + head.width;
+    headC.topY =  head.y;
+    headC.bottomY = head.y + head.top;
+
+    appleC = {};
+    appleC.leftX = apple.x;
+    appleC.rightX = apple.x + apple.width;
+    appleC.topY =  apple.y;
+    appleC.bottomY = apple.y + apple.top;
+
+    bodyC = {};
+    bodyC.leftX = body.x;
+    bodyC.rightX = body.x + body.width;
+    bodyC.topY =  body.y;
+    bodyC.bottomY = body.y + body.top;
+
+    tail = {};
+    tail.leftX = tail.x;
+    tail.rightX = tail.x + tail.width;
+    tail.topY =  tail.y;
+    tail.bottomY = tail.y + tail.top;
+
+    if (((headC.rightX > appleC.leftX) && (headC.leftX < appleC.rightX) && (headC.topY < appleC.bottomY) && (headC.bottomY > appleC.topY))) {
+        points = points + 1;
+        console.log("collision detected");
+        console.log(points);
+    }
   }
   
   function endGame() {
