@@ -8,7 +8,7 @@ function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
 
   // Constant Variables
-  var FRAMES_PER_SECOND_INTERVAL = 10 / 60;
+  var FRAMES_PER_SECOND_INTERVAL = 200;
   var KEY = {
     "DOWN":40,
     "RIGHT":39,
@@ -53,23 +53,24 @@ function runProgram(){
   Called in response to events.
   */
   function handleKeyDown(event) {
-    if (event.which === KEY.DOWN) {
-        head.speedY = 0.7;
+    if (event.which === KEY.DOWN && head.speedY !== -20) {
+        head.speedY = 20;
         head.speedX = 0;
         console.log("key down pressed");
     }
-    else if (event.which === KEY.RIGHT) {
-        head.speedX = 0.7;
+    else if (event.which === KEY.RIGHT && head.speedX !== -20) {
+        head.speedX = 20;
         head.speedY = 0;
+
         console.log("key right pressed");
     }
-    else if (event.which === KEY.LEFT) {
-        head.speedX = -0.7;
+    else if (event.which === KEY.LEFT && head.speedX !== 20) {
+        head.speedX = -20;
         head.speedY = 0
         console.log("key left pressed");
     }
-    else if (event.which === KEY.UP) {
-        head.speedY = -0.7;
+    else if (event.which === KEY.UP && head.speedY !== 20) {
+        head.speedY = -20;
         head.speedX = 0;
         console.log("key up pressed");
     }
