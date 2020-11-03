@@ -96,7 +96,7 @@ function runProgram(){
         head.y = 100;
         head.speedX = 0;
         head.speedY = 0;
-        score = 0;
+        points = 0;
         repositionApple();
         redrawApple();
       }
@@ -106,7 +106,7 @@ function runProgram(){
         head.y = 100;
         head.speedX = 0;
         head.speedY = 0;
-        score = 0;
+        points = 0;
         repositionApple();
         redrawApple();
       }
@@ -116,7 +116,7 @@ function runProgram(){
         head.y = 100;
         head.speedX = 0;
         head.speedY = 0;
-        score = 0;
+        points = 0;
         repositionApple();
         redrawApple();
       }
@@ -126,24 +126,24 @@ function runProgram(){
         head.y = 100;
         head.speedX = 0;
         head.speedY = 0;
-        score = 0;
+        points = 0;
         repositionApple();
         redrawApple();
       }
   }
 
   function repositionApple() {
-    var locationX = Math.ceil(Math.random(420) * 420);
-    var locationY = Math.ceil(Math.random(420) * 420);
+    var locationX = Math.ceil(Math.random() * 420);
+    var locationY = Math.ceil(Math.random() * 420);
     console.log(locationX + ' X apple');
     console.log(locationY + ' Y apple');
     apple.x = locationX;
-    apple.x = locationY;
+    apple.y = locationY;
     }
 
   function redrawApple() {
       $("#apple").css("left", apple.x);
-      $("#apple").css("top", apple.x);
+      $("#apple").css("top", apple.y);
   }
 
   function scoreDisplay() {
@@ -190,6 +190,8 @@ function runProgram(){
 
     if (((headC.rightX > appleC.leftX) && (headC.leftX < appleC.rightX) && (headC.topY < appleC.bottomY) && (headC.bottomY > appleC.topY))) {
         points = points + 1;
+        repositionApple();
+        redrawApple();
         console.log("collision detected");
         console.log(points);
     }
