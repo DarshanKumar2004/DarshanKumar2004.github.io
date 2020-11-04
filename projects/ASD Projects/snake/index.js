@@ -22,6 +22,10 @@ function runProgram(){
   var body = itemCreation('#body');
   var tail = itemCreation('#tail');
   var points = 0;
+  
+
+  // game item setup
+  
 
 
   // one-time setup
@@ -82,7 +86,7 @@ function runProgram(){
 
   function repositionHead() {
       head.x += head.speedX;
-      head.y += head.speedY
+      head.y += head.speedY;
   }
 
   function redrawHead() {
@@ -95,6 +99,8 @@ function runProgram(){
         prompt('GAME OVER! Your score was ' + points);
         head.x = 100;
         head.y = 100;
+        tail.x = 80;
+        tail.y = 100;
         head.speedX = 0;
         head.speedY = 0;
         points = 0;
@@ -105,6 +111,8 @@ function runProgram(){
         prompt('GAME OVER! Your score was ' + points);
         head.x = 100;
         head.y = 100;
+        tail.x = 80;
+        tail.y = 100;
         head.speedX = 0;
         head.speedY = 0;
         points = 0;
@@ -115,6 +123,8 @@ function runProgram(){
         prompt('GAME OVER! Your score was ' + points);
         head.x = 100;
         head.y = 100;
+        tail.x = 80;
+        tail.y = 100;
         head.speedX = 0;
         head.speedY = 0;
         points = 0;
@@ -125,6 +135,8 @@ function runProgram(){
         prompt('GAME OVER! Your score was ' + points);
         head.x = 100;
         head.y = 100;
+        tail.x = 80;
+        tail.y = 100;
         head.speedX = 0;
         head.speedY = 0;
         points = 0;
@@ -134,12 +146,12 @@ function runProgram(){
   }
 
   function repositionApple() {
-    var locationX = Math.ceil(Math.random() * 420);
-    var locationY = Math.ceil(Math.random() * 420);
-    console.log(locationX + ' X apple');
-    console.log(locationY + ' Y apple');
-    apple.x = locationX;
-    apple.y = locationY;
+    var locationX = Math.ceil(Math.random() * 21);
+    var locationY = Math.ceil(Math.random() * 21);
+    apple.x = locationX * 20;
+    apple.y = locationY * 20;
+    console.log(apple.x + ' X apple');
+    console.log(apple.y + ' Y apple');
     }
 
   function redrawApple() {
