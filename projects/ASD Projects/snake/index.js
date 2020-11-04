@@ -8,7 +8,7 @@ function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
 
   // Constant Variables
-  var FRAMES_PER_SECOND_INTERVAL = 200;
+  var FRAMES_PER_SECOND_INTERVAL = 150;
   var KEY = {
     "DOWN":40,
     "RIGHT":39,
