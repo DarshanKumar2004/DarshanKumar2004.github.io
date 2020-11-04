@@ -99,8 +99,6 @@ function runProgram(){
         prompt('GAME OVER! Your score was ' + points);
         head.x = 100;
         head.y = 100;
-        tail.x = 80;
-        tail.y = 100;
         head.speedX = 0;
         head.speedY = 0;
         points = 0;
@@ -111,8 +109,6 @@ function runProgram(){
         prompt('GAME OVER! Your score was ' + points);
         head.x = 100;
         head.y = 100;
-        tail.x = 80;
-        tail.y = 100;
         head.speedX = 0;
         head.speedY = 0;
         points = 0;
@@ -123,8 +119,6 @@ function runProgram(){
         prompt('GAME OVER! Your score was ' + points);
         head.x = 100;
         head.y = 100;
-        tail.x = 80;
-        tail.y = 100;
         head.speedX = 0;
         head.speedY = 0;
         points = 0;
@@ -135,8 +129,6 @@ function runProgram(){
         prompt('GAME OVER! Your score was ' + points);
         head.x = 100;
         head.y = 100;
-        tail.x = 80;
-        tail.y = 100;
         head.speedX = 0;
         head.speedY = 0;
         points = 0;
