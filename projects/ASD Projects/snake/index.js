@@ -15,18 +15,15 @@ function runProgram(){
     "LEFT":37,
     "UP":38,
   }
-  
+
   // Game Item Objects
   var head = itemCreation('#head');
   var apple = itemCreation('#apple');
-  var body = itemCreation('#body');
   var tail = itemCreation('#tail');
   var points = 0;
-  
-
-  // game item setup
-  
-
+  var snakeArray = [head, body, tail];
+  var $body = $("<div>").addClass("body");
+  itemCreation($body);
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -65,7 +62,6 @@ function runProgram(){
     else if (event.which === KEY.RIGHT && head.speedX !== -20) {
         head.speedX = 20;
         head.speedY = 0;
-
         console.log("key right pressed");
     }
     else if (event.which === KEY.LEFT && head.speedX !== 20) {
@@ -194,13 +190,14 @@ function runProgram(){
     tail.bottomY = tail.y + tail.top;
 
     if (((headC.rightX > appleC.leftX) && (headC.leftX < appleC.rightX) && (headC.topY < appleC.bottomY) && (headC.bottomY > appleC.topY))) {
-        points = points + 1;
+        points++;
         repositionApple();
         redrawApple();
         console.log("collision detected");
         console.log(points);
     }
   }
+
   
   function endGame() {
     // stop the interval timer
