@@ -21,7 +21,7 @@ function runProgram(){
   var apple = itemCreation('#apple');
   var tail = itemCreation('#tail');
   var points = 0;
-  var snakeArray = [head, body, tail];
+  var snakeArray = [head, $body, tail];
   var $body = $("<div>").addClass("body");
   itemCreation($body);
 
@@ -134,12 +134,22 @@ function runProgram(){
   }
 
   function repositionApple() {
-    var locationX = Math.ceil(Math.random() * 21);
-    var locationY = Math.ceil(Math.random() * 21);
-    apple.x = locationX * 20;
-    apple.y = locationY * 20;
-    console.log(apple.x + ' X apple');
-    console.log(apple.y + ' Y apple');
+    if (apple.x === head.x && apple.y === head.y) {
+        var locationX = Math.ceil(Math.random() * 21);
+        var locationY = Math.ceil(Math.random() * 21);
+        apple.x = locationX * 20;
+        apple.y = locationY * 20;
+        console.log(apple.x + ' X apple');
+        console.log(apple.y + ' Y apple');
+    }
+    else {
+        var locationX = Math.ceil(Math.random() * 21);
+        var locationY = Math.ceil(Math.random() * 21);
+        apple.x = locationX * 20;
+        apple.y = locationY * 20;
+        console.log(apple.x + ' X apple');
+        console.log(apple.y + ' Y apple');
+    }
     }
 
   function redrawApple() {
@@ -178,10 +188,10 @@ function runProgram(){
     appleC.bottomY = apple.y + apple.top;
 
     bodyC = {};
-    bodyC.leftX = body.x;
-    bodyC.rightX = body.x + body.width;
-    bodyC.topY =  body.y;
-    bodyC.bottomY = body.y + body.top;
+    bodyC.leftX = $body.x;
+    bodyC.rightX = $body.x + $body.width;
+    bodyC.topY =  $body.y;
+    bodyC.bottomY = $body.y + $body.top;
 
     tail = {};
     tail.leftX = tail.x;
