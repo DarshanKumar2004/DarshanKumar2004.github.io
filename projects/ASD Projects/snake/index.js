@@ -96,12 +96,10 @@ function runProgram(){
 
   function newPiece() {
     for (var i = snakeArray.length - 1; i >= 1; i++) {
-        var snakeA = snakeArray[i];
-	    snakeArray[i.x] = snakeA.x - 1;
-        snakeArray[i.y] = snakeA.y - 1;
-        console.log(snakeArray[i.x]);
-        console.log(snakeArray[i.y]);
-        return snakeArray[i];
+	    snakeArray[i].x = snakeArray[i - 1].x;
+        snakeArray[i].y = snakeArray[i - 1].y;
+        console.log(snakeArray[i].x);
+        console.log(snakeArray[i].y);
 }
 
   }
