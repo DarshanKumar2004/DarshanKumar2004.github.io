@@ -1,6 +1,7 @@
 /* global $, sessionStorage */
 
-$(document).ready(runProgram); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
+$(document).ready(runProgram); 
+// wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
   
 function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
@@ -26,8 +27,11 @@ function runProgram(){
   itemCreation($body);
 
   // one-time setup
-  var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
-  $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
+  var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   
+  // execute newFrame every 0.0166 seconds (60 Frames per second)
+
+  $(document).on('keydown', handleKeyDown);                           
+  // change 'eventType' to the type of event you want to handle
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -92,8 +96,12 @@ function runProgram(){
 
   function newPiece() {
     for (var i = snakeArray.length - 1; i >= 1; i++) {
-	    snakeArray[i.x] = snakeArray[i.x - 1];
-        snakeArray[i.y] = snakeArray[i.y - 1];
+        var snakeA = snakeArray[i];
+	    snakeArray[i.x] = snakeA.x - 1;
+        snakeArray[i.y] = snakeA.y - 1;
+        console.log(snakeArray[i.x]);
+        console.log(snakeArray[i.y]);
+        return snakeArray[i];
 }
 
   }
@@ -142,7 +150,8 @@ function runProgram(){
   }
 
   function repositionApple() {
-    if (apple.x === head.x && apple.y === head.y) {
+    if (apple.x === head.x && apple.y === head.y || apple.x === $body.x && 
+        apple.y === $body.y || apple.x === tail.x && apple.y === tail.y) {
         var locationX = Math.ceil(Math.random() * 21);
         var locationY = Math.ceil(Math.random() * 21);
         apple.x = locationX * 20;
@@ -207,7 +216,8 @@ function runProgram(){
     tail.topY =  tail.y;
     tail.bottomY = tail.y + tail.top;
 
-    if (((headC.rightX > appleC.leftX) && (headC.leftX < appleC.rightX) && (headC.topY < appleC.bottomY) && (headC.bottomY > appleC.topY))) {
+    if (((headC.rightX > appleC.leftX) && (headC.leftX < appleC.rightX) && 
+        (headC.topY < appleC.bottomY) && (headC.bottomY > appleC.topY))) {
         points++;
         repositionApple();
         redrawApple();

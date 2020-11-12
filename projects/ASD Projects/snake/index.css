@@ -28,17 +28,18 @@ body {
     width: 20px;
     height: 20px;
     position: absolute;
-    border-radius: 8px;
+    border-radius: 9px;
 }
 
 #body {
     background-color: green;
     width: 20px;
     height: 20px;
+    border-radius: 5px;
     position: absolute;
     top: 0px;
     left: 0px;
-    border-radius: 5px;
+    
 }
 
 #tail {
