@@ -22,7 +22,7 @@ function runProgram(){
   var tail = itemCreation('#tail');
   var points = 0;
   var snakeArray = [head, $body, tail];
-  var $body = $("<div>").addClass("body");
+  var $body = $("<div>").addClass("#body");
   itemCreation($body);
 
   // one-time setup
@@ -88,6 +88,14 @@ function runProgram(){
   function redrawHead() {
       $("#head").css("left", head.x);
       $("#head").css("top", head.y);
+  }
+
+  function newPiece() {
+    for (var i = snakeArray.length - 1; i >= 1; i++) {
+	    snakeArray[i.x] = snakeArray[i.x - 1];
+        snakeArray[i.y] = snakeArray[i.y - 1];
+}
+
   }
 
   function border() {
@@ -203,6 +211,7 @@ function runProgram(){
         points++;
         repositionApple();
         redrawApple();
+        newPiece();
         console.log("collision detected");
         console.log(points);
     }
