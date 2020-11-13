@@ -22,9 +22,9 @@ function runProgram(){
   var apple = itemCreation('#apple');
   var tail = itemCreation('#tail');
   var points = 0;
-  var snakeArray = [head, $body, tail];
-  var $body = $("<div>").addClass("#body");
+  var $body = $("<div>").addClass('#body');
   itemCreation($body);
+  var snakeArray = [head, $body, tail];
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   
@@ -49,9 +49,10 @@ function runProgram(){
   function newFrame() {
     doCollide();
     repositionHead();
-    redrawHead();
+    redrawSnake();
     border();
     scoreDisplay();
+    follow();
   }
   
   /* 
@@ -89,19 +90,46 @@ function runProgram(){
       head.y += head.speedY;
   }
 
-  function redrawHead() {
-      $("#head").css("left", head.x);
-      $("#head").css("top", head.y);
-  }
+  function redrawSnake() {
+    if (points === 0) {
+      for (var i = snakeArray.length-1; i >= 0; i--) {
+        $("#head").css("left", head.x);
+        $("#head").css("top", head.y);
+        $("#body").css("left", head.x);
+        $("#body").css("top", head.y);
+        $("#tail").css("left", head.x);
+        $("#tail").css("top", head.y);
+    }
+    }
 
-  function newPiece() {
-    for (var i = snakeArray.length - 1; i >= 1; i++) {
+    else if (points === 1) {
+      for (var i = snakeArray.length-1; i >= 0; i--) {
+        $("#head").css("left", head.x);
+        $("#head").css("top", head.y);
+        $("#body").css("left", $body.x);
+        $("#body").css("top", $body.y);
+        $("#tail").css("left", $body.x);
+        $("#tail").css("top", $body.y);
+    }
+    }
+    
+    else {
+      for (var i = snakeArray.length-1; i >= 0; i--) {
+        $("#head").css("left", head.x);
+        $("#head").css("top", head.y);
+        $("#body").css("left", $body.x);
+        $("#body").css("top", $body.y);
+        $("#tail").css("left", tail.x);
+        $("#tail").css("top", tail.y);
+    }
+    }
+    
+  }
+  function follow() {
+    for (var i = snakeArray.length - 1; i >= 1; i--) {
 	    snakeArray[i].x = snakeArray[i - 1].x;
         snakeArray[i].y = snakeArray[i - 1].y;
-        console.log(snakeArray[i].x);
-        console.log(snakeArray[i].y);
-}
-
+    }
   }
 
   function border() {
@@ -148,23 +176,12 @@ function runProgram(){
   }
 
   function repositionApple() {
-    if (apple.x === head.x && apple.y === head.y || apple.x === $body.x && 
-        apple.y === $body.y || apple.x === tail.x && apple.y === tail.y) {
         var locationX = Math.ceil(Math.random() * 21);
         var locationY = Math.ceil(Math.random() * 21);
         apple.x = locationX * 20;
         apple.y = locationY * 20;
         console.log(apple.x + ' X apple');
         console.log(apple.y + ' Y apple');
-    }
-    else {
-        var locationX = Math.ceil(Math.random() * 21);
-        var locationY = Math.ceil(Math.random() * 21);
-        apple.x = locationX * 20;
-        apple.y = locationY * 20;
-        console.log(apple.x + ' X apple');
-        console.log(apple.y + ' Y apple');
-    }
     }
 
   function redrawApple() {
@@ -208,24 +225,23 @@ function runProgram(){
     bodyC.topY =  $body.y;
     bodyC.bottomY = $body.y + $body.top;
 
-    tail = {};
-    tail.leftX = tail.x;
-    tail.rightX = tail.x + tail.width;
-    tail.topY =  tail.y;
-    tail.bottomY = tail.y + tail.top;
+    tail= {};
+    tailleftX = tail.x;
+    tailrightX = tail.x + tail.width;
+    tailtopY =  tail.y;
+    tailbottomY = tail.y + tail.top;
 
     if (((headC.rightX > appleC.leftX) && (headC.leftX < appleC.rightX) && 
         (headC.topY < appleC.bottomY) && (headC.bottomY > appleC.topY))) {
         points++;
         repositionApple();
         redrawApple();
-        newPiece();
         console.log("collision detected");
         console.log(points);
     }
+
   }
 
-  
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
