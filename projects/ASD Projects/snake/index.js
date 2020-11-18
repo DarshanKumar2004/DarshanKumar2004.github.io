@@ -215,32 +215,22 @@ function runProgram(){
 
   function doCollide(obj1, obj2) {
     if (obj1.x === obj2.x && obj1.y === obj2.y) {
-        prompt('GAME OVER! Your score was ' + points);
-        head.x = 100;
-        head.y = 100;
-        head.speedX = 0;
-        head.speedY = 0;
-        points = 0;
-        repositionApple();
+        points++;
         redrawApple();
+        console.log("collision detected");
+        console.log(points);
         return true;
     }
     else {
         return false;
     }
 
-    /*
+    
     headC = {};
     headC.leftX = head.x;
     headC.rightX = head.x + head.width;
     headC.topY =  head.y;
     headC.bottomY = head.y + head.top;
-
-    appleC = {};
-    appleC.leftX = apple.x;
-    appleC.rightX = apple.x + apple.width;
-    appleC.topY =  apple.y;
-    appleC.bottomY = apple.y + apple.top;
 
     bodyC = {};
     bodyC.leftX = $body.x;
@@ -254,14 +244,7 @@ function runProgram(){
     tailC.topY =  tail.y;
     tailC.bottomY = tail.y + tail.top;
 
-    if (((headC.rightX > appleC.leftX) && (headC.leftX < appleC.rightX) && 
-        (headC.topY < appleC.bottomY) && (headC.bottomY > appleC.topY))) {
-        points++;
-        repositionApple();
-        redrawApple();
-        console.log("collision detected");
-        console.log(points);
-    }
+    
     if (((headC.rightX > bodyC.leftX) && (headC.leftX < bodyC.rightX) && 
         (headC.topY < bodyC.bottomY) && (headC.bottomY > bodyC.topY))) {
         head.x = 100;
@@ -279,7 +262,7 @@ function runProgram(){
         points = 0;
     }
 
-*/
+
   }
 
   function endGame() {
