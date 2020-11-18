@@ -25,6 +25,9 @@ function runProgram(){
   var $body = $("<div>").addClass('#body');
   itemCreation($body);
   var snakeArray = [head, $body, tail];
+  var newPiece = {};
+  newPiece.x = snakeArray[snakeArray.length - 1].x
+  newPiece.y = snakeArray[snakeArray.length - 1].y
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   
@@ -183,13 +186,15 @@ function runProgram(){
         console.log(apple.x + ' X apple');
         console.log(apple.y + ' Y apple');
 
-        for (var i = 0; i < snakeArray.length;i++) {
-            if (doCollide(apple, snakeArray[i])) {
-            repositionApple();
-            break;
+        for (var i = 0; i < snakeArray.length; i++){
+            if ( doCollideApple(apple, snakeArray[i])){
+                repositionApple();
+                redrawApple();
+                break;
             }
         }
     }
+    
 
   function redrawApple() {
       $("#apple").css("left", apple.x);
@@ -213,19 +218,24 @@ function runProgram(){
     return gameItem;
   }
 
-  function doCollide(obj1, obj2) {
-    if (obj1.x === obj2.x && obj1.y === obj2.y) {
-        points++;
-        redrawApple();
-        console.log("collision detected");
-        console.log(points);
-        return true;
-    }
-    else {
-        return false;
+  function doCollideApple(obj1, obj2) {
+        if ((obj1).x === (obj2).x && (obj1).y === (obj2).y) {
+            console.log("collision detected apple on snake");
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
-    
+  function doCollide() {
+
+    appleC = {};
+    appleC.leftX = apple.x;
+    appleC.rightX = apple.x + apple.width;
+    appleC.topY = apple.y;
+    appleC.bottomY = apple.y + apple.top;
+
     headC = {};
     headC.leftX = head.x;
     headC.rightX = head.x + head.width;
@@ -244,7 +254,15 @@ function runProgram(){
     tailC.topY =  tail.y;
     tailC.bottomY = tail.y + tail.top;
 
-    
+
+
+    if (((headC.rightX > appleC.leftX) && (headC.leftX < appleC.rightX) && 
+        (headC.topY < appleC.bottomY) && (headC.bottomY > appleC.topY))) {
+        points++;
+        repositionApple();
+        redrawApple();
+        snakeArray.push(newPiece);
+    }
     if (((headC.rightX > bodyC.leftX) && (headC.leftX < bodyC.rightX) && 
         (headC.topY < bodyC.bottomY) && (headC.bottomY > bodyC.topY))) {
         head.x = 100;
