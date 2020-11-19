@@ -22,12 +22,12 @@ function runProgram(){
   var apple = itemCreation('#apple');
   var tail = itemCreation('#tail');
   var points = 0;
-  var $body = $("<div>").addClass('#body');
+
+  var $body = $("<div>").addClass('#body0');
+  var bodys = [body0];
   itemCreation($body);
+
   var snakeArray = [head, $body, tail];
-  var newPiece = {};
-  newPiece.x = snakeArray[snakeArray.length - 1].x
-  newPiece.y = snakeArray[snakeArray.length - 1].y
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   
@@ -94,40 +94,29 @@ function runProgram(){
   }
 
   function redrawSnake() {
-    if (points === 0) {
+    if (points > -1) {
       for (var i = snakeArray.length-1; i >= 0; i--) {
         $("#head").css("left", head.x);
         $("#head").css("top", head.y);
-        $("#body").css("left", head.x);
-        $("#body").css("top", head.y);
-        $("#tail").css("left", head.x);
-        $("#tail").css("top", head.y);
-    }
-    }
-
-    else if (points === 1) {
-      for (var i = snakeArray.length-1; i >= 0; i--) {
-        $("#head").css("left", head.x);
-        $("#head").css("top", head.y);
-        $("#body").css("left", $body.x);
-        $("#body").css("top", $body.y);
-        $("#tail").css("left", $body.x);
-        $("#tail").css("top", $body.y);
-    }
-    }
-    
-    else {
-      for (var i = snakeArray.length-1; i >= 0; i--) {
-        $("#head").css("left", head.x);
-        $("#head").css("top", head.y);
-        $("#body").css("left", $body.x);
-        $("#body").css("top", $body.y);
+        $($body.id).css("left", $body.x);
+        $($body.id).css("top", $body.y);
         $("#tail").css("left", tail.x);
         $("#tail").css("top", tail.y);
-    }
-    }
-    
+      }
+    }  
   }
+
+  function addNewBodyToSnake() {  
+	var newID = "body" + snakeArray.length;
+
+	$("<div>")
+		.attr('id', newID)
+        .appendTo("#body");
+        
+    var newBody = itemCreation("#" + newID);
+    bodys.push(newBody);
+}
+
   function follow() {
     for (var i = snakeArray.length - 1; i >= 1; i--) {
 	    snakeArray[i].x = snakeArray[i - 1].x;
@@ -261,7 +250,7 @@ function runProgram(){
         points++;
         repositionApple();
         redrawApple();
-        snakeArray.push(newPiece);
+        addNewBodyToSnake();
     }
     if (((headC.rightX > bodyC.leftX) && (headC.leftX < bodyC.rightX) && 
         (headC.topY < bodyC.bottomY) && (headC.bottomY > bodyC.topY))) {
