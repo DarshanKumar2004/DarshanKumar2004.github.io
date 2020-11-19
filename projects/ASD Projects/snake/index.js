@@ -22,11 +22,11 @@ function runProgram(){
   var apple = itemCreation('#apple');
   var tail = itemCreation('#tail');
   var points = 0;
-
+  //body stuff
   var $body = $("<div>").addClass('#body0');
   var bodys = [body0];
   itemCreation($body);
-
+  //snake stuff
   var snakeArray = [head, $body, tail];
 
   // one-time setup
@@ -91,7 +91,7 @@ function runProgram(){
   function repositionHead() {
       head.x += head.speedX;
       head.y += head.speedY;
-  }
+    }
 
   function redrawSnake() {
     if (points > -1) {
@@ -107,15 +107,11 @@ function runProgram(){
   }
 
   function addNewBodyToSnake() {  
-	var newID = "body" + snakeArray.length;
-
-	$("<div>")
-		.attr('id', newID)
-        .appendTo("#body");
-        
-    var newBody = itemCreation("#" + newID);
-    bodys.push(newBody);
-}
+	    var newID = "body" + snakeArray.length;
+	    $("<div>").attr('id', newID).appendTo("#body");
+        var newBody = itemCreation("#" + newID);
+        bodys.push(newBody);
+    }
 
   function follow() {
     for (var i = snakeArray.length - 1; i >= 1; i--) {
@@ -188,11 +184,11 @@ function runProgram(){
   function redrawApple() {
       $("#apple").css("left", apple.x);
       $("#apple").css("top", apple.y);
-  }
+    }
 
   function scoreDisplay() {
       $('#score').text("Score: " + points);
-  }
+    }
 
   function itemCreation(id){
     var gameItem = {}
@@ -218,59 +214,54 @@ function runProgram(){
     }
 
   function doCollide() {
+        appleC = {};
+        appleC.leftX = apple.x;
+        appleC.rightX = apple.x + apple.width;
+        appleC.topY = apple.y;
+        appleC.bottomY = apple.y + apple.top;
 
-    appleC = {};
-    appleC.leftX = apple.x;
-    appleC.rightX = apple.x + apple.width;
-    appleC.topY = apple.y;
-    appleC.bottomY = apple.y + apple.top;
+        headC = {};
+        headC.leftX = head.x;
+        headC.rightX = head.x + head.width;
+        headC.topY =  head.y;
+        headC.bottomY = head.y + head.top;
 
-    headC = {};
-    headC.leftX = head.x;
-    headC.rightX = head.x + head.width;
-    headC.topY =  head.y;
-    headC.bottomY = head.y + head.top;
+        bodyC = {};
+        bodyC.leftX = $body.x;
+        bodyC.rightX = $body.x + $body.width;
+        bodyC.topY =  $body.y;
+        bodyC.bottomY = $body.y + $body.top;
 
-    bodyC = {};
-    bodyC.leftX = $body.x;
-    bodyC.rightX = $body.x + $body.width;
-    bodyC.topY =  $body.y;
-    bodyC.bottomY = $body.y + $body.top;
-
-    tailC= {};
-    tailC.leftX = tail.x;
-    tailC.rightX = tail.x + tail.width;
-    tailC.topY =  tail.y;
-    tailC.bottomY = tail.y + tail.top;
-
-
-
-    if (((headC.rightX > appleC.leftX) && (headC.leftX < appleC.rightX) && 
-        (headC.topY < appleC.bottomY) && (headC.bottomY > appleC.topY))) {
-        points++;
-        repositionApple();
-        redrawApple();
-        addNewBodyToSnake();
+        tailC= {};
+        tailC.leftX = tail.x;
+        tailC.rightX = tail.x + tail.width;
+        tailC.topY =  tail.y;
+        tailC.bottomY = tail.y + tail.top;
+        
+        if (((headC.rightX > appleC.leftX) && (headC.leftX < appleC.rightX) && 
+            (headC.topY < appleC.bottomY) && (headC.bottomY > appleC.topY))) {
+            points++;
+            repositionApple();
+            redrawApple();
+            addNewBodyToSnake();
+        }
+        if (((headC.rightX > bodyC.leftX) && (headC.leftX < bodyC.rightX) && 
+            (headC.topY < bodyC.bottomY) && (headC.bottomY > bodyC.topY))) {
+            head.x = 100;
+            head.y = 100;
+            head.speedX = 0;
+            head.speedY = 0;
+            points = 0;
+        }
+        if (((headC.rightX > tailC.leftX) && (headC.leftX < tailC.rightX) && 
+            (headC.topY < tailC.bottomY) && (headC.bottomY > tailC.topY))) {
+            head.x = 100;
+            head.y = 100;
+            head.speedX = 0;
+            head.speedY = 0;
+            points = 0;
+        }
     }
-    if (((headC.rightX > bodyC.leftX) && (headC.leftX < bodyC.rightX) && 
-        (headC.topY < bodyC.bottomY) && (headC.bottomY > bodyC.topY))) {
-        head.x = 100;
-        head.y = 100;
-        head.speedX = 0;
-        head.speedY = 0;
-        points = 0;
-    }
-    if (((headC.rightX > tailC.leftX) && (headC.leftX < tailC.rightX) && 
-        (headC.topY < tailC.bottomY) && (headC.bottomY > tailC.topY))) {
-        head.x = 100;
-        head.y = 100;
-        head.speedX = 0;
-        head.speedY = 0;
-        points = 0;
-    }
-
-
-  }
 
   function endGame() {
     // stop the interval timer
