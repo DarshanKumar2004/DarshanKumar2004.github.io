@@ -23,9 +23,7 @@ function runProgram(){
   var tail = itemCreation('#tail');
   var points = 0;
   //body stuff
-  var $body = $("<div>").addClass('#body0');
-  var bodys = [body0];
-  itemCreation($body);
+  var $body = $(".body");
   //snake stuff
   var snakeArray = [head, $body, tail];
 
@@ -52,10 +50,10 @@ function runProgram(){
   function newFrame() {
     repositionHead();
     redrawSnake();
+    doCollide();
     border();
     scoreDisplay();
     follow();
-    doCollide();
   }
   
   /* 
@@ -96,21 +94,23 @@ function runProgram(){
   function redrawSnake() {
     if (points > -1) {
       for (var i = snakeArray.length-1; i >= 0; i--) {
-        $("#head").css("left", head.x);
-        $("#head").css("top", head.y);
-        $($body.id).css("left", $body.x);
-        $($body.id).css("top", $body.y);
-        $("#tail").css("left", tail.x);
-        $("#tail").css("top", tail.y);
+        $(snakeArray[i].id).css("left", snakeArray[i].x);
+        $(snakeArray[i].id).css("top", snakeArray[i].y);
       }
     }  
   }
 
-  function addNewBodyToSnake() {  
-	    var newID = "body" + snakeArray.length;
-	    $("<div>").attr('id', newID).appendTo("#body");
-        var newBody = itemCreation("#" + newID);
-        bodys.push(newBody);
+  function addNewBodyToSnake() {
+        var newID = "body" + snakeArray.length;
+        $('<div>').attr('id', newID).appendTo("#board").addClass('body');
+        var newBody = itemCreationBody("#" + newID);
+        newBody.x = snakeArray[snakeArray.length-1].x;
+        newBody.y = snakeArray[snakeArray.length-1].y;
+        $(".body").css("left", newBody.x);
+        $(".body").css("top", newBody.y);
+        snakeArray.push(newBody);
+        return newBody;
+        console.log(newID);
     }
 
   function follow() {
@@ -122,7 +122,7 @@ function runProgram(){
 
   function border() {
       if (head.y < -1) {
-        prompt('GAME OVER! Your score was ' + points);
+        alert('GAME OVER! Your score was ' + points);
         head.x = 100;
         head.y = 100;
         head.speedX = 0;
@@ -132,7 +132,7 @@ function runProgram(){
         redrawApple();
       }
       else if (head.y > 421) {
-        prompt('GAME OVER! Your score was ' + points);
+        alert('GAME OVER! Your score was ' + points);
         head.x = 100;
         head.y = 100;
         head.speedX = 0;
@@ -142,7 +142,7 @@ function runProgram(){
         redrawApple();
       }
       else if (head.x < -1) {
-        prompt('GAME OVER! Your score was ' + points);
+        alert('GAME OVER! Your score was ' + points);
         head.x = 100;
         head.y = 100;
         head.speedX = 0;
@@ -152,7 +152,7 @@ function runProgram(){
         redrawApple();
       }
       else if (head.x > 421) {
-        prompt('GAME OVER! Your score was ' + points);
+        alert('GAME OVER! Your score was ' + points);
         head.x = 100;
         head.y = 100;
         head.speedX = 0;
@@ -164,10 +164,10 @@ function runProgram(){
   }
 
   function repositionApple() {
-        var locationX = Math.ceil(Math.random() * 21);
-        var locationY = Math.ceil(Math.random() * 21);
-        apple.x = locationX * 20;
-        apple.y = locationY * 20;
+        var locationX = Math.ceil(Math.random() * 21) * 20;
+        var locationY = Math.ceil(Math.random() * 21) * 20;
+        apple.x = locationX;
+        apple.y = locationY;
         console.log(apple.x + ' X apple');
         console.log(apple.y + ' Y apple');
 
@@ -201,6 +201,17 @@ function runProgram(){
     gameItem.speedY = 0;
     
     return gameItem;
+  }
+
+  function itemCreationBody(id) {
+    var newPiece = {};
+    newPiece.id = id;
+    newPiece.x = Number($(id).css('left').replace(/[^-\d\.]/g, ''));
+    newPiece.y = Number($(id).css('top').replace(/[^-\d\.]/g, ''));
+    newPiece.width = $(".body").width();
+    newPiece.top = $(".body").height();
+
+    return newPiece
   }
 
   function doCollideApple(obj1, obj2) {
@@ -237,7 +248,7 @@ function runProgram(){
         tailC.rightX = tail.x + tail.width;
         tailC.topY =  tail.y;
         tailC.bottomY = tail.y + tail.top;
-        
+
         if (((headC.rightX > appleC.leftX) && (headC.leftX < appleC.rightX) && 
             (headC.topY < appleC.bottomY) && (headC.bottomY > appleC.topY))) {
             points++;
@@ -246,7 +257,8 @@ function runProgram(){
             addNewBodyToSnake();
         }
         if (((headC.rightX > bodyC.leftX) && (headC.leftX < bodyC.rightX) && 
-            (headC.topY < bodyC.bottomY) && (headC.bottomY > bodyC.topY))) {
+            (headC.topY < bodyC.bottomY) && (headC.bottomY > bodyC.topY) && points > 0)) {
+            alert('game over');
             head.x = 100;
             head.y = 100;
             head.speedX = 0;
@@ -254,7 +266,8 @@ function runProgram(){
             points = 0;
         }
         if (((headC.rightX > tailC.leftX) && (headC.leftX < tailC.rightX) && 
-            (headC.topY < tailC.bottomY) && (headC.bottomY > tailC.topY))) {
+            (headC.topY < tailC.bottomY) && (headC.bottomY > tailC.topY) && points > 0)) {
+            alert('game over');
             head.x = 100;
             head.y = 100;
             head.speedX = 0;
@@ -270,5 +283,4 @@ function runProgram(){
     // turn off event handlers
     $(document).off();
   }
-  
 }
