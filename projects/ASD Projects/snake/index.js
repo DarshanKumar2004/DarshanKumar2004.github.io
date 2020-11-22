@@ -22,10 +22,8 @@ function runProgram(){
   var apple = itemCreation('#apple');
   var tail = itemCreation('#tail');
   var points = 0;
-  //body stuff
-  var $body = $(".body");
   //snake stuff
-  var snakeArray = [head, $body, tail];
+  var snakeArray = [head, tail];
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   
@@ -109,7 +107,7 @@ function runProgram(){
         $(".body").css("left", newBody.x);
         $(".body").css("top", newBody.y);
         snakeArray.push(newBody);
-        return newBody;
+        return (newBody.x && newBody.y);
         console.log(newID);
     }
 
@@ -238,10 +236,10 @@ function runProgram(){
         headC.bottomY = head.y + head.top;
 
         bodyC = {};
-        bodyC.leftX = $body.x;
-        bodyC.rightX = $body.x + $body.width;
-        bodyC.topY =  $body.y;
-        bodyC.bottomY = $body.y + $body.top;
+        bodyC.leftX = newBody.x;
+        bodyC.rightX = newBody.x + newBody.width;
+        bodyC.topY =  newBody.y;
+        bodyC.bottomY = newBody.y + newBody.top;
 
         tailC= {};
         tailC.leftX = tail.x;
@@ -257,7 +255,7 @@ function runProgram(){
             addNewBodyToSnake();
         }
         if (((headC.rightX > bodyC.leftX) && (headC.leftX < bodyC.rightX) && 
-            (headC.topY < bodyC.bottomY) && (headC.bottomY > bodyC.topY) && points > 0)) {
+            (headC.topY < bodyC.bottomY) && (headC.bottomY > bodyC.topY) && (points !== 0))) {
             alert('game over');
             head.x = 100;
             head.y = 100;
@@ -266,7 +264,7 @@ function runProgram(){
             points = 0;
         }
         if (((headC.rightX > tailC.leftX) && (headC.leftX < tailC.rightX) && 
-            (headC.topY < tailC.bottomY) && (headC.bottomY > tailC.topY) && points > 0)) {
+            (headC.topY < tailC.bottomY) && (headC.bottomY > tailC.topY) && (points !== 0))) {
             alert('game over');
             head.x = 100;
             head.y = 100;
