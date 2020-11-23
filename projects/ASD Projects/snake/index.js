@@ -104,10 +104,9 @@ function runProgram(){
         var newBody = itemCreationBody("#" + newID);
         newBody.x = snakeArray[snakeArray.length-1].x;
         newBody.y = snakeArray[snakeArray.length-1].y;
-        $(".body").css("left", newBody.x);
-        $(".body").css("top", newBody.y);
+        $("#" + newID).css("left", newBody.x);
+        $("#" + newID).css("top", newBody.y);
         snakeArray.push(newBody);
-        return (newBody.x && newBody.y);
         console.log(newID);
     }
 
@@ -234,19 +233,7 @@ function runProgram(){
         headC.rightX = head.x + head.width;
         headC.topY =  head.y;
         headC.bottomY = head.y + head.top;
-
-        bodyC = {};
-        bodyC.leftX = newBody.x;
-        bodyC.rightX = newBody.x + newBody.width;
-        bodyC.topY =  newBody.y;
-        bodyC.bottomY = newBody.y + newBody.top;
-
-        tailC= {};
-        tailC.leftX = tail.x;
-        tailC.rightX = tail.x + tail.width;
-        tailC.topY =  tail.y;
-        tailC.bottomY = tail.y + tail.top;
-
+        
         if (((headC.rightX > appleC.leftX) && (headC.leftX < appleC.rightX) && 
             (headC.topY < appleC.bottomY) && (headC.bottomY > appleC.topY))) {
             points++;
@@ -254,23 +241,18 @@ function runProgram(){
             redrawApple();
             addNewBodyToSnake();
         }
-        if (((headC.rightX > bodyC.leftX) && (headC.leftX < bodyC.rightX) && 
-            (headC.topY < bodyC.bottomY) && (headC.bottomY > bodyC.topY) && (points !== 0))) {
-            alert('game over');
-            head.x = 100;
-            head.y = 100;
-            head.speedX = 0;
-            head.speedY = 0;
-            points = 0;
-        }
-        if (((headC.rightX > tailC.leftX) && (headC.leftX < tailC.rightX) && 
-            (headC.topY < tailC.bottomY) && (headC.bottomY > tailC.topY) && (points !== 0))) {
-            alert('game over');
-            head.x = 100;
-            head.y = 100;
-            head.speedX = 0;
-            head.speedY = 0;
-            points = 0;
+
+        for (var i = snakeArray.length - 1; i >= 2; i--) {
+            if (head.x === snakeArray[i - 1].x && head.y === snakeArray[i - 1].y && points !== 0) {
+                head.x = 100;
+                head.y = 100;
+                head.speedX = 0;
+                head.speedY = 0;
+                points = 0;
+                repositionApple();
+                redrawApple();
+                alert('GAME OVER! Your score was ' + points);
+            }
         }
     }
 
