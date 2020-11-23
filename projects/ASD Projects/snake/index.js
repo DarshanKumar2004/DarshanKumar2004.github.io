@@ -44,6 +44,7 @@ function runProgram(){
   //functions called once
   repositionApple();
   redrawApple();
+  $(".body").remove();
 
   function newFrame() {
     repositionHead();
@@ -244,6 +245,7 @@ function runProgram(){
 
         for (var i = snakeArray.length - 1; i >= 2; i--) {
             if (head.x === snakeArray[i - 1].x && head.y === snakeArray[i - 1].y && points !== 0) {
+                alert('GAME OVER! Your score was ' + points);
                 head.x = 100;
                 head.y = 100;
                 head.speedX = 0;
@@ -251,7 +253,7 @@ function runProgram(){
                 points = 0;
                 repositionApple();
                 redrawApple();
-                alert('GAME OVER! Your score was ' + points);
+                $(".body").remove();
             }
         }
     }
