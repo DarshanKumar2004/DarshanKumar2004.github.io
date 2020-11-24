@@ -20,10 +20,9 @@ function runProgram(){
   // Game Item Objects
   var head = itemCreation('#head');
   var apple = itemCreation('#apple');
-  var tail = itemCreation('#tail');
   var points = 0;
   //snake stuff
-  var snakeArray = [head, tail];
+  var snakeArray = [head];
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   
@@ -44,7 +43,7 @@ function runProgram(){
   //functions called once
   repositionApple();
   redrawApple();
-  $(".body").remove();
+  clearScreen();
 
   function newFrame() {
     repositionHead();
@@ -128,6 +127,7 @@ function runProgram(){
         points = 0;
         repositionApple();
         redrawApple();
+        clearScreen();
       }
       else if (head.y > 421) {
         alert('GAME OVER! Your score was ' + points);
@@ -138,6 +138,7 @@ function runProgram(){
         points = 0;
         repositionApple();
         redrawApple();
+        clearScreen();
       }
       else if (head.x < -1) {
         alert('GAME OVER! Your score was ' + points);
@@ -148,6 +149,7 @@ function runProgram(){
         points = 0;
         repositionApple();
         redrawApple();
+        clearScreen();
       }
       else if (head.x > 421) {
         alert('GAME OVER! Your score was ' + points);
@@ -158,6 +160,7 @@ function runProgram(){
         points = 0;
         repositionApple();
         redrawApple();
+        clearScreen();
       }
   }
 
@@ -212,6 +215,11 @@ function runProgram(){
     return newPiece
   }
 
+  function clearScreen() {
+    $(".body").remove();
+    snakeArray = [head];
+  }
+
   function doCollideApple(obj1, obj2) {
         if ((obj1).x === (obj2).x && (obj1).y === (obj2).y) {
             console.log("collision detected apple on snake");
@@ -244,7 +252,7 @@ function runProgram(){
         }
 
         for (var i = snakeArray.length - 1; i >= 2; i--) {
-            if (head.x === snakeArray[i - 1].x && head.y === snakeArray[i - 1].y && points !== 0) {
+            if (head.x === snakeArray[i - 1].x && head.y === snakeArray[i - 1].y) {
                 alert('GAME OVER! Your score was ' + points);
                 head.x = 100;
                 head.y = 100;
@@ -253,7 +261,7 @@ function runProgram(){
                 points = 0;
                 repositionApple();
                 redrawApple();
-                $(".body").remove();
+                clearScreen();
             }
         }
     }
