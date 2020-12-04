@@ -24,7 +24,7 @@ $(document).ready(function(){
 
   function startGame() {
     // set initial values for the global variables...
-
+    
     // start the timers to draw new frames
     var timeBetweenPacmanFrames = 1000 / FPS;       // 5 frames per second
     var timeBetweenGhostFrames = 1000 / (FPS - 1);  // 4 frames per second 
@@ -48,8 +48,12 @@ $(document).ready(function(){
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   
+  //called once
+  createMaze();
+
   // start the game
   startGame();
+  win();
 
   /* 
   * Called once per "tick" of the pacmanTimer. This function should execute the 
@@ -86,8 +90,50 @@ $(document).ready(function(){
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   
-
+  function createMaze() {
+    if (getLevel("level1") === 0) {
+        for (var i = level.length; i >= 1; i--) {
+	    console.log("pellet");
+        }
+        //pellet code
+    }
+    if (getLevel("level1") === 1) {
+        for (var i = level.length; i >= 1; i--) {
+	    console.log("wall");
+        }
+        //wall code
+    }
+    if (getLevel("level1") === 9) {
+        for (var i = level.length; i >= 1; i--) {
+	    console.log("empty");
+        }
+    }
+  }
   
+  function newID() {
+        var num;
+        var newID = "body" + num;
+        $('<div>').attr('id', newID).appendTo("#board").addClass('square');
+        var newPiece = itemCreationPiece("#" + newID);
+        num++;
+        console.log(newID);
+    }
+
+    function itemCreationPiece(id) {
+        var gameItem = {}
+        gameItem.id = id;
+        gameItem.x = Number($(id).css('left').replace(/[^-\d\.]/g, ''));
+        gameItem.y = Number($(id).css('top').replace(/[^-\d\.]/g, ''));
+        return gameItem;
+    }
+
+    function win() {
+        if (pelletsEaten === 175) {
+            alert("You beat level 1!!!");
+            pelletsEaten = 0;
+            level++;
+        }
+    }
   
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// EVENT HELPER FUNCTIONS //////////////////////////////

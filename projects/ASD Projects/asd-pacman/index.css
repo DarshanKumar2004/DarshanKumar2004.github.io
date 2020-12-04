@@ -9,13 +9,6 @@ body {
   border: 1px solid white;
   background-color: black;
   position: relative;
-  top: 10px;
-  left: 1px;
-}
-
-h2 {
-    color:white;
-    font-size:200%;
 }
 
 .square {
