@@ -13,6 +13,12 @@ $(document).ready(function(){
   var BOARD_WIDTH = $board.width();
   var BOARD_HEIGHT = $board.height();
   var SQUARE_SIZE = 20;
+  const KEY = {
+    "D": 40,
+    "U":38,
+    "L":37,
+    "R":39
+  }
   
   // other game variables
   var pacmanTimer;  // for starting/stopping the timer that draws new Pacman frames
@@ -32,7 +38,7 @@ $(document).ready(function(){
     ghostTimer = setInterval(drawNewGhostFrame, timeBetweenGhostFrames);
   
     // turn on event handlers
-    $(document).on('eventType', handleEvent);
+    $(document).on('keydown', handleEvent);
   }
   
   function endGame() {
@@ -140,7 +146,17 @@ $(document).ready(function(){
   ////////////////////////////////////////////////////////////////////////////////
 
   function handleEvent(event) {
-
+    if (event.which === KEY.D) {
+        console.log('down');
+    }
+    if (event.which === KEY.U) {
+        console.log('up');
+    }
+    if (event.which === KEY.L) {
+        console.log('left');
+    }
+    if (event.which === KEY.R) {
+        console.log('right');
+    }
   }
-  
 });
