@@ -14,7 +14,7 @@ $(document).ready(function(){
   var BOARD_HEIGHT = $board.height();
   var SQUARE_SIZE = 20;
   const KEY = {
-    "D": 40,
+    "D":40,
     "U":38,
     "L":37,
     "R":39
@@ -104,28 +104,56 @@ $(document).ready(function(){
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-  
+
+  ///////////////////////// make maze ///////////////////////////////////////////
+
   function createMaze(lev) {
     var level = getLevel(lev);
     console.log(level);
 
-    for (var j = 0; j >= 21 ; j++) {
-        for (var i = 0; i >= 21; i++) {
+    for (var j = 0; j < level.length ; j++) {
+        console.log('row ' + j);
+        for (var i = 0; i < level[j].length; i++) {
+            console.log('collom ' + i);
             if (levels.lev[j][i] === 0) {
-                //pellet code
-                console.log('pellet detected');
+                console.log('pellet detected');                     //pellet code
+                var newPiecePellet = $('<div>').class('pellet')
+                                        .css('left', i * 20)
+                                        .css('top', j * 20)
+                                        .css('id', 'piece'+j)
+                                        .css('id', 'piece'+i);
             }
             if (levels.lev[j][i] === 1) {
-                //wall code
-                console.log('log detected');
+                console.log('wall detected');                       //wall code
+                var newPieceWall = $('<div>').class('wall')
+                                        .css('left', i * 20)
+                                        .css('top', j * 20)
+                                        .css('id', 'piece'+j)
+                                        .css('id', 'piece'+i);
+            }
+            if (levels.lev[j][i] === 2) {
+                console.log('pacman detected');                     //pacman code
+            }
+            if (levels.lev[j][i] === 3) {
+                console.log('red ghost detected');                  //red ghost code
+            }
+            if (levels.lev[j][i] === 7) {
+                console.log('gate detected');                       //gate code
+                var newPieceGate = $('<div>').class('gate')
+                                        .css('left', i * 20)
+                                        .css('top', j * 20)
+                                        .css('id', 'piece'+j)
+                                        .css('id', 'piece'+i);
+                
             }
             else {
-                //empty code
-                console.log('empty spot detected');
+                console.log('empty spot detected');                 //empty code
             }
         }
     }
   }
+
+    ///////////////////////// item creation //////////////////////////////
 
     function itemCreationPiece(id) {
         var gameItem = {}
@@ -136,6 +164,8 @@ $(document).ready(function(){
         gameItem.top = $(id).height();
         return gameItem;
     }
+
+    ////////////////// other //////////////////////////////
 
     function scoreDisplay() {
       $('#score').text("Score: " + points);
@@ -152,6 +182,8 @@ $(document).ready(function(){
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// EVENT HELPER FUNCTIONS //////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
+
+  ///////////////////////// looking for key touches /////////////////////////////
 
   function handleEvent(event) {
     if (event.which === KEY.D) {
