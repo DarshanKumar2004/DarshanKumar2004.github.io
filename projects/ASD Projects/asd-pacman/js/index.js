@@ -27,15 +27,18 @@ $(document).ready(function(){
   var redGhost;     // an Object to manage the redGhost's $element and movement/location data
   var level;        // a 2D representation of the level with numbers representing walls, pellets, etc...
   var pelletsEaten; // the number of pellets eaten by Pacman
+  var newFrame;
 
   function startGame() {
     // set initial values for the global variables...
     
     // start the timers to draw new frames
+    var timeBetweedNewFrame = 500 / FPS;            // updates very fast
     var timeBetweenPacmanFrames = 1000 / FPS;       // 5 frames per second
     var timeBetweenGhostFrames = 1000 / (FPS - 1);  // 4 frames per second 
     pacmanTimer = setInterval(drawNewPacmanFrame, timeBetweenPacmanFrames);
     ghostTimer = setInterval(drawNewGhostFrame, timeBetweenGhostFrames);
+    newFrame = setInterval(drawNewFrame, timeBetweedNewFrame);
   
     // turn on event handlers
     $(document).on('keydown', handleEvent);
@@ -55,11 +58,11 @@ $(document).ready(function(){
   ////////////////////////////////////////////////////////////////////////////////
   
   //called once
-  createMaze();
+  createMaze("level1");
+  pacman = itemCreationPiece('#pacman');
 
   // start the game
   startGame();
-  win();
 
   /* 
   * Called once per "tick" of the pacmanTimer. This function should execute the 
@@ -77,7 +80,8 @@ $(document).ready(function(){
   *   - end the game!
   */
   function drawNewPacmanFrame() {
-    
+    $("#pacman").css("left", pacman.x);
+    $("#pacman").css("top", pacman.y);
   }
 
   /* 
@@ -92,45 +96,49 @@ $(document).ready(function(){
     
   }
 
+  function drawNewFrame() {
+      win();
+      //console.log('working');
+  }
+
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   
-  function createMaze() {
-    if (getLevel("level1") === 0) {
-        for (var i = level.length; i >= 1; i--) {
-	    console.log("pellet");
-        }
-        //pellet code
-    }
-    if (getLevel("level1") === 1) {
-        for (var i = level.length; i >= 1; i--) {
-	    console.log("wall");
-        }
-        //wall code
-    }
-    if (getLevel("level1") === 9) {
-        for (var i = level.length; i >= 1; i--) {
-	    console.log("empty");
+  function createMaze(lev) {
+    var level = getLevel(lev);
+    console.log(level);
+
+    for (var j = 0; j >= 21 ; j++) {
+        for (var i = 0; i >= 21; i++) {
+            if (levels.lev[j][i] === 0) {
+                //pellet code
+                console.log('pellet detected');
+            }
+            if (levels.lev[j][i] === 1) {
+                //wall code
+                console.log('log detected');
+            }
+            else {
+                //empty code
+                console.log('empty spot detected');
+            }
         }
     }
   }
-  
-  function newID() {
-        var num;
-        var newID = "body" + num;
-        $('<div>').attr('id', newID).appendTo("#board").addClass('square');
-        var newPiece = itemCreationPiece("#" + newID);
-        num++;
-        console.log(newID);
-    }
 
     function itemCreationPiece(id) {
         var gameItem = {}
         gameItem.id = id;
-        gameItem.x = Number($(id).css('left').replace(/[^-\d\.]/g, ''));
-        gameItem.y = Number($(id).css('top').replace(/[^-\d\.]/g, ''));
+        gameItem.x = 300 //Number($(id).css('left').replace(/[^-\d\.]/g, ''));
+        gameItem.y = 10 //Number($(id).css('top').replace(/[^-\d\.]/g, ''));
+        gameItem.width = $(id).width();
+        gameItem.top = $(id).height();
         return gameItem;
+    }
+
+    function scoreDisplay() {
+      $('#score').text("Score: " + points);
     }
 
     function win() {
