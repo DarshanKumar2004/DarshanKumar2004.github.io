@@ -111,11 +111,11 @@ $(document).ready(function(){
     var level = getLevel(lev);
     console.log(level);
 
-    for (var j = 0; j < level.length ; j++) {
+    for (var j = 0; j < level.length; j++) {
         console.log('row ' + j);
-        for (var i = 0; i < level[j].length; i++) {
+        for (var i = 0; i < level.length; i++) {
             console.log('collom ' + i);
-            if (levels.lev[j][i] === 0) {
+            if (lev[j][i] === 0) {
                 console.log('pellet detected');                     //pellet code
                 var newPiecePellet = $('<div>').class('pellet')
                                         .css('left', i * 20)
@@ -123,7 +123,7 @@ $(document).ready(function(){
                                         .css('id', 'piece'+j)
                                         .css('id', 'piece'+i);
             }
-            if (levels.lev[j][i] === 1) {
+            if (lev[j][i] === 1) {
                 console.log('wall detected');                       //wall code
                 var newPieceWall = $('<div>').class('wall')
                                         .css('left', i * 20)
@@ -131,13 +131,13 @@ $(document).ready(function(){
                                         .css('id', 'piece'+j)
                                         .css('id', 'piece'+i);
             }
-            if (levels.lev[j][i] === 2) {
+            if (lev[j][i] === 2) {
                 console.log('pacman detected');                     //pacman code
             }
-            if (levels.lev[j][i] === 3) {
+            if (lev[j][i] === 3) {
                 console.log('red ghost detected');                  //red ghost code
             }
-            if (levels.lev[j][i] === 7) {
+            if (lev[j][i] === 7) {
                 console.log('gate detected');                       //gate code
                 var newPieceGate = $('<div>').class('gate')
                                         .css('left', i * 20)
