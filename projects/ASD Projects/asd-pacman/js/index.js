@@ -93,7 +93,8 @@ $(document).ready(function(){
   * - move and redraw the ghost
   */
   function drawNewGhostFrame() {
-    
+    $("#redGhost").css("left", redGhost.x);
+    $("#redGhost").css("top", redGhost.y);
   }
 
   function drawNewFrame() {
