@@ -93,8 +93,8 @@ $(document).ready(function(){
   * - move and redraw the ghost
   */
   function drawNewGhostFrame() {
-    $("#redGhost").css("left", redGhost.x);
-    $("#redGhost").css("top", redGhost.y);
+    //$("#redGhost").css("left", redGhost.x);
+    //$("#redGhost").css("top", redGhost.y);
   }
 
   function drawNewFrame() {
@@ -112,9 +112,9 @@ $(document).ready(function(){
     var level = getLevel(lev);
     console.log(level);
 
-    for (var j = 0; j < level.length; j++) {
+    for (var j = 0; j < lev.length; j++) {
         console.log('row ' + j);
-        for (var i = 0; i < level.length; i++) {
+        for (var i = 0; i < lev.length; i++) {
             console.log('collom ' + i);
             if (lev[j][i] === 0) {
                 console.log('pellet detected');                     //pellet code
