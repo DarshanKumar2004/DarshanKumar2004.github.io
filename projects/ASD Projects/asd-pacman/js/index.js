@@ -123,6 +123,7 @@ $(document).ready(function(){
                                         .css('top', j * 20)
                                         .css('id', 'piece'+j)
                                         .css('id', 'piece'+i);
+                                        return newPiecePellet;
             }
             if (level[j][i] === 1) {
                 console.log('wall detected');                       //wall code
@@ -131,6 +132,7 @@ $(document).ready(function(){
                                         .css('top', j * 20)
                                         .css('id', 'piece'+j)
                                         .css('id', 'piece'+i);
+                                        return newPieceWall;
             }
             if (level[j][i] === 2) {
                 console.log('pacman detected');                     //pacman code
@@ -145,6 +147,7 @@ $(document).ready(function(){
                                         .css('top', j * 20)
                                         .css('id', 'piece'+j)
                                         .css('id', 'piece'+i);
+                                        return newPieceGate;
                 
             }
             else {
