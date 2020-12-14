@@ -58,7 +58,7 @@ $(document).ready(function(){
   ////////////////////////////////////////////////////////////////////////////////
   
   //called once
-  createMaze("level1");
+  createMaze();
   pacman = itemCreationPiece('#pacman');
 
   // start the game
@@ -108,15 +108,15 @@ $(document).ready(function(){
 
   ///////////////////////// make maze ///////////////////////////////////////////
 
-  function createMaze(lev) {
-    var level = getLevel(lev);
+  function createMaze() {
+    var level = getLevel("level1");
     console.log(level);
 
-    for (var j = 0; j < lev.length; j++) {
+    for (var j = 0; j < level.length; j++) {
         console.log('row ' + j);
-        for (var i = 0; i < lev.length; i++) {
+        for (var i = 0; i < level.length; i++) {
             console.log('collom ' + i);
-            if (lev[j][i] === 0) {
+            if (level[j][i] === 0) {
                 console.log('pellet detected');                     //pellet code
                 var newPiecePellet = $('<div>').class('pellet')
                                         .css('left', i * 20)
@@ -124,7 +124,7 @@ $(document).ready(function(){
                                         .css('id', 'piece'+j)
                                         .css('id', 'piece'+i);
             }
-            if (lev[j][i] === 1) {
+            if (level[j][i] === 1) {
                 console.log('wall detected');                       //wall code
                 var newPieceWall = $('<div>').class('wall')
                                         .css('left', i * 20)
@@ -132,13 +132,13 @@ $(document).ready(function(){
                                         .css('id', 'piece'+j)
                                         .css('id', 'piece'+i);
             }
-            if (lev[j][i] === 2) {
+            if (level[j][i] === 2) {
                 console.log('pacman detected');                     //pacman code
             }
-            if (lev[j][i] === 3) {
+            if (level[j][i] === 3) {
                 console.log('red ghost detected');                  //red ghost code
             }
-            if (lev[j][i] === 7) {
+            if (level[j][i] === 7) {
                 console.log('gate detected');                       //gate code
                 var newPieceGate = $('<div>').class('gate')
                                         .css('left', i * 20)
