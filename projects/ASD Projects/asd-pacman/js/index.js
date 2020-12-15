@@ -28,6 +28,7 @@ $(document).ready(function(){
   var level;        // a 2D representation of the level with numbers representing walls, pellets, etc...
   var pelletsEaten; // the number of pellets eaten by Pacman
   var newFrame;
+  var points = 0;
 
   function startGame() {
     // set initial values for the global variables...
@@ -99,6 +100,7 @@ $(document).ready(function(){
 
   function drawNewFrame() {
       win();
+      scoreDisplay();
       //console.log('working');
   }
 
@@ -163,7 +165,7 @@ $(document).ready(function(){
     ////////////////// other //////////////////////////////
 
     function scoreDisplay() {
-      $('#score').text("Score: " + points);
+      $('#score').text(points);
     }
 
     function win() {
