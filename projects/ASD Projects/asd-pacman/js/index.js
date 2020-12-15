@@ -118,36 +118,27 @@ $(document).ready(function(){
             console.log('collom ' + i);
             if (level[j][i] === 0) {
                 console.log('pellet detected');                     //pellet code
-                var newPiecePellet = $('<div>').class('pellet')
+                var newPiecePellet = $('<div>').addClass('pellet')
                                         .css('left', i * 20)
                                         .css('top', j * 20)
                                         .css('id', 'piece'+j)
                                         .css('id', 'piece'+i);
-                                        return newPiecePellet;
             }
-            if (level[j][i] === 1) {
+            else if (level[j][i] === 1) {
                 console.log('wall detected');                       //wall code
-                var newPieceWall = $('<div>').class('wall')
+                var newPieceWall = $('<div>').addClass('wall')
                                         .css('left', i * 20)
                                         .css('top', j * 20)
                                         .css('id', 'piece'+j)
                                         .css('id', 'piece'+i);
-                                        return newPieceWall;
             }
-            if (level[j][i] === 2) {
-                console.log('pacman detected');                     //pacman code
-            }
-            if (level[j][i] === 3) {
-                console.log('red ghost detected');                  //red ghost code
-            }
-            if (level[j][i] === 7) {
+            else if (level[j][i] === 7) {
                 console.log('gate detected');                       //gate code
-                var newPieceGate = $('<div>').class('gate')
+                var newPieceGate = $('<div>').addClass('gate')
                                         .css('left', i * 20)
                                         .css('top', j * 20)
                                         .css('id', 'piece'+j)
                                         .css('id', 'piece'+i);
-                                        return newPieceGate;
                 
             }
             else {
