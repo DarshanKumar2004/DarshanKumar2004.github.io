@@ -61,6 +61,7 @@ $(document).ready(function(){
   //called once
   createMaze();
   pacman = itemCreationPiece('#pacman');
+  redGhost = itemCreationPiece('#redGhost');
 
   // start the game
   startGame();
@@ -94,8 +95,8 @@ $(document).ready(function(){
   * - move and redraw the ghost
   */
   function drawNewGhostFrame() {
-    //$("#redGhost").css("left", redGhost.x);
-    //$("#redGhost").css("top", redGhost.y);
+    $("#redGhost").css("left", redGhost.x);
+    $("#redGhost").css("top", redGhost.y);
   }
 
   function drawNewFrame() {
@@ -141,7 +142,6 @@ $(document).ready(function(){
                                         .css('top', j * 20)
                                         .css('id', 'piece'+j)
                                         .css('id', 'piece'+i);
-                
             }
             else {
                 console.log('empty spot detected');                 //empty code
