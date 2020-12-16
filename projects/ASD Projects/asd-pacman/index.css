@@ -1,6 +1,6 @@
 
 body {
-  background-color: darkgreen;
+  background-color: rgb(4, 95, 107);
 }
 
 #board {
@@ -9,6 +9,7 @@ body {
   border: 1px solid white;
   background-color: black;
   position: relative;
+  top: 50%; left: 25%;
 }
 
 .square {
@@ -42,6 +43,16 @@ body {
   z-index: 1000;
 }
 
-h1, #score {
+h1 {
   color: white;
+  position: relative;
+  top: 10px; left: 25%;
+}
+
+#score {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 37px; left: 35%;
+
 }

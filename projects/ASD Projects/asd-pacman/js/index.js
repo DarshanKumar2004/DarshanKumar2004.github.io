@@ -34,12 +34,12 @@ $(document).ready(function(){
     // set initial values for the global variables...
     
     // start the timers to draw new frames
-    var timeBetweedNewFrame = 500 / FPS;            // updates very fast
+    var timeBetweedNewFrame = 500 / FPS;            // updates very fast //custom
     var timeBetweenPacmanFrames = 1000 / FPS;       // 5 frames per second
     var timeBetweenGhostFrames = 1000 / (FPS - 1);  // 4 frames per second 
     pacmanTimer = setInterval(drawNewPacmanFrame, timeBetweenPacmanFrames);
     ghostTimer = setInterval(drawNewGhostFrame, timeBetweenGhostFrames);
-    newFrame = setInterval(drawNewFrame, timeBetweedNewFrame);
+    newFrame = setInterval(drawNewFrame, timeBetweedNewFrame); //custom
   
     // turn on event handlers
     $(document).on('keydown', handleEvent);
@@ -99,6 +99,7 @@ $(document).ready(function(){
     $("#redGhost").css("top", redGhost.y);
   }
 
+  //custom
   function drawNewFrame() {
       win();
       scoreDisplay();
@@ -124,27 +125,24 @@ $(document).ready(function(){
                 var newPiecePellet = $('<div>').addClass('pellet')
                                         .css('left', i * 20)
                                         .css('top', j * 20)
-                                        .css('id', 'piece'+j)
-                                        .css('id', 'piece'+i);
+                                        .css('id', 'pelletPiece'+j+'-'+i)
             }
             else if (level[j][i] === 1) {
                 console.log('wall detected');                       //wall code
                 var newPieceWall = $('<div>').addClass('wall')
                                         .css('left', i * 20)
                                         .css('top', j * 20)
-                                        .css('id', 'piece'+j)
-                                        .css('id', 'piece'+i);
+                                        .css('id', 'wallPiece'+j+'-'+i);
             }
             else if (level[j][i] === 7) {
                 console.log('gate detected');                       //gate code
                 var newPieceGate = $('<div>').addClass('gate')
                                         .css('left', i * 20)
                                         .css('top', j * 20)
-                                        .css('id', 'piece'+j)
-                                        .css('id', 'piece'+i);
+                                        .css('id', 'gatePiece'+j+'-'+i);
             }
             else {
-                console.log('empty spot detected');                 //empty code
+                console.log('empty spot detected');                 //empty spot code
             }
         }
     }
