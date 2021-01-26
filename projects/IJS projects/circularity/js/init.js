@@ -9,7 +9,7 @@ var init = function (window) {
         app = window.opspark.makeApp(),
         canvas = app.canvas, 
         view = app.view,
-        fps = draw.fps('#000');
+        fps = draw.fps('white');
         
     
     window.opspark.makeGame = function() {
@@ -35,7 +35,7 @@ var init = function (window) {
 
         // TODO 3 / 7 : Call the drawCircle() function 
         
-            for (var loopsCompleted = 0; loopsCompleted < 250; loopsCompleted++) {
+            for (var loopsCompleted = 0; loopsCompleted < 400; loopsCompleted++) {
                 drawCircle();
                 
         }
