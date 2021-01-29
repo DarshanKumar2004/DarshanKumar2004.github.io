@@ -1,27 +1,26 @@
 {
-  "name": "underpants",
+  "name": "test-guru",
   "version": "1.0.0",
-  "private": true,
-  "description": "Functional Functions for Fun",
-  "main": "data.js",
+  "private": true,    
+  "description": "Master scope while learning about Testing",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "pretest": "npm install",
-    "test": "mocha ./test/underpants.spec.js || :",
+    "test": "mocha test/index.spec.js || :",
     "posttest": "rm -rf ./test ./node_modules"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OperationSpark/underpants.git"
+    "url": "https://github.com/OperationSpark/test-guru.git"
   },
   "author": "jfraboni",
   "license": "CC",
   "bugs": {
-    "url": "https://github.com/OperationSpark/underpants/issues"
+    "url": "https://github.com/OperationSpark/test-guru/issues"
   },
-  "homepage": "https://github.com/OperationSpark/underpants",
+  "homepage": "https://github.com/OperationSpark/test-guru",
   "devDependencies": {
     "chai": "^3.5.0",
     "istanbul": "^0.4.5",
