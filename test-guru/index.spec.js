@@ -81,8 +81,8 @@ describe("Test Guru", function () {
       if(this.from_yay !== undefined){
         in_foo = this.from_yay;
       }
-      expect(in_foo === "i'm inside yay;").to.be.true;
-      expect(this.from_yay === "i'm inside yay;").to.be.true; // come back to
+      expect(in_foo === "i'm in foo").to.be.true;
+      expect(this.from_yay === undefined).to.be.true;
     }
     yay();
     foo();
@@ -170,7 +170,7 @@ describe("Test Guru", function () {
     }
     something(yay);
     
-    expect(im_outter === '???').to.be.true;
+    expect(im_outter === 40).to.be.true;
   });
 
   it("We can get crazy with returns.", function(){
@@ -181,6 +181,6 @@ describe("Test Guru", function () {
       return "hello, this" + whatever();
     }
 
-    expect(foo(yay) === '???').to.be.true;
+    expect(foo(yay) === "hello, this is dog").to.be.true;
   });
 });
