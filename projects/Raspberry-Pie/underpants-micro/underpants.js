@@ -161,11 +161,9 @@ _.reject = function(arr, func) {
 */
 
 _.map = function(coll,func) {
-    var newArr;
+    var newArr = [];
     for (var i = 0; i <= coll.length-1; i++) {
-        if (func(coll[i]) === true) {
-            newArr.push(coll[i]);
-        }
+            newArr.push(func(coll[i],i,coll));
     }
     return newArr;
 }
