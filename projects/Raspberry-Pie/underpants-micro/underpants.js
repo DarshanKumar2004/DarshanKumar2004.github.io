@@ -162,9 +162,9 @@ _.reject = function(arr, func) {
 
 _.map = function(coll,func) {
     var newArr = [];
-    for (var i = 0; i <= coll.length-1; i++) {
-            newArr.push(func(coll[i],i,coll));
-    }
+    _.each(coll, function(val,i,coll) {
+        newArr.push(func(val,i,coll));
+    });
     return newArr;
 }
 
