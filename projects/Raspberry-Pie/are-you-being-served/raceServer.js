@@ -9,13 +9,25 @@ http.createServer(function(req, res) {
     let racers = ["Green Ambler", "Catalack", "Steel Runner", "G.I. Jogger"];
 
     // TODO 6: Get the start time for the race
-    
+    let d = new Date();
+    let startTime = d.getTime();
 
     // TODO 11: Make the whole thing parallel
     async.series( 
         // TODO 8: Supply an array of functions
         [
-            
+            function (callBack){
+                wrapper(callBack);
+            },
+            function (callBack){
+                wrapper(callBack);
+            },
+            function (callBack){
+                wrapper(callBack);
+            },
+            function (callBack){
+                wrapper(callBack);
+            }
         ],
         function (error, results) {
             // TODO 9: add a callback function to the end of the async call to tally the results 
@@ -27,7 +39,10 @@ http.createServer(function(req, res) {
 
 // TODO 7: create a common function to be called by all functions in the array passed to the async function
 function wrapper(callback){
-
+    setTimeout(function(){
+        var d = new Date();
+        callback(null, d.getTime);
+    },Math.random()*1000);
 }
 
 function sortTogether(names, times) {
