@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Darshan's website</title>
+        
+        <style type="text/css">
+            body {
+                background: rgb(70, 130, 180);
+                color: white;
+                padding: 10px;
+                background-color: rgb(70, 130, 180);
+                animation-name: example;
+                animation-duration: 3s;
+            }
+            header {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+            h1 {
+                margin: 10px;
+                font-size: 1.5em;
+            }
+            #all-contents {
+                max-width: 800px;
+                margin: auto;
+            }
+    
+            /* navigation menu */
+            nav {
+                background: rgb(239, 80, 41);
+                margin: 0 auto;
+                margin-bottom: 20px;
+                display: flex;
+                padding: 10px;
+                border-radius: 30px;
+                border: 3px double rgb(255, 255, 255);
+                font-family: times;
+            }
+            nav header {
+                display: flex;
+                align-items: center;
+                color: rgb(255, 255, 255);
+                flex: 1;
+            }
+            nav ul {
+                list-style-image: none;
+            }
+            nav li {
+                display: inline-block;
+                padding: 0 10px;
+            }
+            nav a {
+                text-decoration: none;
+                color: #fff;
+            }
+    
+            /* main container area beneath menu */
+            main {
+                background: #b9b9b9;
+                display: flex;
+                border-radius: 30px;
+                font-family: Helvetica;
+                text-align: center;
+            }
+            .content {
+                flex: 1;
+                padding: 15px;
+                border-radius: 30px;
+                border: 3px solid rgb(255, 255, 255);
+            }
+                        /* portfolio styles */
+            #portfolio {
+                list-style-type: none;
+                padding-left: 0;
+            }
+            
+            #portfolio li {
+                background: #fff;
+                padding: 10px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+                border: 3px double rgb(169,169,169);
+                font-family: times;
+            }
+            
+            #portfolio li:hover {
+                background: #eee;
+            } 
+            
+            #portfolio a {
+                text-decoration: none;
+                color: #454545;
+            }
+
+            @keyframes example {
+                from {background-color: rgb(255, 0, 85);}
+                to {background-color: rgb(70, 130, 180);}
+            }
+            
+        </style>
+        
+    </head>
+    
+    <body>
+      <div id="all-contents">
+          <nav>
+              <header>Darshan's Website</header>
+              <ul>
+                  <li><a href="index.html">Home</a>
+                  </li>
+                  <li><a href="portfolio.html">Portfolio</a>
+                  </li>
+              </ul>
+          </nav>
+          <main>
+              <div class="content">
+                  <ul id="portfolio">
+                  <h1>These games where made in my first month of learning Javascript</h1>
+                  </ul>
+              </div>
+          </main>
+          <div>
+            <h2></h2><!-- spacing to seperate the older games menu from the newer games menu -->
+          </div>
+          <main>
+              <div class="content">
+                <ul id="portfolio">
+                  <h1>These games where made in 2020 when I took the Advance Software Development cource
+                  </h1>
+
+                  <!-- 
+                    bouncing box was not showing up right on the website when clicked on so it was descided 
+                    to not include it.
+
+                    <li><a href="projects/ASD Projects/bouncing-box-refactored"> bouncing-box-refactored : a 
+                                                                               program that gives you a tase 
+                                                                               of refactoring </a>
+                  </li>
+                   -->
+
+                  <li><a href="projects/ASD Projects/Walker"> Walker : A game that teaches you the basics of 
+                                                              key events </a>
+                  </li>
+                  <li><a href="projects/ASD Projects/pong"> Pong : An arcade classic that shows you whats its 
+                                                            like to use hit boxes and RNG in JavaScript </a>
+                  </li>
+                  <li><a href="projects/ASD Projects/snake"> Snake : A recreation of the classic snake arcade 
+                                                            game that with demonstrate the use of arrays and 
+                                                            recursion </a>
+                  </li>
+                  <!--
+                  <li><a href="projects/ASD Projects/asd-pacman"> Pacman : work in progress </a>
+                  </li>
+                    -->
+                  <li><a href="projects/ASD Projects/tag"> Touch & Go : A 2 player game that was created as my 
+                                                            final exam for the advanced Software Development cource </a>
+                  </li>
+                </ul>
+              </div>
+          </main>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script id="portfolioScript">$(document).ready(function() {$.getJSON('projects/IJS projects/projects.json')
+                                 .then(function(data) { data.projects.forEach(function(project){ 
+                                 $('#portfolio').append('<li><a href="projects/IJS projects/'  + 
+                                 project.name + '/">' + project.title + ' : ' + project.description + 
+                                 '</a></li>'); }); }); });</script>
+    </body>
+</html>

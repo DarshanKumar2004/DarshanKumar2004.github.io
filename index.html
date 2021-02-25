@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <style>
+    body {
+        background: rgb(70, 130, 180);
+        color: rgb(220, 50, 60);
+        padding: 10px;
+        font-family: times;
+        background-color: rgb(70, 130, 180);
+        animation-name: example;
+        animation-duration: 3s;
+    }
+    header {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    #all-contents {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    /* navigation menu */
+    nav {
+        background: rgb(239, 80, 41);
+        margin: 0 auto;
+        margin-bottom: 20px;
+        display: flex;
+        padding: 10px;
+        border-radius: 30px;
+        border: 3px double rgb(255, 255, 255);
+    }
+    nav header {
+        display: flex;
+        align-items: center;
+        color: rgb(255, 255, 255);
+        flex: 1;
+    }
+    nav ul {
+        list-style-image: none;
+    }
+    nav li {
+        display: inline-block;
+        padding: 0 10px;
+    }
+    nav a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    /* main container area beneath menu */
+    main {
+        background: #b9b9b9;
+        display: flex;
+        border-radius: 30px;
+        border: 3px solid rgb(255, 255, 255);
+    }
+    .sidebar {
+        margin-right: 25px;
+        padding: 10px;
+    }
+    .sidebar img {
+        width: 290px;
+    }
+    .content {
+        flex: 1;
+        padding: 15px;
+        font-size: 115%;
+    }
+    .interests header {
+        font-size: 1.25em;
+    }
+    img {
+      border-radius: 20px;
+      height: 220px;
+    }
+
+    @keyframes example {
+        from {background-color: rgb(255, 145, 0);}
+        to {background-color: rgb(70, 130, 180);}
+    }
+
+</style>
+        <title>Darshan's First Website</title>
+    </head>
+    <body>
+        <div id="all-contents">
+            <nav>
+                <header>Darshan's Website</header>
+                <ul>
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li><a href="portfolio.html">Portfolio</a>
+                    </li>
+                </ul>
+            </nav>
+            <main>
+                <div class="sidebar">
+                    <img src="https://ewscripps.brightspotcdn.com/dims4/default/e0496ad/2147483647/strip/true/crop/786x442+0+0/resize/1280x720!/quality/90/?url=http%3A%2F%2Fewscripps-brightspot.s3.amazonaws.com%2F79%2Fdf%2F28f7fb9048dd8dc3159b612d0d4b%2Frobotics-team-3616.jpg" alt="Avatar">
+                </div>
+                
+                <div class="content">
+                    <header>Darshan Kumar</header>
+                    <p>Student at Comeaux High</p>
+                    <section class="interests">
+                        <header>Interests</header>
+                        <ul>
+                            <li>Robotics</li>
+                            <li>Chess</li>
+                            <li>Gaming</li>
+                        </ul>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script id="portfolioScript">$(document).ready(function() {$.getJSON('projects/projects.json').then(function(data) { data.projects.forEach(function(project){ $('#portfolio').append('<li><a href="projects/' + project.name + '/">' + project.title + ' : ' + project.description + '</a></li>'); }); }); });</script>
+    </body>
+</html>
