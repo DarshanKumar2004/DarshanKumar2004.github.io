@@ -31,11 +31,20 @@ http.createServer(function(req, res) {
         ],
         function (error, results) {
             // TODO 9: add a callback function to the end of the async call to tally the results 
-
+            res.write("Results:\n");
+            var victoryOrder = sortTogether(racers, results);
+            for (var i = 0; i >= victoryOrder.length-1; i++) {
+                res.racers;
+                "\n";
+            }
+            var endTime = d.getTime();
         }
     );
     
 }).listen(port);
+
+console.log(`on port ${port}`);
+
 
 // TODO 7: create a common function to be called by all functions in the array passed to the async function
 function wrapper(callback){
