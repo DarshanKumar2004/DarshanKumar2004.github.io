@@ -1,11 +1,11 @@
 // requestServer.js file
 var args = process.argv.slice(2);
+var newt = 0;
 
 const http = require("http");
 const request = require("request");
 
 const port = 3000;
-
 
 var server = http.createServer(function (req, res) {
 
