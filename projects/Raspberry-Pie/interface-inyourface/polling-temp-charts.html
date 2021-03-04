@@ -153,13 +153,17 @@
       }
 
       // TODO 1: Initialize high and low records
-      var regHighest;
-      var regLowest;
-      var wsHighest;
-      var wsLowest;
+      var regHighest = -500;
+      var regLowest = 500;
+      var wsHighest = -500;
+      var wsLowest = 500;
+
+      $('#reg-chart-container').append($("<p>").attr("id", "reg-highest")
+        .text("Highest recorded value is " + regHighest));
       // TODO 2: Update high and low records
       function updateRegRecords(value){
         // Update the regular polling records
+        $("#reg-highest").text("Highest recorded value is " + 72);
       }
 
       function updateWSRecords(value){
