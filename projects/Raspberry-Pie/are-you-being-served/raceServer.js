@@ -34,10 +34,11 @@ http.createServer(function(req, res) {
             res.write("Results:\n");
             var victoryOrder = sortTogether(racers, results);
             for (var i = 0; i >= victoryOrder.length-1; i++) {
-                res.racers;
+                res.write(victoryOrder[i]);
                 "\n";
             }
             var endTime = d.getTime();
+            res.end("Total time: " + (endTime-startTime + "\n"));
         }
     );
     
@@ -50,7 +51,7 @@ console.log(`on port ${port}`);
 function wrapper(callback){
     setTimeout(function(){
         var d = new Date();
-        callback(null, d.getTime);
+        callback(null, d.getTime());
     },Math.random()*1000);
 }
 
