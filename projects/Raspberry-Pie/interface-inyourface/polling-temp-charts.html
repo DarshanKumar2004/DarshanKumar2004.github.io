@@ -173,6 +173,11 @@
         // TODO 2: Update high and low records
         function updateRecords(which, value) {
           // Update the regular polling records
+          $("#reg-highest").text("Highest recorded value is " + value);
+          $("#ws-highest").text("Highest recorded value is " + value);
+          $("#reg-lowest").text("Lowest recorded value is " + value);
+          $("#ws-lowest").text("Lowest recorded value is " + value);
+
           if (which === "REG") {
             $('#reg-chart-container').append($("<p>").attr("id", "reg-highest")
               .text("Highest recorded value is " + regHighest));
@@ -185,11 +190,6 @@
             $('#ws-chart-container').append($("<p>").attr("id", "wsLowest")
               .text("Lowest recorded value is " + wsLowest));
           }
-
-          $("#reg-highest").text("Highest recorded value is " + value);
-          $("#ws-highest").text("Highest recorded value is " + value);
-          $("#reg-lowest").text("Lowest recorded value is " + value);
-          $("#ws-lowest").text("Lowest recorded value is " + value);
         }
 
         // TODO 3: Regular Polling
