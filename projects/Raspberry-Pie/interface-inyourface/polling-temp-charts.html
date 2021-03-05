@@ -169,18 +169,23 @@
         var regLowest = 500;
         var wsHighest = -500;
         var wsLowest = 500;
-        $('#reg-chart-container').append($("<p>").attr("id", "reg-highest")
-          .text("Highest recorded value is " + regHighest));
-        $('#reg-chart-container').append($("<p>").attr("id", "reg-lowest")
-          .text("Lowest recorded value is " + regLowest));
-        $('#reg-chart-container').append($("<p>").attr("id", "wsHighest")
-          .text("Highest recorded value is " + wsHighest));
-        $('#reg-chart-container').append($("<p>").attr("id", "wsLowest")
-          .text("Lowest recorded value is " + wsLowest));
 
         // TODO 2: Update high and low records
-        function updateRecords(value) {
+        function updateRecords(which, value) {
           // Update the regular polling records
+          if (which === "REG") {
+            $('#reg-chart-container').append($("<p>").attr("id", "reg-highest")
+              .text("Highest recorded value is " + regHighest));
+            $('#reg-chart-container').append($("<p>").attr("id", "reg-lowest")
+              .text("Lowest recorded value is " + regLowest));
+          }
+          else if (which === "WS") {
+            $('#ws-chart-container').append($("<p>").attr("id", "wsHighest")
+              .text("Highest recorded value is " + wsHighest));
+            $('#ws-chart-container').append($("<p>").attr("id", "wsLowest")
+              .text("Lowest recorded value is " + wsLowest));
+          }
+
           $("#reg-highest").text("Highest recorded value is " + value);
           $("#ws-highest").text("Highest recorded value is " + value);
           $("#reg-lowest").text("Lowest recorded value is " + value);
@@ -189,7 +194,7 @@
 
         // TODO 3: Regular Polling
         function doPoll() {
-          $.getJSON("https://3fb5b491cc69.ngrok.io/pi/sensors/dhd/temperature", function (result) {
+          $.getJSON("https://3fb5b491cc69.ngrok.io/pi/sensors/dht/temperature", function (result) {
             addDataPoint(result, regData, regChart);
             updateRecords(result.value);
             setTimeout(10000);
