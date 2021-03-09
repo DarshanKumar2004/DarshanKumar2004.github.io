@@ -13,7 +13,7 @@ http.createServer(function(req, res) {
     let startTime = d.getTime();
 
     // TODO 11: Make the whole thing parallel
-    async.series( 
+    async.parallel( 
         // TODO 8: Supply an array of functions
         [
             function (callBack){
@@ -50,6 +50,12 @@ console.log(`on port ${port}`);
 // TODO 7: create a common function to be called by all functions in the array passed to the async function
 function wrapper(callback){
     setTimeout(function(){
+        for (var i = 0; i < 1000; i++){
+            for (var j = 0; j < Math.random() * 1000000000; j++){
+                console.log(i*j);
+                console.log(j/i+j)
+            }
+        }
         var d = new Date();
         callback(null, d.getTime());
     },Math.random()*1000);
