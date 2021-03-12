@@ -95,6 +95,12 @@
 					method: 'POST',
 					contentType: 'application/x-www-form-urlencoded',
 					data: $(this).serialize(),
+					function(data, textStatus, jQxhr) {
+						$('#response pre').html(data);
+					},
+					function(jqXhr, textStatus, errorThrown) {
+						console.log(errorThrown);
+					},
 				});
 
 				e.preventDefault();
