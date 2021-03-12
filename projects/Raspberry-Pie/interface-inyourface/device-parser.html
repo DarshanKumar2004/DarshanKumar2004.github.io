@@ -124,6 +124,7 @@
             $('#doc').html(data.links.doc.title + " <a href=\"" + data.links.doc.rel + "\">" + data.links.doc.rel + "</a>");
 
             // TODO 7: Generate the URL to the sensors of the device
+            var sensorsPath = data.url && data.resources.sensors.url;
 
             $.ajax({
               url: sensorsPath,
@@ -132,7 +133,10 @@
 
               // TODO 8: Create a success function that iterates over the list of sensors and displays them
               success: function (data) {
-
+                var sensorList = '';
+                $('#sensors').html(Object.keys(data).length + " sensors found!");
+                var html = "<li><a href=\"" + sensorsPath + "temp" + "\">" + data["temp"].name + "</a></li>";
+                $('#sensors-list').html(sensorList);
               },
 
               error: function (jqXHR, textStatus, errorThrown) {
