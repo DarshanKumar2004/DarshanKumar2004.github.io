@@ -1,15 +1,27 @@
-var Gpio = require('onoff').Gpio,
-  sensor = new Gpio(4, 'in', 'both');
+var onoff = require('onoff');
 
-sensor.watch(function (err, value) {
-  if (err) exit(err);
-  console.log(value ? 'there is someone!' : 'not anymore!');
+var Gpio = onoff.Gpio,
+    led1 = new Gpio(16, 'out'),
+    led2 = new Gpio(21, 'out'),
+    interval;
+
+interval = setInterval(function () {
+    var value = (led1.readSync() + 1) % 2;
+    led1.write(value, function () {
+            console.log("Changed LED 1 state to: " + value);
+    });
+    led2.write((value + 1) % 2, function () {
+        console.log("Changed LED 2 state to: " + ((value + 1) % 2));
+    });
+}, 1000);
+
+process.on('SIGINT', function () {
+    clearInterval(interval);
+    led1.writeSync(0);
+    led1.unexport();
+    led2.writeSync(0);
+    led2.unexport();
+    console.log('Bye, bye!');
+    process.exit();
 });
-
-function exit(err) {
-  sensor.unexport();
-  console.log('Bye, bye!')
-  process.exit();
-}
-process.on('SIGINT', exit);
 
