@@ -1,12 +1,12 @@
-pirPlugin.start({});
+pirPlugin1.start({});
 
 var dhtSensor = require('.plugins/internal/dhtPlugin.js');
 dhtPlugin.start({ 'frequency': 2000 });
 
 var httpServer = require('./servers/http'),
 
-var pirPlugin = require('./plugins/internal/pirPlugin');
-var dhtPlugin = require('./plugins/internal/dhtPlugin');
+var pirPlugin1 = require('./plugins/internal/pirPlugin');
+var dhtPlugin1 = require('./plugins/internal/dhtPlugin');
 
 resources = require('./resources/model');
 
@@ -15,7 +15,7 @@ var server = httpServer.listen(resources.pi.port, function () {
 });
 
 process.on('SIGINT', function () {
-	dhtPlugin.stop();
-	pirPlugin.stop();
+	dhtPlugin1.stop();
+	pirPlugin1.stop();
 	process.exit();
 });
