@@ -3,7 +3,7 @@ pirPlugin1.start({});
 var dhtSensor = require('.plugins/internal/dhtPlugin.js');
 dhtPlugin.start({ 'frequency': 2000 });
 
-var httpServer = require('./servers/http'),
+var httpServer = require('./servers/http');
 
 var pirPlugin = require('./plugins/internal/pirPlugin');
 var dhtPlugin = require('./plugins/internal/dhtPlugin');
