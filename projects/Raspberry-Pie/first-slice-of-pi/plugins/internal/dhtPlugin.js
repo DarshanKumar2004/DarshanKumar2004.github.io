@@ -10,8 +10,8 @@ function connectHardware() {
                 "initialize": sensorDriver.initialize(device.model, device.gpio),
                 "read": sensorDriver.read()
         }
-        device.temperature.value = parseFloat(readout.temperature);
-        device.humidity.value = parseFloat(readout.humidity);
+        device.temperature.value = parseFloat(sensor.read.temperature);
+        device.humidity.value = parseFloat(sensor.read.humidity);
         sensor.initialize();
         sensor.read();
         interval = setInterval(function () {
