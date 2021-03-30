@@ -12,9 +12,9 @@ function connectHardware() {
         }
         device.temperature.value = parseFloat(sensor.read.temperature);
         device.humidity.value = parseFloat(sensor.read.humidity);
-        sensor.initialize.initialize();
-        sensor.read.read();
+        
         interval = setInterval(function () {
+                sensor.initialize();
                 sensor.read();
         }, localParams.frequency);
 }
