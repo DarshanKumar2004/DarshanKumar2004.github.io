@@ -19,9 +19,9 @@ function connectHardware() {
         }, localParams.frequency);
 }
 
-function start(parms) {
-        localParams = params ? params : localParams;
-        connectHardware();
-        clearInterval(interval);
+exports.start = function (parms) {
+                        localParams = params ? params : localParams;
+                        connectHardware();
+                        clearInterval(interval);
 
-}
+                }
