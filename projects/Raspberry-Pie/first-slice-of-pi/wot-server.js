@@ -1,3 +1,5 @@
+var dhtSensor = require('.plugins/internal/dhtPlugin.js');
+
 var httpServer = require('./servers/http');
 
 var pirPlugin = require('./plugins/internal/pirPlugin');

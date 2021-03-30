@@ -21,8 +21,9 @@ function connectHardware() {
                 localParams = params ? params : localParams;
                 connectHardware();
                 clearInterval(interval);
-                function stop() {
-                        sensor.unexport();
-                }
+                
+        }
+        function stop() {
+                sensor.unexport();
         }
 }
