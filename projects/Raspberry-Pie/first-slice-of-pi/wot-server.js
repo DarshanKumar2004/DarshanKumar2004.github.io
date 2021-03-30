@@ -1,4 +1,4 @@
-var dhtSensor = require('.plugins/internal/dhtPlugin.js');
+var dhtSensor = require('.plugins/internal/dhtPlugin');
 
 var httpServer = require('./servers/http');
 

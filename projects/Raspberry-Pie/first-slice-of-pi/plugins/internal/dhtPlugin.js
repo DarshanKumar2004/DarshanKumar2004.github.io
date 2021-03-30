@@ -17,12 +17,12 @@ function connectHardware() {
         interval = setInterval(function () {
                 sensor.read();
         }, localParams.frequency);
-        exports.start = function (parms) {
-                localParams = params ? params : localParams;
-                connectHardware();
-                clearInterval(interval);
-                
-        }
+}
+
+exports.start = function (parms) {
+        localParams = params ? params : localParams;
+        connectHardware();
+        clearInterval(interval);
         function stop() {
                 sensor.unexport();
         }

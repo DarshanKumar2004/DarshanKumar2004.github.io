@@ -9,8 +9,10 @@ function connectHardware() {
 	sensor.watch(function (err, value) {
 		device.value = !!value;
 	});
-	exports.start = function (params) { };
+}
+
+exports.start = function (params) { };
+	connectHardware();
 	function stop() {
 		sensor.unexport();
 	}
-}
