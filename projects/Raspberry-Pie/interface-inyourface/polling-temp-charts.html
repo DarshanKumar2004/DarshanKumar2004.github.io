@@ -170,25 +170,37 @@
         var wsHighest = -500;
         var wsLowest = 500;
 
+        $('#reg-chart-container').append($("<p>").attr("id", "reg-highest")
+          .text("Highest recorded value is " + regHighest));
+        $('#reg-chart-container').append($("<p>").attr("id", "reg-lowest")
+          .text("Lowest recorded value is " + regLowest));
+        $('#ws-chart-container').append($("<p>").attr("id", "ws-highest")
+          .text("Highest recorded value is " + wsHighest));
+        $('#ws-chart-container').append($("<p>").attr("id", "ws-lowest")
+          .text("Lowest recorded value is " + wsLowest));
+
         // TODO 2: Update high and low records
         function updateRecords(which, value) {
           // Update the regular polling records
-          $("#reg-highest").text("Highest recorded value is " + value);
-          $("#ws-highest").text("Highest recorded value is " + value);
-          $("#reg-lowest").text("Lowest recorded value is " + value);
-          $("#ws-lowest").text("Lowest recorded value is " + value);
-
-          if (which === "REG") {
-            $('#reg-chart-container').append($("<p>").attr("id", "reg-highest")
-              .text("Highest recorded value is " + regHighest));
-            $('#reg-chart-container').append($("<p>").attr("id", "reg-lowest")
-              .text("Lowest recorded value is " + regLowest));
+          if (which === "REG" && (value > regHighest || value < regLowest)) {
+            if (value > regHighest) {
+              $("#reg-highest").text("Highest recorded value is " + value);
+              regHighest = value;
+            }
+            else if (value < regLowest) {
+              $("#reg-lowest").text("Lowest recorded value is " + value);
+              regLowest = value;
+            }
           }
-          else if (which === "WS") {
-            $('#ws-chart-container').append($("<p>").attr("id", "wsHighest")
-              .text("Highest recorded value is " + wsHighest));
-            $('#ws-chart-container').append($("<p>").attr("id", "wsLowest")
-              .text("Lowest recorded value is " + wsLowest));
+          else if (which === "WS" && (value > wsHighest || value < wsLowest)) {
+            if (value > wsHighest) {
+              $("#ws-highest").text("Highest recorded value is " + value);
+              wsHighest = value;
+            }
+            else if (value < wsLowest) {
+              $("#ws-lowest").text("Lowest recorded value is " + value);
+              wsLowest = value;
+            }
           }
         }
 
