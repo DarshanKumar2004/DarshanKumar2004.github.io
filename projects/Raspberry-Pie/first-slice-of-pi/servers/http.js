@@ -1,6 +1,6 @@
-var sensorRoutes = require('./../routes/sensors');
+var sensorRoutes = require('../routes/sensors');
 
-var actuatorRoutes = require('./../routes/actuators');
+var actuatorRoutes = require('../routes/actuators');
 
 var express = require('express'),
 	cors = require('cors');

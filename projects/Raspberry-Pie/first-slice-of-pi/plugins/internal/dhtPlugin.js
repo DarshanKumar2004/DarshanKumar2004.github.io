@@ -1,4 +1,4 @@
-var resources = require('./../../resources/model');
+var resources = require('../../resources/model');
 var sensorDriver = require('node-dht-sensor');
 
 var interval, sensor;

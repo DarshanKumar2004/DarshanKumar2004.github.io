@@ -1,4 +1,4 @@
-var resources = require('./../../resources/model');
+var resources = require('../../resources/model');
 var Gpio = require('onoff').Gpio;
 
 var sensor;
