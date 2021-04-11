@@ -23,7 +23,8 @@ exports.start = function (params) {
         localParams = params ? params : localParams;
         connectHardware();
         clearInterval(interval);
-        function stop() {
-                sensor.unexport();
-        }
+}
+
+exports.stop = function() {
+        sensor.unexport();
 }
