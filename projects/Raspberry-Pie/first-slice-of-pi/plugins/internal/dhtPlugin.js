@@ -14,16 +14,22 @@ function connectHardware() {
         device.humidity.value = parseFloat(sensor.read.humidity);
         
         interval = setInterval(function () {
-                sensor.initialize();
-                sensor.read();
+                device.temperature.value = parseFloat(readout.temperature);
+                sensor.initialize = function() {
+                        return sensorDriver.initialize();
+                }
+                sensor.read = function() {
+                        return sensorDriver.read(device.temperature.value);
+                }
         }, localParams.frequency);
 }
 
 exports.start = function (params) {
         localParams = params ? params : localParams;
         connectHardware();
+}
+
+exports.stop = function() {
         clearInterval(interval);
-        function stop() {
-                sensor.unexport();
-        }
+        sensor.unexport();
 }

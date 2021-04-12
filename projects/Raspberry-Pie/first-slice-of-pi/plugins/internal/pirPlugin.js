@@ -11,8 +11,10 @@ function connectHardware() {
 	});
 }
 
-exports.start = function (params) { };
+exports.start = function (params) {
 	connectHardware();
-	function stop() {
+}
+
+exports.stop = function() {
 		sensor.unexport();
-	}
+}
