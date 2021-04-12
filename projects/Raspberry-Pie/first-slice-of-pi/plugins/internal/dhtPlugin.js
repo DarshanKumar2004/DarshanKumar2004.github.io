@@ -14,7 +14,7 @@ function connectHardware() {
         device.humidity.value = parseFloat(sensor.read.humidity);
         
         interval = setInterval(function () {
-                device.temperature.value = parseFloat(readout.temperature);
+                device.temperature.value = parseFloat(device.temperature);
                 sensor.initialize = function() {
                         return sensorDriver.initialize();
                 }
