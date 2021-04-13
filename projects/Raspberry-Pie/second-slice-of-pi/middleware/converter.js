@@ -35,8 +35,5 @@ module.exports = function () {
 				res.send(req.result);
 			}
 		}
-		else {
-			next();
-		}
 	};
 };
