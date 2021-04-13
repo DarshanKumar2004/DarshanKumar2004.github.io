@@ -1,8 +1,10 @@
 var sensorRoutes = require('../routes/sensors');
-var middlewareConverter = require('./../middleware/converter');
+var converter = require('./../middleware/converter');
 var bodyParser = require('body-parser');
-
 var actuatorRoutes = require('../routes/actuators');
+
+bodyParser;
+app.use(bodyParser.json());
 
 var express = require('express'),
 	cors = require('cors');
@@ -18,4 +20,5 @@ app.get('/pi', function (req, res) {
 	res.send('welcome');
 });
 
+app.use(converter());
 module.exports = app;
