@@ -3,13 +3,16 @@ var express = require('express'),
 	resources = require('../resources/model');
 
 router.route('/leds/:id').get(function (req, res, next) {
-	res.send(resources.pi.actuators.leds[req.params.id]);
+	req.result = resources.pi.actuators.leds[req.params.id];
+	next();
 });
 router.route('/').get(function (req, res, next) {
-	res.send(resources.pi.actuators);
+	req.result = resources.pi.actuators;
+	next();
 });
 router.route('/leds').get(function (req, res, next) {
-	res.send(resources.pi.actuators.leds);
+	req.result = resources.pi.actuators.leds;
+	next();
 });
 
 module.exports = router;
