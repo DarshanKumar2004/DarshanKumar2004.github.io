@@ -30,6 +30,6 @@ exports.start = function (params) {
 }
 
 exports.stop = function() {
+        
         sensor.unexport();
-        clearInterval(interval);
 }
