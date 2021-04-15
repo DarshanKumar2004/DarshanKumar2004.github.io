@@ -9,19 +9,19 @@ module.exports = function () {
 					'<>': 'div', 'html': [
 						{
 							'<>': 'p', 'html': [
-								{ '<>': 'b', 'html': 'name' },
+								{ '<>': 'b', 'html': 'name: ' },
 								{ '<>': 'p', 'html': '${name}' }
 							]
 						},
 						{
 							'<>': 'p', 'html': [
-								{ '<>': 'b', 'html': 'description' },
+								{ '<>': 'b', 'html': 'description: ' },
 								{ '<>': 'p', 'html': '${description}' }
 							]
 						},
 						{
 							'<>': 'p', 'html': [
-								{ '<>': 'b', 'html': 'value' },
+								{ '<>': 'b', 'html': 'value: ' },
 								{ '<>': 'p', 'html': '${value}' }
 							]
 						}
@@ -30,8 +30,11 @@ module.exports = function () {
 				json2html.transform(req.result, transform);
 				res.send();
 			}
-			else {
+			else if (req.result) {
 				res.send(req.result);
+			}
+			else {
+				next();
 			}
 		}
 	};
