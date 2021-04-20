@@ -29,9 +29,11 @@ module.exports = function () {
 				};
 				json2html.transform(req.result, transform);
 				res.send();
+				next();
 			}
 			else {
 				res.send(req.result);
+				next();
 			}
 		}
 	};
