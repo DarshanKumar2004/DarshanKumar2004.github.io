@@ -4,11 +4,11 @@ var converter = require('../middleware/converter');
 var actuatorRoutes = require('../routes/actuators');
 var express = require('express'),
 	cors = require('cors');
+var app = express();
 
 bodyParser;
-app.use(bodyParser.json());
 
-var app = express();
+app.use(bodyParser.json());
 app.use(cors());
 app.use('/pi/sensors', sensorRoutes);
 app.use('/pi/actuators', actuatorRoutes);
