@@ -2,6 +2,7 @@ var sensorRoutes = require('../routes/sensors');
 var bodyParser = require('body-parser');
 var converter = require('../middleware/converter');
 var actuatorRoutes = require('../routes/actuators');
+var express = require('express');
 
 bodyParser;
 app.use(bodyParser.json());
