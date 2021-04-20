@@ -6,21 +6,18 @@ var device = resources.pi.sensors.dht;
 var localParams = { 'frequency': 2000 };
 
 function connectHardware() {
-        sensor = {
-                "initialize": sensorDriver.initialize(device.model, device.gpio),
-                "read": sensorDriver.read()
+        sensor = {};
+
+        sensor.initialize = function() {
+                sensorDriver.initialize(device.model, device.gpio);
         }
-        device.temperature.value = parseFloat(sensor.read.temperature);
-        device.humidity.value = parseFloat(sensor.read.humidity);
-        
+        sensor.read = function() {
+                var sensorRead = sensorDriver.read(device.temperature.value);
+                device.temperature.value = parseFloat(sensorRead.temperature);
+                device.humidity.value = parseFloat(sensorRead.humidity);
+        }
         interval = setInterval(function () {
-                device.temperature.value = parseFloat(device.temperature);
-                sensor.initialize = function() {
-                        return sensorDriver.initialize();
-                }
-                sensor.read = function() {
-                        return sensorDriver.read(device.temperature.value);
-                }
+                sensor.read();
         }, localParams.frequency);
 }
 
