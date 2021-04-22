@@ -52,18 +52,18 @@
 	(function ($) {
 		function processForm(e) {
 			// TODO 5: Test Web Page's XMLHttpRequest Client
-			const xhttp = new XMLHttpRequest();
-			const url = $('#host').val();
-			xhttp.open(get.url);
+			// const xhttp = new XMLHttpRequest();
+			// const url = $('#host').val();
+			// xhttp.open(get.url);
 
-			xhttp.send(xhttp.onreadystatechange);
+			// xhttp.send(xhttp.onreadystatechange);
 
-			if (this.status === 200) {
-				$('#data').html(this.responseText);
-			}
-			else {
-				$('#data').html("ERROR");
-			}
+			// if (this.status === 200) {
+			// 	$('#data').html(this.responseText);
+			// }
+			// else {
+			// 	$('#data').html("ERROR");
+			// }
 
 			e.preventDefault();
 		}
