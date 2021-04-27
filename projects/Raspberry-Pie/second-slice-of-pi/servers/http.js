@@ -6,7 +6,7 @@ var express = require('express'),
 	cors = require('cors');
 var app = express();
 
-bodyParser;
+// bodyParser;
 
 app.use(bodyParser.json());
 app.use(cors());
