@@ -12,10 +12,12 @@ function connectHardware() {
                 sensorDriver.initialize(device.model, device.gpio);
         }
         sensor.read = function() {
-                var sensorRead = sensorDriver.read(device.temperature.value);
+                var sensorRead = sensorDriver.read();
                 device.temperature.value = parseFloat(sensorRead.temperature);
                 device.humidity.value = parseFloat(sensorRead.humidity);
         }
+        sensor.initialize();
+        sensor.read();
         interval = setInterval(function () {
                 sensor.read();
         }, localParams.frequency);
@@ -24,7 +26,6 @@ function connectHardware() {
 exports.start = function (params) {
         localParams = params ? params : localParams;
         connectHardware();
-        clearInterval(interval);
 }
 
 exports.stop = function() {
