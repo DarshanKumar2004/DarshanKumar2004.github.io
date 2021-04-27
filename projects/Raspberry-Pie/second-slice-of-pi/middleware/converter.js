@@ -27,8 +27,7 @@ module.exports = function () {
 						}
 					]
 				};
-				json2html.transform(req.result, transform);
-				res.send();
+				res.send(json2html.transform(req.result, transform));
 				next();
 			}
 			else {
