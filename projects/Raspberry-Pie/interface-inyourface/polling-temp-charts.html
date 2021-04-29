@@ -182,7 +182,7 @@
         // TODO 2: Update high and low records
         function updateRecords(which, value) {
           // Update the regular polling records
-          if (which === "REG" && (value > regHighest || value < regLowest)) {
+          if (which === "REG" && (value > regHighest)) {
             if (value > regHighest) {
               $("#reg-highest").text("Highest recorded value is " + value);
               regHighest = value;
@@ -192,7 +192,7 @@
               regLowest = value;
             }
           }
-          else if (which === "WS" && (value > wsHighest || value < wsLowest)) {
+          else if (which === "WS" && (value > wsHighest) {
             if (value > wsHighest) {
               $("#ws-highest").text("Highest recorded value is " + value);
               wsHighest = value;
