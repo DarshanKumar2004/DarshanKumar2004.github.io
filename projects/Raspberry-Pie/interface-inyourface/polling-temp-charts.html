@@ -208,7 +208,7 @@
         function doPoll() {
           $.getJSON("https://3fb5b491cc69.ngrok.io/pi/sensors/dht/temperature", function (result) {
             addDataPoint(result, regData, regChart);
-            updateRecords(result.value);
+            updateRecords(result,result.value);
             setTimeout(10000);
           });
         }
@@ -220,9 +220,9 @@
         var socket = new WebSocket('ws://3fb5b491cc69.ngrok.io/pi/sensors/dht/temperature');
         socket.onmessage = function (event) {
           // Fill in the body of the onmessage function
-          var result = JSON.parse(event.data);
-          addDataPoint(result, wsData, wsChart);
-          updateRecords(result.value);
+          var results = JSON.parse(event.data);
+          addDataPoint(results, wsData, wsChart);
+          updateRecords(results,result.value);
         };
 
         socket.onerror = function (error) {
