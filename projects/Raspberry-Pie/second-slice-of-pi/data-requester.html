@@ -63,10 +63,9 @@
 				xhttp.onreadystatechange;
 				
 				if (this.readystate === 4) {
-					$(document.reload);
+					$('#data').html(this.responseText);
 				}
-
-				if (this.status === 200) {
+				else if (this.status === 200) {
 					$('#data').html(this.responseText);
 				}
 				else {
