@@ -27,8 +27,10 @@ module.exports = function () {
 						}
 					]
 				};
-				res.send(json2html.transform(req.result, transform));
+				req.result = json2html.transform(req.result, transform);
+				res.send(req.result);
 				next();
+				
 			}
 			else {
 				res.send(req.result);

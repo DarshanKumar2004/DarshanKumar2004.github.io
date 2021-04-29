@@ -12,7 +12,7 @@ router.route('/dht').get(function (req, res, next) {
 	next();
 });
 router.route('/dht/temperature').get(function (req, res, next) {
-	req.result = resources.pi.sensors.temperature;
+	req.result = resources.pi.sensors.dht.temperature;
 	next();
 });
 

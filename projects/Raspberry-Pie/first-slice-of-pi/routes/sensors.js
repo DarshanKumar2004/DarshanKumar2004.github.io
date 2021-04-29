@@ -10,7 +10,7 @@ router.route('/dht').get(function (req, res, next) {
 	res.send(resources.pi.sensors.dht);
 });
 router.route('/dht/temperature').get(function (req, res, next) {
-	res.send(resources.pi.sensors.temperature);
+	res.send(resources.pi.sensors.dht.temperature);
 });
 
 router.route('/dht/humidity').get(function (req, res, next) {
