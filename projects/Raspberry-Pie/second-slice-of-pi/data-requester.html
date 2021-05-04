@@ -68,7 +68,7 @@
 				else if (this.status === 200) {
 					$('#data').html(this.responseText);
 				}
-				else {
+				else if(this.status !== 200 && this.status !== 4){
 					$('#data').html("ERROR");
 				}
 

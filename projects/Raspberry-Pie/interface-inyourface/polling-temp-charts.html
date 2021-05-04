@@ -222,7 +222,8 @@
           // Fill in the body of the onmessage function
           var results = JSON.parse(event.data);
           addDataPoint(results, wsData, wsChart);
-          updateRecords(results,result.value);
+          updateWSRecords(results,result.value);
+          updateRecRecords(results,result.value);
         };
 
         socket.onerror = function (error) {
