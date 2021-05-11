@@ -1,5 +1,5 @@
 const resources = require('./../../resources/model');
-const onoff = require('onoff');
+
 const Gpio = require('onoff').Gpio;
 
 
