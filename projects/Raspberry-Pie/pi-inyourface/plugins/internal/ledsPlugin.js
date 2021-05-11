@@ -1,5 +1,7 @@
 const resources = require('./../../resources/model');
 const onoff = require('onoff');
+const Gpio = require('onoff').Gpio;
+
 
 let actuator1, actuator2;
 let model = resources.pi.actuators.leds;
