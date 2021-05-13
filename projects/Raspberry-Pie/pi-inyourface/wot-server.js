@@ -10,7 +10,9 @@ resources = require('./resources/model');
 
 pirPlugin.start({});
 dhtPlugin.start({ 'frequency': 2000 });
-ledsPlugin.start({})
+ledsPlugin.start({});
+ledsPlugin.switchOnOff({});
+
 
 var server = httpServer.listen(resources.pi.port, function () {
 	console.log("Running the Pi on port " + resources.pi.port);
