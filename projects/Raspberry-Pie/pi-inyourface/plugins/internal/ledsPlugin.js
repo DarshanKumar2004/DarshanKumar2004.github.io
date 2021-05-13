@@ -24,6 +24,13 @@ exports.start = function (params) {
 };
 
 // TODO 1: Complete the ledsPlugin!
+exports.stop = function() {
+	actuator1.write(0);
+	actuator1.unexport();
+	actuator2.write(0);
+	actuator2.unexport();
+}
+
 exports.switchOnOff = {
     1: function (value) {
         // turn LED 1 on or off based on value
@@ -43,12 +50,4 @@ exports.switchOnOff = {
 			actuator1.write(0);
 		}
     }
-}
-
-
-exports.stop = function() {
-	actuator1.write(0);
-	actuator1.unexport();
-	actuator2.write(0);
-	actuator2.unexport();
 }
