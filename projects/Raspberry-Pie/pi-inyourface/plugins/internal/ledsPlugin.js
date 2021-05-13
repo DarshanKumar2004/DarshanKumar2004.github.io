@@ -36,18 +36,22 @@ exports.switchOnOff = {
         // turn LED 1 on or off based on value
 		if (value) {
 			actuator1.write(1);
+			console.log("led1 working");
 		}
 		else {
 			actuator1.write(0);
+			console.log("led1 off");
 		}
     },
     2: function (value) {
         // turn LED 2 on or off based on value
 		if (value) {
 			actuator1.write(1);
+			console.log("led2 working");
 		}
 		else {
 			actuator1.write(0);
+			console.log("led2 off");
 		}
     }
 }
