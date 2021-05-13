@@ -8,11 +8,11 @@ let model = resources.pi.actuators.leds;
 let pluginName = resources.pi.actuators.leds[1].name + ", " + resources.pi.actuators.leds[2].name;
 
 function connectHardware() {
-	actuator1 = new Gpio(model.gpio, 'in', 'both');
+	actuator1 = new Gpio(model[1].gpio, 'in', 'both');
 	actuator1.watch(function (err, value) {
 		model.value = !!value;
 	});
-	actuator2 = new Gpio(model.gpio, 'in', 'both');
+	actuator2 = new Gpio(model[2].gpio, 'in', 'both');
 	actuator2.watch(function (err, value) {
 		model.value = !!value;
 	});
@@ -25,8 +25,8 @@ exports.start = function (params) {
 
 // TODO 1: Complete the ledsPlugin!
 exports.stop = function() {
-	actuator1 = LEDGpioConnection.write(0);
-	actuator2 = LEDGpioConnection.write(0);
+	actuator1.write(0);
+	actuator2.write(0);
 	actuator1.unexport();
 	actuator2.unexport();
 }
