@@ -26,8 +26,8 @@ exports.start = function (params) {
 // TODO 1: Complete the ledsPlugin!
 exports.stop = function() {
 	actuator1.write(0);
-	actuator2.write(0);
 	actuator1.unexport();
+	actuator2.write(0);
 	actuator2.unexport();
 }
 
