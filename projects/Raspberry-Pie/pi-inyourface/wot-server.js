@@ -6,6 +6,8 @@ var dhtPlugin = require('./plugins/internal/dhtPlugin');
 const actuators = require('./routes/actuators');
 const ledsPlugin = require('./plugins/internal/ledsPlugin');
 
+const webSocket = require('./servers/websockets');
+
 resources = require('./resources/model');
 
 pirPlugin.start({});
@@ -15,6 +17,7 @@ ledsPlugin.start({});
 
 
 var server = httpServer.listen(resources.pi.port, function () {
+	webSocket.listen(server);
 	console.log("Running the Pi on port " + resources.pi.port);
 });
 
