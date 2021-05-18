@@ -69,10 +69,14 @@
     			$(updateElement).html("<h4>Awaiting update<h4>");
 			}
 			socket.onmessage = function (event) {
+				console.log("OPENED CONNECTION");
+    			$(updateElement).html("<h4>Awaiting update<h4>");
 				let result = JSON.parse(event.data);
 				result.value = result;
 			}
 			socket.onerror = function (error) {
+				console.log("ERROR");
+    			$(updateElement).html("<h4>Awaiting update<h4>");
 				console.log(error);
 			}
 		}
