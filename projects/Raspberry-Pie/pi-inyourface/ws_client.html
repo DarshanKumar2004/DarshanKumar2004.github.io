@@ -70,7 +70,7 @@
 			}
 			socket.onmessage = function (event) {
 				let result = JSON.parse(event.data);
-				$(updateElement).html(result.value);
+				$(updateElement).html(result);
 			}
 			socket.onerror = function (error) {
 				console.log(error);
