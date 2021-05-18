@@ -57,9 +57,9 @@
 
 	$(document).ready(function () {
 
-		connect("http://192.168.1.250:8484/pi/sensors/dht/temperature", "#temp");
-		connect("http://192.168.1.250:8484/pi/sensors/dht/humidity", "#humidity");
-		connect("http://192.168.1.250:8484/pi/sensors/pir", "#pir");
+		connect("ws://192.168.1.250:8484/pi/sensors/dht/temperature", "#temp");
+		connect("ws://192.168.1.250:8484/pi/sensors/dht/humidity", "#humidity");
+		connect("ws://192.168.1.250:8484/pi/sensors/pir", "#pir");
 
 		function connect(url, updateElement) {
 			// TODO 4: Create new WebSocket client connections
