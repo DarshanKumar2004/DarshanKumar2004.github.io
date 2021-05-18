@@ -9,7 +9,7 @@ exports.listen = function (server) {
 	console.log("WebSocket server started");
 	wss.on('connection', function (ws, req) {
 		// TODO 3: Construct a callback for handling client subscription requests
-		if(req.url === true) {
+		if(req.url) {
 			var resource = selectResource(req.url)
 			utils.monitor(resource, refreshRate, function(changes) {
 				ws.send(JSON.stringify(changes));
