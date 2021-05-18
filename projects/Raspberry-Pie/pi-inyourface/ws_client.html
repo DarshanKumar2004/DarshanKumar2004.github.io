@@ -69,7 +69,6 @@
     			$(updateElement).html("<h4>Awaiting update<h4>");
 			}
 			socket.onmessage = function (event) {
-				$(updateElement).html("<h4>Awaiting update<h4>");
 				let result = JSON.parse(event.data);
 				result.value = result;
 			}
