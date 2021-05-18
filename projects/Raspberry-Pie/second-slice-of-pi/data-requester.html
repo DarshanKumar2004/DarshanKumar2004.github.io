@@ -59,17 +59,21 @@
 				xhttp.open(GET.url);
 				var xhttpReq = xhttp.setRequestHeader("Accept", "text/html");
 				xhttp.send(xhttpReq);
+				console.log('working 1');
 
 				xhttp.onreadystatechange;
 				
 				if (this.readystate === 4) {
 					$('#data').html(this.responseText);
+					console.log('working 2');
 				}
 				else if (this.status === 200) {
 					$('#data').html(this.responseText);
+					console.log('working 3');
 				}
 				else if(this.status !== 200 && this.status !== 4){
 					$('#data').html("ERROR");
+					console.log('working 4');
 				}
 
 				e.preventDefault();
