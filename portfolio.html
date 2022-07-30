@@ -118,28 +118,17 @@
               <div class="content">
                   <ul id="portfolio">
                     <h1>These games where made in my first month of learning Javascript</h1>
-                    
                   </ul>
               </div>
           </main>
           <div>
-            <h2></h2><!-- spacing to seperate the older games menu from the newer games menu -->
+            <br></br>
           </div>
           <main>
               <div class="content">
                 <ul id="portfolio">
                   <h1>These games where made in 2020 when I took the Advance Software Development course
                   </h1>
-
-                    <!-- bouncing box was not showing up right on the website when clicked on so it was descided 
-                    to not include it.
-
-                    <li><a href="projects/ASD Projects/bouncing-box-refactored" target="_blank"> bouncing-box-refactored : a 
-                                                                               program that gives you a tase 
-                                                                               of refactoring </a>
-                  </li> -->
-                  
-
                   <li><a href="projects/ASD Projects/Walker" target="_blank"> Walker : A game that teaches you the basics of 
                                                               key events </a>
                   </li>
@@ -164,8 +153,8 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script id="portfolioScript">$(document).ready(function() {$.getJSON('projects/IJS projects/projects.json')
                                  .then(function(data) { data.projects.forEach(function(project){ 
-                                 $('#portfolio').append('<li><a href="projects/IJS projects/'  + 
-                                 project.name + '/">' + project.title + ' : ' + project.description + 
+                                 $('#portfolio').append('<li><a href="projects/IJS projects/' + 
+                                 project.name + '/" target="_blank">' + project.title + ' : ' + project.description + 
                                  '</a></li>'); }); }); });</script>
     </body>
 </html>
