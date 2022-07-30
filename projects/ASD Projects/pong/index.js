@@ -322,7 +322,7 @@ function runProgram(){
   }
 
   function gameInstructions() {
-    $('#instructions').text("Player A is the Left side and Player B is the right side. Player A's controlles are W and S. Player B's controles are the Up and Down Arrows. To START the game press the  Space bar. The first to 11 points wins. Good Luck!");
+    $('#instructions').text("Player A is the Left side and Player B is the right side. Player A's controlles are W and S. Player B's controles are the Up and Down Arrows. To START the game press the  Space bar. The first to 5 points wins. Good Luck!");
   }
 
   //after this the game ends dont code past this
