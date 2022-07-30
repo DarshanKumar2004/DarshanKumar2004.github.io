@@ -139,13 +139,14 @@ function runProgram(){
     //collision detection
     if (((paddleL.rightX > ballC.leftX) && (paddleL.leftX < ballC.rightX) && (paddleL.topY < ballC.bottomY) && (paddleL.bottomY > ballC.topY)) || ((paddleR.rightX > ballC.leftX) && (paddleR.leftX < ballC.rightX) && (paddleR.topY < ballC.bottomY) && (paddleR.bottomY > ballC.topY))) {
         ball.speedX *= -1;
+        ballAngleRNG();
         console.log("collision detected");
     }
     if ((paddleL.rightX > ballC.leftX) && (paddleL.leftX < ballC.rightX) && (paddleL.topY < ballC.bottomY) && (paddleL.bottomY > ballC.topY)) {
-        ball.speedX += 0.5;
+        ball.speedX += 0.75;
     }
     if (((paddleR.rightX > ballC.leftX) && (paddleR.leftX < ballC.rightX) && (paddleR.topY < ballC.bottomY) && (paddleR.bottomY > ballC.topY))) {
-        ball.speed -= 0.5;
+        ball.speed -= 0.75;
     }
   }
   
@@ -232,13 +233,13 @@ function runProgram(){
     var ballAngle = Math.floor(Math.random() * 6);
     console.log("the angle is " + ballAngle);
     if (ballAngle >= 4) {
-        ball.speedY -= ballAngle;
+        ball.speedY -= ballAngle/2;
     }
     else if (ballAngle === 0) {
-        ball.speedY -= 4;
+        ballAngleRNG();
     }
     else if (ballAngle <= 3) {
-        ball.speedY += ballAngle;
+        ball.speedY += ballAngle/2;
     }
   }
 
@@ -278,7 +279,7 @@ function runProgram(){
   }
 
   function winner() {
-      if (paddleLeft.points === 11) {
+      if (paddleLeft.points === 5) {
         //A wins left team
         paddleLeft.points = 0;
         paddleRight.points = 0;
@@ -291,7 +292,7 @@ function runProgram(){
         $('#playerBScore').text(paddleRight.points);
         $('#winnerIs').text("Player A WON!!!");
       }
-      else if (paddleRight.points === 11) {
+      else if (paddleRight.points === 5) {
         //B wins right team
         paddleRight.points = 0;
         paddleLeft.points = 0;
