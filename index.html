@@ -11,13 +11,12 @@
     <head>
         <style>
     body {
-        background: rgb(70, 130, 180);
+        background: rgb(0, 47, 15);
         color: rgb(220, 50, 60);
         padding: 10px;
         font-family: times;
-        background-color: rgb(70, 130, 180);
         animation-name: example;
-        animation-duration: 3s;
+        animation-duration: 2.5s;
     }
     header {
         font-size: 1.5em;
@@ -58,16 +57,21 @@
 
     /* main container area beneath menu */
     main {
-        background: #b9b9b9;
+        background-color: #b9b9b9;
         display: flex;
         border-radius: 30px;
         border: 3px solid rgb(255, 255, 255);
     }
     main p {
-        color: white;
+        color: rgb(0, 0, 0);
+    }
+    main p2 {
+        color: rgb(0, 0, 0);
+        font-size: 16px;
+
     }
     main li {
-        color: white;
+        color: rgb(0, 0, 0);
     }
     .sidebar {
         margin-right: 25px;
@@ -93,8 +97,8 @@
     }
 
     @keyframes example {
-        from {background-color: rgb(255, 145, 0);}
-        to {background-color: rgb(70, 130, 180);}
+        from {background-color: #ffffff81;}
+        to {background-color: rgb(0, 47, 15);}
     }
 
 </style>
@@ -119,17 +123,18 @@
                 </div>
                 
                 <div class="content">
-                    <header>Darshan Kumar</header>
-                    <p>Student at the University of Louisiana at Lafayette</p>
-                    <section class="interests">
-                        <header>Interests</header>
-                        <ul>
-                            <li>Software Engineering</li>
-                            <li>Computer Engineering</li>
-                            <li>Chess</li>
-                        </ul>
-                    </section>
+                        <header>Darshan Kumar</header>
+                        <p>Student at the University of Louisiana at Lafayette</p>
+                        <section class="interests">
+                            <header>Interests</header>
+                            <ul>
+                                <li>Software Engineering</li>
+                                <li>Computer Engineering</li>
+                                <li>Chess</li>
+                            </ul>
+                        </section>
                 </div>
+                    
                 
             </main>
             <br></br>
@@ -137,7 +142,7 @@
                 <div class="content">
                     <section class="introduction">
                         <header>HELLO WORLD!</header>
-                        <p>
+                        <p2>
                             Congradulations, you have found my website. My name is 
                             Darshan Kumar, I am a College student at 
                             the University of Louisiana at Lafayette. I have a passion for discovering and using 
@@ -160,7 +165,7 @@
                             to sell reusable battery packs. With this knowledge in less than a week, I created a CAD, went through 
                             prototypes, and started mass production at my home. Now I am capable of reselling these reusable battery 
                             packs to Hotels for a lower price while still making a profit.
-                        </p>
+                        </p2>
                     </section>
                     <section class="description">
                         <!-- <header>Classes</header>
