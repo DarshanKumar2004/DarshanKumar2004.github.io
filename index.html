@@ -9,100 +9,97 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <style>
-    body {
-        background: rgb(0, 47, 15);
-        color: rgb(220, 50, 60);
-        padding: 10px;
-        font-family: times;
-        animation-name: example;
-        animation-duration: 2.5s;
-    }
-    header {
-        font-size: 1.5em;
-        font-weight: bold;
-    }
-    #all-contents {
-        max-width: 800px;
-        margin: auto;
-    }
-
-    /* navigation menu */
-    nav {
-        background: rgb(239, 80, 41);
-        margin: 0 auto;
-        margin-bottom: 20px;
-        display: flex;
-        padding: 10px;
-        border-radius: 30px;
-        border: 3px double rgb(255, 255, 255);
-    }
-    nav header {
-        display: flex;
-        align-items: center;
-        color: rgb(255, 255, 255);
-        flex: 1;
-    }
-    nav ul {
-        list-style-image: none;
-    }
-    nav li {
-        display: inline-block;
-        padding: 0 10px;
-    }
-    nav a {
-        text-decoration: none;
-        color: #fff;
-    }
-
-    /* main container area beneath menu */
-    main {
-        background-color: #b9b9b9;
-        display: flex;
-        border-radius: 30px;
-        border: 3px solid rgb(255, 255, 255);
-    }
-    main p {
-        color: rgb(0, 0, 0);
-    }
-    main p2 {
-        color: rgb(0, 0, 0);
-        font-size: 16px;
-
-    }
-    main li {
-        color: rgb(0, 0, 0);
-    }
-    .sidebar {
-        margin-right: 25px;
-        padding: 10px;
-    }
-    .sidebar img {
-        width: 190px;
-    }
-    .content {
-        flex: 1;
-        padding: 15px;
-        font-size: 115%;
-    }
-    .interests header {
-        font-size: 1.25em;
-    }
-    .introduction header {
-        font-size: 1.25em;
-    }
-    img {
-      border-radius: 20px;
-      height: 230px;
-    }
-
-    @keyframes example {
-        from {background-color: #ffffff81;}
-        to {background-color: rgb(0, 47, 15);}
-    }
-
-</style>
         <title>Darshan's First Website</title>
+        <style>
+            body {
+                background: rgb(0, 47, 15);
+                color: rgb(220, 50, 60);
+                padding: 10px;
+                font-family: times;
+                animation-name: example;
+                animation-duration: 2.5s;
+            }
+            header {
+                font-size: 1.5em;
+                font-weight: bold;
+                margin-left: 10px;
+            }
+            #all-contents {
+                max-width: 800px;
+                margin: auto;
+            }
+
+            /* navigation menu */
+            nav {
+                background: rgb(239, 80, 41);
+                margin: 0 auto;
+                margin-bottom: 20px;
+                display: flex;
+                padding: 10px;
+                border-radius: 30px;
+                border: 3px double rgb(255, 255, 255);
+            }
+            nav header {
+                display: flex;
+                align-items: center;
+                color: rgb(255, 255, 255);
+                flex: 1;
+            }
+            nav ul {
+                list-style-image: none;
+            }
+            nav li {
+                display: inline-block;
+                padding: 0 10px;
+            }
+            nav a {
+                text-decoration: none;
+                color: #fff;
+            }
+
+            /* main container area beneath menu */
+            main {
+                background-color: #b9b9b9;
+                display: flex;
+                border-radius: 30px;
+                border: 3px solid rgb(255, 255, 255);
+            }
+            main p {
+                color: rgb(0, 0, 0);
+            }
+            main p2 {
+                color: rgb(0, 0, 0);
+                font-size: 16px;
+            }
+            main li {
+                color: rgb(0, 0, 0);
+            }
+            .sidebar {
+                margin-right: 25px;
+                padding: 10px;
+            }
+            .sidebar img {
+                display: flex;
+                width: 200px;
+                border-radius: 20px;
+            }
+            .content {
+                flex: 1;
+                padding: 15px;
+                font-size: 115%;
+            }
+            .interests header {
+                font-size: 1.25em;
+            }
+            .introduction header {
+                font-size: 1.25em;
+                text-align: center;
+            }
+            @keyframes example {
+                from {background-color: #ffffff81;}
+                to {background-color: rgb(0, 47, 15);}
+            }
+        </style>
     </head>
     <body>
         <div id="all-contents">
@@ -121,10 +118,15 @@
                 <div class="sidebar">
                     <img src="IMG_1913.JPG" alt="Avatar">
                 </div>
-                
                 <div class="content">
                         <header>Darshan Kumar</header>
-                        <p>Student at the University of Louisiana at Lafayette</p>
+                        <p>
+                            &ensp;Student at the University of Louisiana at Lafayette.
+                            <br>
+                            &emsp; - Major: Computer Science
+                            <br>
+                            &emsp; - Concentration: Computer Engineering
+                        </p>
                         <section class="interests">
                             <header>Interests</header>
                             <ul>
@@ -134,15 +136,15 @@
                             </ul>
                         </section>
                 </div>
-                    
-                
             </main>
             <br></br>
             <main>
                 <div class="content">
                     <section class="introduction">
                         <header>HELLO WORLD!</header>
+                        <br></br>
                         <p2>
+                            &emsp;&emsp;
                             Congradulations, you have found my website. My name is 
                             Darshan Kumar, I am a College student at 
                             the University of Louisiana at Lafayette. I have a passion for discovering and using 

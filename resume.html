@@ -13,6 +13,7 @@
     header {
         font-size: 1.5em;
         font-weight: bold;
+        margin-left: 10px;
     }
     #all-contents {
         max-width: 800px;
@@ -53,6 +54,7 @@
         display: flex;
         border-radius: 30px;
         border: 3px solid rgb(255, 255, 255);
+        padding: 10px;
     }
 
     main h1 {
@@ -60,12 +62,18 @@
         padding: 5px;
     }
     
-    
     main p {
         margin: auto auto;
         padding: 5px;
         color: rgb(0, 0, 0);
         text-align: center;
+    }
+
+    .resume-display {
+        text-align: center;
+        display: inline-block;
+        margin: auto;
+        margin-bottom: 20px;
     }
 
     @keyframes example {
@@ -90,16 +98,22 @@
                 </ul>
             </nav>
             <main>
-                <h1>Resume</h1>
+                <div class="resume-display">
+                    <h1>Resume</h1>
+                    <br>
+                    <object 
+                        data="Darshans Resume.pdf" type="application/pdf" width="700px" height="945px">
+                    </object>
+                </div>
             </main>
             <br></br>
-            <main>
+            <!-- <main>
                 <p>
-                    linkedin.com/in/darshan-p-kumar
+                    <a href="https://www.linkedin.com/in/darshan-p-kumar/" target="_blank">linkedin.com/in/darshan-p-kumar
                     <br></br>
-                    <a href="Darshans Resume.pdf">Darshans Resume.pdf</a>
+                    <a href="Darshans Resume.pdf" target="_blank">Darshans Resume.pdf</a>
                 </p>
-            </main>
+            </main> -->
         </div>
     </body>
 </html>
