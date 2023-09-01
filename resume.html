@@ -1,88 +1,84 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <style>
-    body {
-        background: rgb(0, 47, 15);
-        color: rgb(220, 50, 60);
-        padding: 10px;
-        font-family: times;
-        animation-name: example;
-        animation-duration: 1s;
-    }
-    header {
-        font-size: 1.5em;
-        font-weight: bold;
-        margin-left: 10px;
-    }
-    #all-contents {
-        max-width: 800px;
-        margin: auto;
-    }
-
-    /* navigation menu */
-    nav {
-        background: rgb(239, 80, 41);
-        margin: 0 auto;
-        margin-bottom: 20px;
-        display: flex;
-        padding: 10px;
-        border-radius: 30px;
-        border: 3px double rgb(255, 255, 255);
-    }
-    nav header {
-        display: flex;
-        align-items: center;
-        color: rgb(255, 255, 255);
-        flex: 1;
-    }
-    nav ul {
-        list-style-image: none;
-    }
-    nav li {
-        display: inline-block;
-        padding: 0 10px;
-    }
-    nav a {
-        text-decoration: none;
-        color: #fff;
-    }
-
-    /* main container area beneath menu */
-    main {
-        background-color: #b9b9b9;
-        display: flex;
-        border-radius: 30px;
-        border: 3px solid rgb(255, 255, 255);
-        padding: 10px;
-    }
-
-    main h1 {
-        margin: auto auto;
-        padding: 5px;
-    }
-    
-    main p {
-        margin: auto auto;
-        padding: 5px;
-        color: rgb(0, 0, 0);
-        text-align: center;
-    }
-
-    .resume-display {
-        text-align: center;
-        display: inline-block;
-        margin: auto;
-        margin-bottom: 20px;
-    }
-
-    @keyframes example {
-        from {background-color: #ffffff81;}
-        to {background-color: rgb(0, 47, 15);}
-    }
-
-</style>
         <title>Darshan's First Website</title>
+        <style>
+            /* general and background */
+            body {
+                background: rgb(0, 47, 15);
+                color: rgb(220, 50, 60);
+                padding: 10px;
+                font-family: times;
+                animation-name: example;
+                animation-duration: 1s;
+            }
+            header {
+                font-size: 1.5em;
+                font-weight: bold;
+                margin-left: 10px;
+            }
+            #all-contents {
+                max-width: 800px;
+                margin: auto;
+            }
+            /* navigation menu */
+            nav {
+                background: rgb(239, 80, 41);
+                margin: 0 auto;
+                margin-bottom: 20px;
+                display: flex;
+                padding: 10px;
+                border-radius: 30px;
+                border: 3px double rgb(255, 255, 255);
+            }
+            nav header {
+                display: flex;
+                align-items: center;
+                color: rgb(255, 255, 255);
+                flex: 1;
+            }
+            nav ul {
+                list-style-image: none;
+            }
+            nav li {
+                display: inline-block;
+                padding: 0 10px;
+            }
+            nav a {
+                text-decoration: none;
+                color: #fff;
+            }
+            /* main */
+            main {
+                background-color: #b9b9b9;
+                display: flex;
+                border-radius: 30px;
+                border: 3px solid rgb(255, 255, 255);
+                padding: 10px;
+            }
+            main h1 {
+                margin: auto auto;
+                padding: 5px;
+            }
+            main p {
+                margin: auto auto;
+                padding: 5px;
+                color: rgb(0, 0, 0);
+                text-align: center;
+            }
+            /* CSS for the resume PDF */
+            .resume-display {
+                text-align: center;
+                display: inline-block;
+                margin: auto;
+                margin-bottom: 20px;
+            }
+            /* background animation on initial load */
+            @keyframes example {
+                from {background-color: #ffffff81;}
+                to {background-color: rgb(0, 47, 15);}
+            }
+        </style>
     </head>
     <body>
         <div id="all-contents">
@@ -101,19 +97,12 @@
                 <div class="resume-display">
                     <h1>Resume</h1>
                     <br>
-                    <object 
-                        data="Darshans Resume.pdf" type="application/pdf" width="700px" height="945px">
+                    <object data="Darshans Resume.pdf" type="application/pdf" width="700px" height="945px">
                     </object>
                 </div>
             </main>
-            <br></br>
-            <!-- <main>
-                <p>
-                    <a href="https://www.linkedin.com/in/darshan-p-kumar/" target="_blank">linkedin.com/in/darshan-p-kumar
-                    <br></br>
-                    <a href="Darshans Resume.pdf" target="_blank">Darshans Resume.pdf</a>
-                </p>
-            </main> -->
+            <br>
+            <br>
         </div>
     </body>
 </html>
