@@ -91,16 +91,32 @@
                 padding: 15px;
                 font-size: 115%;
             }
+            .topContent {
+                flex: 1;
+                padding: 15px;
+                font-size: 115%;
+                margin: 0 auto;
+                height: 0;          /* will stop the bottom margin from extending too far */
+            }
+            .extracurriculars header{
+                font-size: 1.25em;
+            }
+            .extracurriculars {
+                position: relative;
+                left: 250px;
+                bottom: 125px;
+            }
             .interests header {
                 font-size: 1.25em;
             }
             .introduction header {
                 font-size: 1.25em;
                 text-align: center;
+                padding: auto;
             }
             /* gives an animation on load up */
             @keyframes example {
-                from {background-color: #ffffff81;}
+                from {background-color: #000000;}
                 to {background-color: rgb(0, 47, 15);}
             }
         </style>
@@ -120,23 +136,32 @@
             </nav>
             <main>
                 <div class="sidebar">
-                    <img src="IMG_1913.JPG" alt="Avatar">
+                    <img src="ProfilePic.JPG" alt="Avatar">
                 </div>
-                <div class="content">
+                <div class="topContent">
                         <header>Darshan Kumar</header>
                         <p>
-                            &ensp;Student at the University of Louisiana at Lafayette.
+                            &ensp;University of Louisiana at Lafayette
                             <br>
                             &emsp; - Major: Computer Science
                             <br>
                             &emsp; - Concentration: Computer Engineering
+                            <br>
+                            &emsp; - Minor: Mathamatics
                         </p>
                         <section class="interests">
                             <header>Interests</header>
                             <ul>
-                                <li>Software Engineering</li>
-                                <li>Computer Engineering</li>
+                                <li>Robotics</li>
+                                <li>Space Exploration</li>
                                 <li>Chess</li>
+                            </ul>
+                        </section>
+                        <section class="extracurriculars">
+                            <header>Extracurriculars</header>
+                            <ul>
+                                <li>FRC Robotics</li>
+                                <li>Satellite Student Research</li>
                             </ul>
                         </section>
                 </div>
@@ -149,28 +174,12 @@
                         <br></br>
                         <p2>
                             &emsp;&emsp;
-                            Congradulations, you have found my website. My name is 
-                            Darshan Kumar, I am a College student at 
-                            the University of Louisiana at Lafayette. I have a passion for discovering and using 
-                            new and old technologies. I love to 
-                            program and play chess. The way I started this passion was my freshman 
-                            year of High School when I joined my school's robotics team. And after that day my 
-                            knowledge about programming and technology grew exponentially. After 
-                            freshman year, for me, COVID-19 was taking over the world. That is 
-                            when I discovered Operation Spark. This organization taught me all 
-                            of my Java Script knowledge. This combined with my knowledge from 
-                            robotics and other courses has allowed me to learn programming 
-                            languages like C++, Python, Java Script, CSS, HTML, Java, and Dart/Flutter. During Covid I 
-                            Created this website and my goal is to maintain and expand my portfolio here. Currently 
-                            I am a Freshman in college with a Computer Science Major and a Concentration in Computer 
-                            Engineering. My current coursework is teaching me data structures in Java, along with other 
-                            intermediate skills. Thanks to my robotics experience with C++ I am able to understand these 
-                            concepts very fast and am able to spend more time on other projects. For example, my newest and 
-                            current project is making reusable battery packs specifically for the Hotel lock industry. The 
-                            major vendors of battery packs for Hotels are currently hoarding these non-reusable packs and refuse 
-                            to sell reusable battery packs. With this knowledge in less than a week, I created a CAD, went through 
-                            prototypes, and started mass production at my home. Now I am capable of reselling these reusable battery 
-                            packs to Hotels for a lower price while still making a profit.
+                            Hello World! I am Darshan Kumar, a full-time undergraduate student at the 
+                            University of Louisiana at Lafayette. This website hosts my first website and 
+                            some of the first projects I ever created when learning to program. Since making 
+                            this website I have moved on to a larger scale and more hardware-focused personal projects 
+                            like making custom standardized battery packs for motel lock system, weather balloon transceivers, 
+                            and software development for satellites at ULL.
                         </p2>
                     </section>
                 </div>
