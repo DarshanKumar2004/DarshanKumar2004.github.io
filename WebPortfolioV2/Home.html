@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta tags for search engine description -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title -->
+    <title>Portfolio Home</title>
+
+    <!-- Link to Home.css -->
+    <link rel="stylesheet" href="Home.css">
+
+    <!-- Fafacon -->
+    <link rel="icon" type="image/x-icon" href="Photos&Videos\FafaconV1.jpg">
+     
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="left">
+            <a href="/WebPortfolioV2/Home.html">Home</a>
+        </div>
+
+        <div class="right">
+            <a onclick="darkMode(); toggleIcon(darkModeID);">
+                <i id="darkModeID" class="fa-solid fa-toggle-off"></i>
+                <span>Dark Mode</span>
+            </a>
+
+            <a href="https://github.com/DarshanKumar2004" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+                <span>Github</span>
+            </a>
+            
+            <a href="https://linkedin.com/in/darshan-p-kumar" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+                <span>Linkedin</span>
+            </a>
+
+            <a href="mailto:kumardarshan425@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Section 1: Hero -->
+        <section class="hero-section">
+            <div class="text">
+                <h2>Hi, I'm Darshan 👋</h2>
+                <p>Hello World! I am Darshan Kumar, a full-time undergraduate student at the University of Louisiana at Lafayette. 
+                    This website hosts my first website and some of the first projects I ever created when learning to program. 
+                    Since making this website I have moved on to a larger scale and more hardware-focused personal projects 
+                    like making custom standardized battery packs for motel lock system, weather balloon transceivers, and 
+                    software development for satellites at ULL.</p>
+
+                    <div class="link">
+                        <a href="#skills">
+                            <i class="fa-solid fa-code"></i>
+                            <span>Skills</span>
+                        </a>
+
+                        <a href="#testimony">
+                            <i class="fa-solid fa-pen"></i>
+                            <span>Testimony</span>
+                        </a>
+
+                        <a href="#contact">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Contact</span>
+                        </a>
+                    </div>
+            </div>
+            <div class="headshot">
+                <img src="Photos&Videos\ProfilePic.JPG" alt="Darshan Kumar headshot">
+            </div>
+
+        </section>
+        
+        <!-- Section 2: Skills -->
+        <section id="skills" class="skills-section">
+            <h2>Skills</h2>
+            <div class="text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci impedit doloribus sit blanditiis. Quam ad, eveniet harum molestias, cumque obcaecati assumenda iusto consequuntur temporibus incidunt suscipit totam nisi autem quis.
+            </div>
+            <div class="cells">
+                <div class="cell">
+                    <img src="Photos&Videos\html-logo.webp" alt="HTML Logo: ">
+                    <span>HTML</span>
+                </div>
+
+                <div class="cell">
+                    <img src="Photos&Videos\css-logo.webp" alt="CSS Logo: ">
+                    <span>CSS</span>
+                </div>
+
+                <div class="cell">
+                    <img src="Photos&Videos\javascript-logo.webp" alt="JS Logo: ">
+                    <span>JavaScript</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Testimony -->
+        <section id="testimony" class="testimony-section">
+            <h2>Testimony</h2>
+
+            <div class="group">
+                <div class="person-details">
+                    <img src="Photos&Videos\ProfilePic.JPG" alt="john Doe">
+                    <p>John Doe</p>
+                    <p>Lorem ipsum dolor sit.</p>
+                </div>
+                <div class="text">
+                    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam nostrum velit, aspernatur deserunt delectus assumenda quibusdam amet modi esse libero officia temporibus vero facilis, non, eum aliquid dolor ipsa pariatur voluptas omnis deleniti architecto sunt recusandae accusamus! Earum deleniti, ea nihil rem vero ex dolorem obcaecati id doloribus commodi modi."
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Contact -->
+        <section id="contact" class="contact-section">
+            <h2>Contact</h2>
+            
+            <div class="group">
+                <div class="text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero voluptatem sunt laboriosam dicta! Dolore, quibusdam! Totam possimus iure rem nostrum repudiandae hic dicta, laboriosam tempora illo officiis atque excepturi vel distinctio ratione cupiditate velit nisi sit itaque ipsum cumque? Obcaecati velit laudantium quibusdam deserunt. Obcaecati ut nemo animi incidunt recusandae.
+                </div>
+                
+                <form>
+                    <label for="name">Name</label>
+                    <input type="text" id="name">
+
+                    <label for="email">Email</label>
+                    <input type="text" id="email">
+
+                    <label for="message">Message</label>
+                    <textarea id="message" cols="30" rows="10"></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
+<!-- JS code for toggling dark mode -->
+<script>
+    function darkMode() {
+        var element = document.body;
+        element.classList.toggle("dark");
+    }
+    function toggleIcon(element) {
+        element.classList.toggle("fa-toggle-on");
+    }
+</script>

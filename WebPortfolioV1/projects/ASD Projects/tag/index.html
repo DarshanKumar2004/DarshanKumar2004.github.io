@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Tag</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="https://code.jquery.com/jquery-git.js"></script>
+  </head>
+   
+  <body>
+    <div id='board'>
+        <div id='player1'></div>
+        <div id='player2'></div>
+    </div>
+    <script>
+                $(document).ready(function() {
+            ////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////// INITIALIZATION ///////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////
+                
+            var FPS = 60;
+                
+            var player1 = itemCreation("#player1");
+            var player2 = itemCreation("#player2");
+                
+            ////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////// CORE LOGIC //////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////
+                
+            setInterval(newFrame, 1000 / FPS); // execute newFrame() 60 times per second
+                
+            $(document).on('keydown', setPlayer1Velocity); // execute setPlayerVelocity() in response to keydown events
+            $(document).on('keyup', stopPlayer1Velocity);  // execute stopPlayerVelocity() in response to keydown events
+                
+            $(document).on('keydown', setPlayer2Velocity);
+            $(document).on('keyup', stopPlayer2Velocity);
+                
+            $(document).on('keydown', detectC);
+                
+            // functions called every frame
+                
+            function newFrame() {
+              playerSpeeds();
+              drawPlayers();
+              borderP1();
+              borderP2();
+              collision();
+            }
+        
+            ////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////
+        
+            function drawPlayers() {
+              $('#player1').css("left", player1.X);
+              $('#player1').css("top", player1.Y);
+            
+              $('#player2').css("left", player2.X);
+              $('#player2').css("top", player2.Y);
+              //console.log('good');
+            }
+        
+            function playerSpeeds() {
+              player1.X += player1.speedX;
+              player1.Y += player1.speedY;
+            
+              player2.X += player2.speedX;
+              player2.Y += player2.speedY;
+              //console.log('good');
+            }
+        
+            function borderP1() {
+              if (player1.X === 0) {
+                player1.X = 375;
+                //console.log('working');
+              }
+              if (player1.Y === 0) {
+                player1.Y = 375;
+                //console.log('working');
+              }
+              if (player1.X === 380) {
+                player1.X = 0;
+                //console.log('working');
+              }
+              if (player1.Y === 380) {
+                player1.Y = 0;
+                //console.log('working');
+              }
+            }
+
+            function borderP2() {
+              if (player2.X === 0) {
+                player2.X = 375;
+                //console.log('working');
+              }
+              if (player2.Y === 0) {
+                player2.Y = 375;
+                //console.log('working');
+              }
+              if (player2.X === 380) {
+                player2.X = 0;
+                //console.log('working');
+              }
+              if (player2.Y === 380) {
+                player2.Y = 0;
+                //console.log('working');
+              }
+            }
+        
+            function itemCreation(id) {
+              item = {};
+            
+              item.id = id;
+              item.X = Number($(id).css('left').replace(/[^-\d\.]/g, ''));
+              item.Y = Number($(id).css('top').replace(/[^-\d\.]/g, ''));
+              item.speedX = 0;
+              item.speedY = 0;
+              item.width = 18;
+              item.height = 18;
+              item.color = $(item).css("color", "white");;
+              console.log(item);
+            
+              return item;
+            }
+        
+            function collision() {
+              player1C = {};
+              player1C.left = player1.X;
+              player1C.right = player1.X + player1.width;
+              player1C.top = player1.Y;
+              player1C.bottom = player1.Y + player1.height;
+            
+              player2C = {};
+              player2C.left = player2.X;
+              player2C.right = player2.X + player2.width;
+              player2C.top = player2.Y;
+              player2C.bottom = player2.Y + player2.height;
+            
+              if ((player1C.left < player2C.right) && (player1C.right > player2C.left) && 
+                  (player1C.top < player2C.bottom) && (player1C.bottom > player2C.top)) {
+                      //console.log('working')
+                      player1.color = $(item).css("color", "red");
+                      player2.color = $(item).css("color", "red");
+                      alert('Tag You Are IT!!!')
+                      player1.X = 100;
+                      player1.Y = 100;
+                      player1.speedX = 0;
+                      player1.speedY = 0;
+                      player2.X = 200;
+                      player2.Y = 100;
+                      player2.speedX = 0;
+                      player2.speedY = 0;
+              }
+            }
+        
+            ////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////// KEYBOARD FUNCTIONS //////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////
+        
+            /** 
+            Key codes:
+            - left: 37
+            - up: 38
+            - right: 39
+            - down: 40
+            - w: 87
+            - a: 65
+            - s: 83
+            - d: 68
+            - c: 67
+            */
+        
+            var KEY = {
+              LEFT: 37,
+              UP: 38,
+              RIGHT: 39,
+              DOWN: 40,
+              W: 87,
+              A: 65,
+              S: 83,
+              D: 68,
+              C: 67
+            }
+        
+        
+            //player 1 keys
+
+            function setPlayer1Velocity(event) {
+                if (event.which === KEY.UP) {
+                   player1.speedY = -5;
+                   //console.log('working');
+                }
+                if (event.which === KEY.DOWN) {
+                   player1.speedY = 5;
+                   //console.log('working');
+                }
+                if (event.which === KEY.LEFT) {
+                   player1.speedX = -5;
+                   //console.log('working');
+                }
+                if (event.which === KEY.RIGHT) {
+                   player1.speedX = 5;
+                   //console.log('working');
+                }
+            }
+        
+            function stopPlayer1Velocity(event) {
+                if (event.which === KEY.UP || event.which === KEY.DOWN) {
+                   player1.speedY = 0; 
+                   //console.log('working');
+                }
+            
+                if (event.which === KEY.LEFT || event.which === KEY.RIGHT) {
+                   player1.speedX = 0; 
+                   //console.log('working');
+                }
+            }
+        
+        
+            // player 2 keys
+        
+            function setPlayer2Velocity(event) {
+                if (event.which === KEY.W) {
+                   player2.speedY = -5;
+                   //console.log('working');
+                }
+                if (event.which === KEY.S) {
+                   player2.speedY = 5;
+                   //console.log('working');
+                }
+                if (event.which === KEY.A) {
+                   player2.speedX = -5;
+                   //console.log('working');
+                }
+                if (event.which === KEY.D) {
+                   player2.speedX = 5;
+                   //console.log('working');
+                }
+            }
+        
+            function stopPlayer2Velocity(event) {
+                if (event.which === KEY.W || event.which === KEY.S) {
+                   player2.speedY = 0; 
+                   //console.log('working');
+                }
+            
+                if (event.which === KEY.A || event.which === KEY.D) {
+                   player2.speedX = 0; 
+                   //console.log('working');
+                }
+            }
+        
+
+            // detect c
+        
+            function detectC(event) {
+                if (event.which === KEY.C) {
+                  player1.color = player2.color;
+                  //console.log('working');
+                }
+            }
+        
+        }); // DO NOT DELETE
+    </script>
+  </body>
+</html>
