@@ -55,6 +55,7 @@ body {
 }
 .dark .skills-section .cells .cell { border: 1.5px solid var(--dark-link-color); }
 .dark .contact-section .group .logo img { filter: invert(100%); }
+.dark .skills-section .cells .cell .ProjectManagementLogo { filter: invert(100%); }
 
 
 /* ancor tag for links */
@@ -172,7 +173,7 @@ nav .right a span { margin-left: 5px; }
     align-items: center;
     gap: 10px;
 
-    width: 200px;
+    width: 250px;
     padding: 10px 20px;
     margin: 10px;
     border: 1.5px solid var(--light-link-color);
@@ -180,10 +181,14 @@ nav .right a span { margin-left: 5px; }
 }
 
 .skills-section .cells .cell img {
-    width: 30px;
+    width: auto;
     height: 30px;
     object-fit: contain;
     border-radius: 2px;
+}
+
+.skills-section .cells .cell .JavaLogo {
+    border-radius: 20%;
 }
 
 .skills-section .cells .cell span {
