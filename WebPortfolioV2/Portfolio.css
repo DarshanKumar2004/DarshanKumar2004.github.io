@@ -238,6 +238,9 @@ nav .right img {
     nav .right img {
         width: 100px;
         margin-top: 25%;
-        
+    }
+    .projects-section .projects .project .batteryPacks video {
+        width: 100%;
+        height: auto;
     }
 }
