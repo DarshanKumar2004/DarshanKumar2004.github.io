@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="Home.css">
 
     <!-- Fafacon -->
-    <link rel="icon" type="image/x-icon" href="Photos&Videos\FafaconV1.jpg">
+    <link rel="icon" type="image/x-icon" href="Photos&Videos\favicon.png" id="favicon">
+
      
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,8 +30,11 @@
     <nav>
         <div class="left">
             <a href="/WebPortfolioV2/Home.html">
-                <!-- <i class="fa-solid fa-house"></i> -->
                 <span>Home</span>
+            </a>
+
+            <a href="/WebPortfolioV2/Portfolio.html">
+                <span>Portfolio</span>
             </a>
         </div>
 
@@ -66,24 +70,25 @@
                     This website hosts my first website and some of the first projects I ever created when learning to program. 
                     Since making this website I have moved on to a larger scale and more hardware-focused personal projects 
                     like making custom standardized battery packs for motel lock system, weather balloon transceivers, and 
-                    software development for satellites at ULL.</p>
+                    software development for satellites at ULL.
+                </p>
 
-                    <div class="link">
-                        <a href="#skills">
-                            <i class="fa-solid fa-code"></i>
-                            <span>Skills</span>
-                        </a>
+                <div class="link">
+                    <a href="#skills">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Skills</span>
+                    </a>
 
-                        <a href="#education">
-                            <i class="fa-solid fa-pen"></i>
-                            <span>Education</span>
-                        </a>
+                    <a href="#education">
+                        <i class="fa-solid fa-pen"></i>
+                        <span>Education</span>
+                    </a>
 
-                        <a href="#contact">
-                            <i class="fa-solid fa-envelope"></i>
-                            <span>Contact</span>
-                        </a>
-                    </div>
+                    <a href="#contact">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Contact</span>
+                    </a>
+                </div>
             </div>
             <div class="headshot">
                 <img src="Photos&Videos\ProfilePic.JPG" alt="Darshan Kumar headshot">
@@ -125,7 +130,6 @@
 
             <div class="group">
                 <div class="person-details">
-                    <img src="Photos&Videos\Logo2.png" alt="john Doe">
                     <p>University of Louisiana at Lafayette</p>
                     <p>B.S. Computer Science</p>
                 </div>
@@ -149,6 +153,10 @@
                     kumardarshan425@gmail.com<br>
                     (337)366-7508<br>
                 </div>
+
+                <div class="logo">
+                    <img src="Photos&Videos\Logo2.png" alt="Personal Logo">
+                </div>
                 
                 <form>
                     <label for="name">Name</label>
@@ -170,9 +178,17 @@
 
 <!-- JS code for toggling dark mode -->
 <script>
+    let lightMode = true;
     function darkMode() {
         var element = document.body;
         element.classList.toggle("dark");
+        if (lightMode) {
+            document.getElementById("favicon").setAttribute('href', 'Photos&Videos/dark-favicon.png');
+            lightMode = false;
+        } else {
+            document.getElementById("favicon").setAttribute('href', 'Photos&Videos/favicon.png');
+            lightMode = true;
+        }
     }
     function toggleIcon(element) {
         element.classList.toggle("fa-toggle-on");

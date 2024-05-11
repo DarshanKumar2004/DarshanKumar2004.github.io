@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta tags for search engine description -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title -->
+    <title>Portfolio Home</title>
+
+    <!-- Link to Home.css -->
+    <link rel="stylesheet" href="Portfolio.css">
+
+    <!-- Fafacon -->
+    <link rel="icon" type="image/x-icon" href="Photos&Videos\favicon.png" id="favicon">
+
+     
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="left">
+            <a href="/WebPortfolioV2/Home.html">
+                <span>Home</span>
+            </a>
+
+            <a href="/WebPortfolioV2/Portfolio.html">
+                <span>Portfolio</span>
+            </a>
+
+            <a onclick="darkMode(); toggleIcon(darkModeID);">
+                <i id="darkModeID" class="fa-solid fa-toggle-off"></i>
+                <span>Dark Mode</span>
+            </a>
+        </div>
+
+        <div class="right">
+            <img src="Photos&Videos\Logo1.png" alt="Personal Logo"></img>
+        </div>
+    </nav>
+
+    <main>
+        <!-- SECTION 1: WEBPAGE -->
+        <section class="webpage-section">
+            <h2>My Webpages</h2>
+
+            <div class="link">
+                <a href="../WebPortfolioV1\old-index.html">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span >My First Webpage</span>
+                </a>
+
+                <a href="Home.html">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span >My Second Webpage</span>
+                </a>
+
+                <a href="../Index.html">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span>Current Webpage</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION 2: PROJECTS -->
+        <section class="projects-section">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <span>CAD: Some larger projects.</span>
+                    <div class="CAD">
+                        <img src="Photos&Videos\BatteryPacks.jpg" alt="Battery Packs">
+                        <img src="Photos&Videos\Bumppers.jpg" alt="Robot Bumppers">
+                        <img src="Photos&Videos\VeggieChopper.jpg" alt="Veggie Chopper">
+                        <img src="Photos&Videos\Pattio.jpg" alt="Pattio Cover">
+                    </div>
+                </div>
+
+                <div class="project" >
+                    <a href="Photos&Videos\BatteryPacks.mp4" target="_blank" class="batteryPacksLink">
+                        <span>Battery Pack video link</span>
+                    </a>
+                    <div class="batteryPacks">
+                        
+                        <video width="320" height="240" autoplay muted>
+                            <source src="Photos&Videos\BatteryPacks.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    
+                </div>
+
+                <!-- <div class="project">
+                    <span>PCB</span>
+                </div> -->
+            </div>
+        </section>
+
+        <!-- SECTION 3: RESUME -->
+        <section>
+            <div class="resume-display">
+                <h2>Resume</h2>
+                <object data="Resume/Darshans Resume.pdf" type="application/pdf" class="resume">
+                </object>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
+<!-- JS code for toggling dark mode -->
+<script>
+    let lightMode = true;
+    function darkMode() {
+        var element = document.body;
+        element.classList.toggle("dark");
+        if (lightMode) {
+            document.getElementById("favicon").setAttribute('href', 'Photos&Videos/dark-favicon.png');
+            lightMode = false;
+        } else {
+            document.getElementById("favicon").setAttribute('href', 'Photos&Videos/favicon.png');
+            lightMode = true;
+        }
+    }
+    function toggleIcon(element) {
+        element.classList.toggle("fa-toggle-on");
+    }
+</script>
