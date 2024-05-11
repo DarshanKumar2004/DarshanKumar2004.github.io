@@ -51,7 +51,13 @@ body {
 .dark .resume-display object { filter: invert(100%); }
 .dark .projects-section .projects .project .CAD img { border: 3px solid var(--dark-link-color); }
 .dark .projects-section .projects .project .batteryPacks video { border: 3px solid var(--dark-link-color); }
-.dark .projects-section .projects .project .batteryPacksLink span:hover { color: var(--dark-text-color); }
+.dark .projects-section .projects .project .batteryPacks a span { color: var(--dark-link-color); }
+.dark .projects-section .projects .project .batteryPacks a span:hover { color: var(--dark-text-color); }
+.dark .resume-section .resume-display .ResumeTitle h2 { color: var(--dark-link-color); }
+.dark .resume-section .resume-display .ResumeTitle h2:hover { color: var(--dark-text-color); }
+.dark .resume-section .text a h2{ color: var(--dark-link-color); }
+.dark .resume-section .text a h2:hover { color: var(--dark-text-color); }
+.dark .resume-section .PDF object { border: 5px solid var(--dark-link-color); }
 
 /* ancor tag for links */
 a {
@@ -134,53 +140,76 @@ nav .right img {
     padding-right: 60px;
 }
 
-.projects-section .projects .project {
+.projects-section .projects {
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 
 .projects-section .projects .project .CAD {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.projects-section .projects .project .CAD span {
+    margin-bottom: 10px;
+}
+
+.projects-section .projects .project .CAD .CAD-Photos {
     display: flex;
     flex-direction: row;
     gap: 5%;
 }
 
-.projects-section .projects .project .CAD img {
+.projects-section .projects .project .CAD .CAD-Photos img {
     width: 200px;
     aspect-ratio: 1 / 1;
-    margin-bottom: 10px;
-    margin-top: 20px;
     border-radius: 10%;
     border: 3px solid var(--light-link-color);
 }
 
-.projects-section .projects .project .batteryPacks video {
+.projects-section .projects .project .batteryPacks .content video {
     width: fit-content;
     border-radius: 10px;
     border: 3px solid var(--light-link-color);
 }
 
-.projects-section .projects .project .batteryPacksLink span:hover {
-    color: var(--light-text-color);
-}
+.projects-section .projects .project .batteryPacks a span { color: var(--light-link-color); }
+.projects-section .projects .project .batteryPacks a span:hover { color: var(--light-text-color); }
 
 
 /* SECTION 3: RESUME */
-.resume-display {
+
+.resume-section {
     margin-top: 50px;
-    width: 100%;
-    text-align: center;
-    display: inline-block;
-}
-
-.resume-display h2 {
     text-align: center;
 }
 
-.resume-display .resume {
-    aspect-ratio: 3/3.75;
+.resume-section .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.resume-section .text a h2{
+    width: fit-content;
+    font-size: 22px;
+    color: var(--light-link-color);
+}
+.resume-section .text a h2:hover { color: var(--light-text-color); }
+
+.resume-section .PDF object { 
+    border-radius: 10px;
+    border: 5px solid var(--light-link-color);
     width: 60%;
+    aspect-ratio: 3/4;
 }
+
+
+
 
 
 /* Different Options for Different Screen Sizes */
@@ -197,12 +226,16 @@ nav .right img {
     .projects-section .projects .project .CAD {
         gap: 15px;
     }
+    .resume-section .PDF object { 
+        width: 90%;
+    }
 }
 
 @media (max-width: 820px) {
     nav .right img {
         width: 225px;
     }
+    
 }
 
 @media (max-width: 780px) {
@@ -223,8 +256,9 @@ nav .right img {
     .resume-display .resume {
         width: 80%;
     }
-    .projects-section .projects .project .CAD {
+    .projects-section .projects .project .CAD .CAD-Photos {
         flex-direction: column;
+        gap: 10px;
     }
 }
 
@@ -239,7 +273,7 @@ nav .right img {
         width: 100px;
         margin-top: 25%;
     }
-    .projects-section .projects .project .batteryPacks video {
+    .projects-section .projects .project .batteryPacks .content video {
         width: 100%;
         height: auto;
     }
