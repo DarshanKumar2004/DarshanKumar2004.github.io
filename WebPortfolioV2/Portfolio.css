@@ -232,9 +232,12 @@ nav .right img {
     /* NAVBAR */
     nav { padding: 0 20px; }
     nav .left a { font-size: 18px; }
-    nav .left a:last-child { font-size: 12px; }
+    nav .left a:last-child {
+        span { display: none; }
+    }
     nav .right img {
         width: 100px;
         margin-top: 25%;
+        
     }
 }
