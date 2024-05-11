@@ -48,15 +48,10 @@ body {
     color: var(--dark-text-color);
     border: 2px solid var(--dark-bacKground-color);
 }
-.dark .resume-display object {
-    filter: invert(100%);
-}
-.dark .projects-section .projects .project .CAD img {
-    border: 3px solid var(--dark-link-color);
-}
-.projects-section .projects .project .batteryPacks video {
-    border: 3px solid var(--dark-link-color);
-}
+.dark .resume-display object { filter: invert(100%); }
+.dark .projects-section .projects .project .CAD img { border: 3px solid var(--dark-link-color); }
+.dark .projects-section .projects .project .batteryPacks video { border: 3px solid var(--dark-link-color); }
+.dark .projects-section .projects .project .batteryPacksLink span:hover { color: var(--dark-text-color); }
 
 /* ancor tag for links */
 a {
