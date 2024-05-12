@@ -96,13 +96,19 @@ nav .right img {
 }
 
 /* SECTION 1: WEBPAGE */
+.webpage-section {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}
+
 .webpage-section h2 {
     margin-left: 50px;
     padding: 10px;
 }
 
 .webpage-section .link{
-    width: auto;
+    width: fit-content;
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -136,8 +142,9 @@ nav .right img {
 /* SECTION 2: PROJECTS */
 .projects-section {
     padding-top: 50px;
-    padding-left: 60px;
-    padding-right: 60px;
+    text-align: center;
+    margin: auto;
+    width: 100%;
 }
 
 .projects-section .projects {
@@ -150,7 +157,7 @@ nav .right img {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 10px;    
 }
 
 .projects-section .projects .project .CAD span {
@@ -158,6 +165,9 @@ nav .right img {
 }
 
 .projects-section .projects .project .CAD .CAD-Photos {
+    align-items: center;
+    margin: auto;
+    width: 62.325%;
     display: flex;
     flex-direction: row;
     gap: 5%;
@@ -275,7 +285,7 @@ nav .right img {
         margin-top: 25%;
     }
     .projects-section .projects .project .batteryPacks .content video {
-        width: 100%;
+        width: 90%;
         height: auto;
     }
 }

@@ -187,13 +187,8 @@ nav .right a span { margin-left: 5px; }
     border-radius: 2px;
 }
 
-.skills-section .cells .cell .JavaLogo {
-    border-radius: 20%;
-}
-
-.skills-section .cells .cell span {
-    font-size: 18px;
-}
+.skills-section .cells .cell .JavaLogo { border-radius: 20%; }
+.skills-section .cells .cell span { font-size: 18px; }
 
 /* SECTION 3: EDUCATION */
 .education-section {
@@ -214,20 +209,26 @@ nav .right a span { margin-left: 5px; }
 
 .education-section .group .person-details {
     text-align: center;
-    flex: 2;
+    flex: 2; 
 }
-
-.education-section .group .person-details p:last-child {
-    font-weight: normal;
-}
-
-.education-section .group .person-details p {
-    font-weight: 600;
-}
-
-.education-section .group .text {
+.education-section .group .person-details img { width: 70%; }
+.education-section .group .person-details .bold { font-weight: 600; }
+.education-section .group .content {
     flex: 8;
+    margin-left: 10px;
+    margin-right: 10px;
 }
+.education-section .group .content .OrgPhotos {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    margin-bottom: 25px;
+}
+.education-section .group .content .OrgPhotos img {
+    height: 100px;
+}
+.education-section .group .content .OrgPhotos .OP-Logo { border-radius: 15px; }
+
 
 /* SECTION 4: CONTACT */
 .contact-section {
