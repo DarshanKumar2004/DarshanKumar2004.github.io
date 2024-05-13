@@ -392,6 +392,17 @@ nav .right a span { margin-left: 5px; }
         padding: 0 20px;
     }
 
+    .education-section .group .content .OrgPhotos {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .education-section .group .content .OrgPhotos img {
+        height: auto;
+        width: 25%;
+    }
+
     /* SECTION 4: CONTACT */
     .contact-section {
         padding: 0 20px;
