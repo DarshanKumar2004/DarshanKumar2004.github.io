@@ -56,6 +56,8 @@ body {
 .dark .skills-section .cells .cell { border: 1.5px solid var(--dark-link-color); }
 .dark .contact-section .group .logo img { filter: invert(100%); }
 .dark .skills-section .cells .cell .ProjectManagementLogo { filter: invert(100%); }
+.dark .education-section .group .content .OrgPhotos .PMI-Logo { filter: invert(100%); }
+.dark .education-section .group .person-details .PMI-Logo { filter: invert(100%); }
 
 
 /* ancor tag for links */
