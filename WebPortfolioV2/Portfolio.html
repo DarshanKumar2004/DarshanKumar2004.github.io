@@ -73,8 +73,15 @@
         <!-- SECTION 2: PROJECTS -->
         <section class="projects-section">
             <h2>Personal Projects:</h2>
+            <div class="project-tabs">
+                <button class="tab active" data-target="proj-battery">Battery Pack</button>
+                <button class="tab" data-target="proj-cape">CAPE ESG</button>
+                <button class="tab" data-target="proj-frc">FRC Bumpers</button>
+                <button class="tab" data-target="proj-chopper">Veggie Chopper</button>
+                <button class="tab" data-target="proj-patio">Patio Cover</button>
+            </div>
             <div class="projects">
-                <div class="project">
+                <div class="project active" id="proj-battery">
                     <div class="batteryPacks">
                         <span>SecurLock Battery Pack — Custom 3D-Printed Swappable Module</span>
                         <p class="projectDescription">
@@ -99,7 +106,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="project">
+
+                <div class="project" id="proj-cape">
                     <div class="capeProject">
                         <span>CAPE ESG Ground Station — UHF/VHF Radio PCB</span>
                         <p class="projectDescription">
@@ -117,7 +125,7 @@
                     </div>
                 </div>
 
-                <div class="project">
+                <div class="project" id="proj-frc">
                     <div class="cadProject">
                         <span>FRC Team 3616 — Chassis Bumpers (2023)</span>
                         <p class="projectDescription">
@@ -129,7 +137,7 @@
                     </div>
                 </div>
 
-                <div class="project">
+                <div class="project" id="proj-chopper">
                     <div class="cadProject">
                         <span>Fruit &amp; Veggie Chopper — CAD Concept</span>
                         <p class="projectDescription">
@@ -139,7 +147,7 @@
                     </div>
                 </div>
 
-                <div class="project">
+                <div class="project" id="proj-patio">
                     <div class="cadProject">
                         <span>Backyard Patio Cover — HOA Approval Design</span>
                         <p class="projectDescription">
@@ -199,4 +207,13 @@
     function toggleIcon(element) {
         element.classList.toggle("fa-toggle-on");
     }
+
+    document.querySelectorAll('.project-tabs .tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.project-tabs .tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.projects .project').forEach(p => p.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.target).classList.add('active');
+        });
+    });
 </script>
