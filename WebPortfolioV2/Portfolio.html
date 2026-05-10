@@ -160,30 +160,36 @@
             </div>
         </section>
 
-        <!-- SECTION 3: RESUME -->
-        <section class="resume-section">
-            <div class="text">
-                <a href="Resume/DarshansResume.pdf" target="_blank">
-                    <h2>Resume</h2>
-                </a>
+        <!-- SECTION 3: RESUME & PUBLICATIONS -->
+        <section class="docs-section">
+            <div class="project-tabs">
+                <button class="tab active" data-target="doc-resume">Resume</button>
+                <button class="tab" data-target="doc-publications">Publications</button>
             </div>
-            <div class="PDF">
-                <object data="Resume/DarshansResume.pdf" type="application/pdf">
-                </object>
-            </div>
-        </section>
-
-        <!-- SECTION 4: RESEARCH & REPORTS -->
-        <section class="papers-section">
-            <div class="text">
-                <a href="Papers/HDC_Sr.Project_Report_Darshan_Kumar.pdf" target="_blank">
-                    <h2>Research &amp; Reports</h2>
-                </a>
-                <span class="pending-note">(Pending Publishing)</span>
-            </div>
-            <div class="PDF">
-                <object data="Papers/HDC_Sr.Project_Report_Darshan_Kumar.pdf" type="application/pdf">
-                </object>
+            <div class="docs">
+                <div class="doc active" id="doc-resume">
+                    <div class="text">
+                        <a href="Resume/DarshansResume.pdf" target="_blank">
+                            <h2>Resume</h2>
+                        </a>
+                    </div>
+                    <div class="PDF">
+                        <object data="Resume/DarshansResume.pdf" type="application/pdf">
+                        </object>
+                    </div>
+                </div>
+                <div class="doc" id="doc-publications">
+                    <div class="text">
+                        <a href="Papers/HDC_Sr.Project_Report_Darshan_Kumar.pdf" target="_blank">
+                            <h2>Research &amp; Reports</h2>
+                        </a>
+                        <span class="pending-note">(Pending Publishing)</span>
+                    </div>
+                    <div class="PDF">
+                        <object data="Papers/HDC_Sr.Project_Report_Darshan_Kumar.pdf" type="application/pdf">
+                        </object>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -210,8 +216,10 @@
 
     document.querySelectorAll('.project-tabs .tab').forEach(tab => {
         tab.addEventListener('click', () => {
-            document.querySelectorAll('.project-tabs .tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.projects .project').forEach(p => p.classList.remove('active'));
+            const tabRow = tab.closest('.project-tabs');
+            const panelsContainer = tabRow.nextElementSibling;
+            tabRow.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            panelsContainer.querySelectorAll(':scope > *').forEach(p => p.classList.remove('active'));
             tab.classList.add('active');
             document.getElementById(tab.dataset.target).classList.add('active');
         });

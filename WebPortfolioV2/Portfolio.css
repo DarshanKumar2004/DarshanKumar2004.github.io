@@ -35,12 +35,12 @@ body {
     background-color: var(--dark-background-color);
     color: var(--dark-text-color);
 }
-.dark .projects-section .project-tabs .tab {
+.dark .project-tabs .tab {
     border-color: var(--dark-link-color);
     color: var(--dark-link-color);
 }
-.dark .projects-section .project-tabs .tab:hover,
-.dark .projects-section .project-tabs .tab.active {
+.dark .project-tabs .tab:hover,
+.dark .project-tabs .tab.active {
     background: var(--dark-link-color);
     color: var(--dark-text-color);
 }
@@ -64,15 +64,10 @@ body {
 .dark .projects-section .projects .project .batteryPacks a span { color: var(--dark-link-color); }
 .dark .projects-section .projects .project .batteryPacks a span:hover { color: var(--dark-text-color); }
 .dark .projects-section .projects .project .cadProject img { border: 3px solid var(--dark-link-color); }
-.dark .resume-section .resume-display .ResumeTitle h2 { color: var(--dark-link-color); }
-.dark .resume-section .resume-display .ResumeTitle h2:hover { color: var(--dark-text-color); }
-.dark .resume-section .text a h2{ color: var(--dark-link-color); }
-.dark .resume-section .text a h2:hover { color: var(--dark-text-color); }
-.dark .resume-section .PDF object { border: 5px solid var(--dark-link-color); }
-.dark .papers-section .text a h2 { color: var(--dark-link-color); }
-.dark .papers-section .text a h2:hover { color: var(--dark-text-color); }
-.dark .papers-section .PDF object { border: 5px solid var(--dark-link-color); }
-.dark .papers-section .text .pending-note { color: var(--dark-text-color); }
+.dark .docs-section .doc .text a h2 { color: var(--dark-link-color); }
+.dark .docs-section .doc .text a h2:hover { color: var(--dark-text-color); }
+.dark .docs-section .doc .PDF object { border: 5px solid var(--dark-link-color); }
+.dark .docs-section .doc .text .pending-note { color: var(--dark-text-color); }
 
 /* ancor tag for links */
 a {
@@ -162,7 +157,7 @@ nav .right img {
     width: 100%;
 }
 
-.projects-section .project-tabs {
+.project-tabs {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -170,7 +165,7 @@ nav .right img {
     margin: 15px 0 20px;
 }
 
-.projects-section .project-tabs .tab {
+.project-tabs .tab {
     padding: 7px 18px;
     border: 2px solid var(--light-link-color);
     border-radius: 20px;
@@ -182,8 +177,8 @@ nav .right img {
     transition: .2s;
 }
 
-.projects-section .project-tabs .tab:hover,
-.projects-section .project-tabs .tab.active {
+.project-tabs .tab:hover,
+.project-tabs .tab.active {
     background: var(--light-link-color);
     color: var(--light-background-color);
 }
@@ -303,48 +298,18 @@ nav .right img {
 }
 
 
-/* SECTION 3: RESUME */
+/* SECTION 3: RESUME & PUBLICATIONS */
 
-.resume-section {
+.docs-section {
     margin-top: 50px;
     margin-bottom: 50px;
     text-align: center;
 }
 
-.resume-section .text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
+.docs-section .docs .doc { display: none; }
+.docs-section .docs .doc.active { display: block; }
 
-.resume-section .text a h2{
-    width: fit-content;
-    font-size: 22px;
-    color: var(--light-link-color);
-}
-.resume-section .text a h2:hover { color: var(--light-text-color); }
-
-.resume-section .PDF object { 
-    border-radius: 10px;
-    border: 5px solid var(--light-link-color);
-    width: 60%;
-    aspect-ratio: 3/4;
-}
-
-
-
-
-
-/* SECTION 4: RESEARCH & REPORTS */
-
-.papers-section {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    text-align: center;
-}
-
-.papers-section .text {
+.docs-section .doc .text {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -352,25 +317,27 @@ nav .right img {
     margin-bottom: 10px;
 }
 
-.papers-section .text a h2 {
+.docs-section .doc .text a h2 {
     width: fit-content;
     font-size: 22px;
     color: var(--light-link-color);
 }
-.papers-section .text a h2:hover { color: var(--light-text-color); }
+.docs-section .doc .text a h2:hover { color: var(--light-text-color); }
 
-.papers-section .text .pending-note {
+.docs-section .doc .text .pending-note {
     font-size: 14px;
     color: var(--light-link-color);
     font-style: italic;
 }
 
-.papers-section .PDF object {
+.docs-section .doc .PDF object {
     border-radius: 10px;
     border: 5px solid var(--light-link-color);
     width: 60%;
     aspect-ratio: 3/4;
 }
+
+
 
 /* Different Options for Different Screen Sizes */
 @media screen {
@@ -383,10 +350,7 @@ nav .right img {
     nav .right img {
         width: 250px;
     }
-    .resume-section .PDF object {
-        width: 90%;
-    }
-    .papers-section .PDF object {
+    .docs-section .doc .PDF object {
         width: 90%;
     }
 }
