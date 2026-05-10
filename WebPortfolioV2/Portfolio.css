@@ -49,10 +49,11 @@ body {
     border: 2px solid var(--dark-bacKground-color);
 }
 .dark .resume-display object { filter: invert(100%); }
-.dark .projects-section .projects .project .CAD img { border: 3px solid var(--dark-link-color); }
 .dark .projects-section .projects .project .batteryPacks video { border: 3px solid var(--dark-link-color); }
+.dark .projects-section .projects .project .batteryPacks .content img { border: 3px solid var(--dark-link-color); }
 .dark .projects-section .projects .project .batteryPacks a span { color: var(--dark-link-color); }
 .dark .projects-section .projects .project .batteryPacks a span:hover { color: var(--dark-text-color); }
+.dark .projects-section .projects .project .cadProject img { border: 3px solid var(--dark-link-color); }
 .dark .resume-section .resume-display .ResumeTitle h2 { color: var(--dark-link-color); }
 .dark .resume-section .resume-display .ResumeTitle h2:hover { color: var(--dark-text-color); }
 .dark .resume-section .text a h2{ color: var(--dark-link-color); }
@@ -157,45 +158,21 @@ nav .right img {
     gap: 20px;
 }
 
-.projects-section .projects .project .CAD {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    margin-top: 10px;    
-}
-
-.projects-section .projects .project .CAD span {
-    margin-bottom: 10px;
-}
-
-.projects-section .projects .project .CAD .CAD-Photos {
-    align-items: center;
-    margin: auto;
-    width: 62.325%;
+.projects-section .projects .project .batteryPacks .content {
     display: flex;
     flex-direction: row;
-    gap: 5%;
-}
-
-.projects-section .projects .project .CAD .CAD-Photos figure {
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 8px;
-    margin: 0;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 10px;
 }
 
-.projects-section .projects .project .CAD .CAD-Photos img {
-    width: 200px;
-    aspect-ratio: 1 / 1;
-    border-radius: 10%;
+.projects-section .projects .project .batteryPacks .content img {
+    height: 240px;
+    width: auto;
+    border-radius: 10px;
     border: 3px solid var(--light-link-color);
-}
-
-.projects-section .projects .project .CAD .CAD-Photos figcaption {
-    font-size: 13px;
-    text-align: center;
-    max-width: 200px;
 }
 
 .projects-section .projects .project .batteryPacks .content video {
@@ -249,6 +226,33 @@ nav .right img {
 }
 
 .dark .capePhotos img { border-color: var(--dark-link-color); }
+
+.projects-section .projects .project .cadProject {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.projects-section .projects .project .cadProject span {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.projects-section .projects .project .cadProject .projectDescription {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.projects-section .projects .project .cadProject img {
+    max-height: 300px;
+    width: auto;
+    max-width: 90%;
+    border: 3px solid var(--light-link-color);
+    border-radius: 10px;
+}
 
 
 /* SECTION 3: RESUME */
@@ -331,9 +335,6 @@ nav .right img {
     nav .right img {
         width: 250px;
     }
-    .projects-section .projects .project .CAD {
-        gap: 15px;
-    }
     .resume-section .PDF object {
         width: 90%;
     }
@@ -366,10 +367,6 @@ nav .right img {
     }
     .resume-display .resume {
         width: 80%;
-    }
-    .projects-section .projects .project .CAD .CAD-Photos {
-        flex-direction: column;
-        gap: 10px;
     }
 }
 
