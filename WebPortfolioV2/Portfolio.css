@@ -58,6 +58,10 @@ body {
 .dark .resume-section .text a h2{ color: var(--dark-link-color); }
 .dark .resume-section .text a h2:hover { color: var(--dark-text-color); }
 .dark .resume-section .PDF object { border: 5px solid var(--dark-link-color); }
+.dark .papers-section .text a h2 { color: var(--dark-link-color); }
+.dark .papers-section .text a h2:hover { color: var(--dark-text-color); }
+.dark .papers-section .PDF object { border: 5px solid var(--dark-link-color); }
+.dark .papers-section .text .pending-note { color: var(--dark-text-color); }
 
 /* ancor tag for links */
 a {
@@ -223,6 +227,42 @@ nav .right img {
 
 
 
+/* SECTION 4: RESEARCH & REPORTS */
+
+.papers-section {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.papers-section .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.papers-section .text a h2 {
+    width: fit-content;
+    font-size: 22px;
+    color: var(--light-link-color);
+}
+.papers-section .text a h2:hover { color: var(--light-text-color); }
+
+.papers-section .text .pending-note {
+    font-size: 14px;
+    color: var(--light-link-color);
+    font-style: italic;
+}
+
+.papers-section .PDF object {
+    border-radius: 10px;
+    border: 5px solid var(--light-link-color);
+    width: 60%;
+    aspect-ratio: 3/4;
+}
+
 /* Different Options for Different Screen Sizes */
 @media screen {
     nav .right img {
@@ -237,7 +277,10 @@ nav .right img {
     .projects-section .projects .project .CAD {
         gap: 15px;
     }
-    .resume-section .PDF object { 
+    .resume-section .PDF object {
+        width: 90%;
+    }
+    .papers-section .PDF object {
         width: 90%;
     }
 }
