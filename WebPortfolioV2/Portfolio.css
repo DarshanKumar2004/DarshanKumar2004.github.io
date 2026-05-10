@@ -193,6 +193,45 @@ nav .right img {
 .projects-section .projects .project .batteryPacks a span { color: var(--light-link-color); }
 .projects-section .projects .project .batteryPacks a span:hover { color: var(--light-text-color); }
 
+.projects-section .projects .project .capeProject {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.projects-section .projects .project .capeProject span {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.projects-section .projects .project .capeProject .projectDescription {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.projects-section .projects .project .capeProject .capePhotos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.projects-section .projects .project .capeProject .capePhotos img {
+    width: 300px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 10%;
+    border: 3px solid var(--light-link-color);
+}
+
+.dark .projects-section .projects .project .capeProject .capePhotos img {
+    border: 3px solid var(--dark-link-color);
+}
+
 
 /* SECTION 3: RESUME */
 
