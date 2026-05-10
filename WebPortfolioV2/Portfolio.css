@@ -162,7 +162,7 @@ nav .right img {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 15px;
     flex-wrap: wrap;
     margin-top: 10px;
@@ -171,12 +171,22 @@ nav .right img {
 .projects-section .projects .project .batteryPacks .content img {
     height: 240px;
     width: auto;
+    max-width: 100%;
     border-radius: 10px;
     border: 3px solid var(--light-link-color);
 }
 
+.projects-section .projects .project .batteryPacks .content .videoWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
 .projects-section .projects .project .batteryPacks .content video {
-    width: fit-content;
+    width: 320px;
+    max-width: 100%;
+    height: auto;
     border-radius: 10px;
     border: 3px solid var(--light-link-color);
 }
@@ -380,6 +390,14 @@ nav .right img {
     nav .right img {
         width: 100px;
         margin-top: 25%;
+    }
+    .projects-section .projects .project .batteryPacks .content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .projects-section .projects .project .batteryPacks .content img {
+        height: auto;
+        width: 90%;
     }
     .projects-section .projects .project .batteryPacks .content video {
         width: 90%;
