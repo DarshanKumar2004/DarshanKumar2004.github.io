@@ -190,6 +190,12 @@ nav .right img {
     border: 3px solid var(--light-link-color);
 }
 
+.projects-section .projects .project .batteryPacks span:first-child { font-weight: 600; }
+.projects-section .projects .project .batteryPacks .projectDescription {
+    max-width: 800px;
+    margin: 10px auto 15px;
+    line-height: 1.6;
+}
 .projects-section .projects .project .batteryPacks a span { color: var(--light-link-color); }
 .projects-section .projects .project .batteryPacks a span:hover { color: var(--light-text-color); }
 
