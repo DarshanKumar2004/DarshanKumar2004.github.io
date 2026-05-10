@@ -212,25 +212,71 @@ nav .right img {
     line-height: 1.6;
 }
 
-.projects-section .projects .project .capeProject .capePhotos {
+/* Photo grid: rocket left (tall), PCB + assembly right */
+.capePhotos {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 15px;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.capePhotos .rocketImg {
+    width: auto;
+    max-width: 38%;
+    height: auto;
+    border: 3px solid var(--light-link-color);
+    border-radius: 10px;
+}
+
+.capeRightColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 0;
+}
+
+/* PCB rotated 90deg to landscape — math: 551x707 natural size.
+   padding-top = (551/707)*100 = 77.9% gives wrapper same aspect as rotated image.
+   img width = (551/707)*100% so that after rotation the image fills the box exactly. */
+.pcbWrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 77.9%;
+    overflow: hidden;
+    border: 3px solid var(--light-link-color);
+    border-radius: 10px;
+}
+
+.pcbWrapper img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 77.9%;
+    height: auto;
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.capeAssemblyRow {
+    display: flex;
+    flex-direction: row;
     gap: 15px;
 }
 
-.projects-section .projects .project .capeProject .capePhotos img {
-    width: 300px;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 10%;
+.capeAssemblyRow img {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    height: auto;
     border: 3px solid var(--light-link-color);
+    border-radius: 10px;
 }
 
-.dark .projects-section .projects .project .capeProject .capePhotos img {
-    border: 3px solid var(--dark-link-color);
-}
+.dark .capePhotos .rocketImg { border-color: var(--dark-link-color); }
+.dark .pcbWrapper { border-color: var(--dark-link-color); }
+.dark .capeAssemblyRow img { border-color: var(--dark-link-color); }
 
 
 /* SECTION 3: RESUME */
