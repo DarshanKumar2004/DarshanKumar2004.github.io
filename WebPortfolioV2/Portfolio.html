@@ -196,24 +196,8 @@
 </body>
 </html>
 
-<!-- JS code for toggling dark mode -->
+<script src="theme.js"></script>
 <script>
-    let lightMode = true;
-    function darkMode() {
-        var element = document.body;
-        element.classList.toggle("dark");
-        if (lightMode) {
-            document.getElementById("favicon").setAttribute('href', 'PhotosAndVideos/DarkFavicon.png');
-            lightMode = false;
-        } else {
-            document.getElementById("favicon").setAttribute('href', 'PhotosAndVideos/favicon.png');
-            lightMode = true;
-        }
-    }
-    function toggleIcon(element) {
-        element.classList.toggle("fa-toggle-on");
-    }
-
     document.querySelectorAll('.project-tabs .tab').forEach(tab => {
         tab.addEventListener('click', () => {
             const tabRow = tab.closest('.project-tabs');

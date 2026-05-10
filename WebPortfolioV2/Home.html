@@ -250,21 +250,4 @@
 </body>
 </html>
 
-<!-- JS code for toggling dark mode -->
-<script>
-    let lightMode = true;
-    function darkMode() {
-        var element = document.body;
-        element.classList.toggle("dark");
-        if (lightMode) {
-            document.getElementById("favicon").setAttribute('href', 'PhotosAndVideos/DarkFavicon.png');
-            lightMode = false;
-        } else {
-            document.getElementById("favicon").setAttribute('href', 'PhotosAndVideos/favicon.png');
-            lightMode = true;
-        }
-    }
-    function toggleIcon(element) {
-        element.classList.toggle("fa-toggle-on");
-    }
-</script>
+<script src="theme.js"></script>
